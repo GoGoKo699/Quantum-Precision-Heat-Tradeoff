@@ -360,7 +360,7 @@ Their block-diagonal structure makes their trace distance the mean branch distan
 (1+\eta)h_2\!\left(\frac{\eta}{1+\eta}\right).
 ```
 
-Here the bounded-dimensional subsystem is **the classical label $`X`$**, with $`\dim X=2`$. The conditioning subsystem is the entire environment. Both states have $`H(X)=1`$, so this is also a bound on the difference of their Holevo informations. Since $`0\le H(X|E)\le1`$, that difference is additionally capped at one bit. Monotonicity of the correction in $`\eta`$ gives $`g(f(d))`$ and proves the lemma.
+Here the bounded-dimensional subsystem is **the classical label** $`X`$, with $`\dim X=2`$. The conditioning subsystem is the entire environment. Both states have $`H(X)=1`$, so this is also a bound on the difference of their Holevo informations. Since $`0\le H(X|E)\le1`$, that difference is additionally capped at one bit. Monotonicity of the correction in $`\eta`$ gives $`g(f(d))`$ and proves the lemma.
 
 The inspected source, arXiv:1507.07775v6, explicitly treats both qc and cq states in Lemma 2. No entropy-continuity factor involving the reservoir dimension enters here, and the formal purification is not a charged physical resource.
 

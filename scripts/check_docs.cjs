@@ -63,6 +63,7 @@ function parser() {
     if (silent) return end !== -1;
     const token = state.push(end === -1 ? 'math_error' : 'math_inline', 'math', 0);
     token.content = end === -1 ? 'Unclosed inline math delimiter' : state.src.slice(contentStart, end);
+    token.markup = backtick ? '$`' : '$';
     state.pos = end === -1 ? state.posMax : end + delimiter.length;
     return true;
   });
@@ -85,7 +86,7 @@ function parser() {
 }
 
 function walk(node, fn) {
-  fn(node);
+  if (fn(node) === false) return;
   for (const child of node.childNodes || []) walk(child, fn);
 }
 
@@ -120,13 +121,23 @@ function inspectMarkdown(source, name = 'fixture.md') {
   if (/(?:sandbox:|file:\/\/|\/workspace\/|\/home\/oai\/|\/mnt\/data\/|\bturn\d+(?:search|view|fetch|file)\d*|\bfile_[0-9a-f]{12,}|\blibfile_|\ue200|\ue202)/i.test(source))
     issue('environment', 1, 'Environment-specific path or citation');
   let heading = false, nestedDisplay = 0;
-  function recordMath(token, line, display) {
+  function recordMath(token, line, display, inEmphasis = false) {
     if (heading) issue('heading', line, 'Use plain-text headings with stable anchors');
     if (display && nestedDisplay) issue('math-context', line, 'Display math cannot be placed in tables or block quotes');
+    // Conservative source regressions prompted by observed live GitHub output.
+    // Local MathJax compilation alone cannot reproduce GitHub's Markdown/math
+    // processing order: ordinary-dollar literal braces were lost there, and a
+    // formula inside an italic caption remained raw. These are source guards,
+    // not a claim to emulate the entire GitHub rendering pipeline.
+    if (!display && token.markup !== '$`' && /\\[{}]/.test(token.content))
+      issue('math-delimiter', line, 'Literal TeX brace escapes require protected inline delimiters: $`...`$');
+    if (!display && inEmphasis)
+      issue('math-context', line, 'Keep inline math outside emphasis and strong wrappers; style adjacent prose instead');
     try {
       const rendered = compileMath(token.content, display);
       token.meta = rendered;
       const entry = {file: name, line, display, tex: token.content.trim(),
+        ...(!display ? {inline_syntax: token.markup === '$`' ? 'protected' : 'dollar'} : {}),
         width_px: Number(rendered.width_px.toFixed(3)), height_px: Number(rendered.height_px.toFixed(3))};
       formulas.push(entry);
       if (entry.width_px > WIDTH) issue('width', line,
@@ -158,8 +169,15 @@ function inspectMarkdown(source, name = 'fixture.md') {
     }
     if (token.type === 'math_block') recordMath(token, line, true);
     if (token.type === 'math_error') issue('math', line, token.content);
+    let emphasisDepth = 0;
     for (const child of token.children || []) {
-      if (child.type === 'math_inline') recordMath(child, line, false);
+      if (['em_open', 'strong_open'].includes(child.type)) emphasisDepth++;
+      if (['em_close', 'strong_close'].includes(child.type)) emphasisDepth--;
+      if (child.type === 'html_inline') {
+        if (/^<(?:em|strong)\b[^>]*>$/i.test(child.content)) emphasisDepth++;
+        if (/^<\/(?:em|strong)\s*>$/i.test(child.content)) emphasisDepth--;
+      }
+      if (child.type === 'math_inline') recordMath(child, line, false, emphasisDepth > 0);
       if (child.type === 'math_error') issue('math', line, child.content);
       if (child.type === 'text' && /\[[^\]\n]+\]\s*\[[^\]\n]+\]/.test(child.content))
         issue('reference', line, 'Unresolved Markdown reference link');
@@ -177,6 +195,9 @@ function inspectMarkdown(source, name = 'fixture.md') {
   const html = md.renderer.render(tokens, md.options, environment);
   const fragment = parse5.parseFragment(html);
   walk(fragment, node => {
+    // MathJax's generated glyph ids exist only in this local SVG rendering.
+    // They must never become accepted Markdown destinations or manifest anchors.
+    if (node.tagName === 'mjx-container') return false;
     const attrs = Object.fromEntries((node.attrs || []).map(attr => [attr.name, attr.value]));
     if (attrs.id && !/^h[1-6]$/.test(node.tagName || '')) {
       if (anchors.has(attrs.id)) issue('anchor', 1, `Duplicate anchor: ${attrs.id}`);
