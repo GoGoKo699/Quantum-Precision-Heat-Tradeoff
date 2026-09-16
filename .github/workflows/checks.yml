@@ -26,6 +26,24 @@ jobs:
       - run: python scripts/check_repository.py
       - run: python scripts/make_figures.py
       - run: git diff --exit-code -- docs/figures
+      - name: Verify source distribution
+        run: |
+          python -c 'from setuptools.build_meta import build_sdist; build_sdist("dist")'
+          package_dir="$RUNNER_TEMP/qph-source"
+          mkdir -p "$package_dir"
+          tar --extract --gzip --file dist/quantum_precision_heat_tradeoff-*.tar.gz --directory "$package_dir" --strip-components=1
+          cd "$package_dir"
+          npm ci --ignore-scripts
+          python -m unittest discover -s tests -v
+          python scripts/reproduce.py
+          python scripts/check_repository.py
+      - name: Verify installed wheel outside checkout
+        run: |
+          python -m pip wheel --no-deps --no-build-isolation --wheel-dir dist .
+          cd "$RUNNER_TEMP"
+          python -m pip install --no-deps --force-reinstall "$GITHUB_WORKSPACE"/dist/quantum_precision_heat_tradeoff-*.whl
+          python -I -c 'from qph.core import crossover; assert abs(crossover(1) - 0.1495103748978384) < 1e-14'
+          python -m pip check
       - name: Render every active Markdown page locally
         if: always()
         run: npm run docs:render

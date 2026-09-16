@@ -1,3 +1,4 @@
-# Optional reproducible figures; numerical runtime dependencies stay separate.
+# Reproducible figures and package validation; runtime dependencies stay separate.
 -r requirements.txt
 matplotlib==3.10.8
+setuptools==84.0.0

@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -9,7 +9,8 @@ description = "Reference calculations for precision-dependent heat in quantum op
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [{name = "Ruge Lin", email = "gogoko699@gmail.com"}]
-license = {file = "LICENSE"}
+license = "MIT"
+license-files = ["LICENSE"]
 dependencies = ["numpy==2.3.5", "scipy==1.17.0"]
 
 [tool.setuptools.packages.find]
