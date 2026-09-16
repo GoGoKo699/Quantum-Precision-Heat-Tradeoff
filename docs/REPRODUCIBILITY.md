@@ -34,6 +34,8 @@ python -c 'from qph.core import crossover; print(crossover(1))'
 
 The expected value is approximately $`0.1495103748978384`$. Both the regular wheel installation and this outside-checkout import were checked on Python 3.12.14. An editable development installation is also available with `python -m pip install -e .`.
 
+The Python wheel contains the numerical package and its license. The source distribution additionally includes the documentation, reference data, scripts, and test inputs needed to reproduce the repository checks. Continuous integration builds both formats, reruns the tests and documentation checks from the extracted source distribution, and verifies a wheel import outside the checkout.
+
 ## What the calculation checks
 
 - [Core formulas and matrix implementation](../qph/core.py): finite lower bound, entropy allowance, limiting function, explicit collision, bath heat, spectral information, and finite recovery sum.
