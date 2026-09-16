@@ -1,30 +1,45 @@
 # A complete two-qubit implementation
 
-[Home](../README.md) · [Tutorial](tutorial/02_device.md) · [Theorem](THEOREM.md)
+[Home](../README.md) · [Tutorial calculation](tutorial/02_device.md) · [Theorem](THEOREM.md#optimal-crossover) · [Notation](NOTATION.md)
+
+One system qubit and one thermal qubit give a finite upper bound. Optional recovery with more thermal qubits approaches the limiting optimum. Every reservoir component, including the spent ones, remains inside the energy accounting in the [physical model](MODEL.md#apparatus).
+
+[Collision](#collision) · [Channel error](#channel-error) · [Recovery](#recovery) · [Heat ledger](#heat-ledger)
 
 ## Collision
 
-Let c = sqrt(1-s²). For positive epsilon < c/2 set
+Fix $`0<s<1`$, write $`c=\sqrt{1-s^2}`$, and choose a positive error $`\epsilon<c/2`$. Define
 
 ```math
-u=\frac{s^2}{2(1+c)}+\epsilon,\qquad
-\theta=\arcsin\sqrt u,\qquad
-b=\frac{s}{2\sqrt{u(1-u)}}.
+u=\frac{s^2}{2(1+c)}+\epsilon,
 ```
-
-The bath starts in gamma_b = diag((1+b)/2,(1-b)/2), with Hamiltonian
 
 ```math
-H_B=\mathrm{diag}(0,\,2k_{\mathrm B}T\,\mathrm{atanh}(b)).
+\theta=\arcsin\sqrt u,
+\qquad b=\frac{s}{2\sqrt{u(1-u)}}.
 ```
 
-The domain guarantees 0 < b < 1, so the bath is full rank and the gap finite. Apply
+The bath populations are $`p_0=(1+b)/2`$ and $`p_1=(1-b)/2`$. Its state and boundary Hamiltonian are
 
 ```math
-U=\mathrm{CNOT}_{S\to B}\exp(i\theta X_S\otimes Y_B).
+\gamma_b=\begin{pmatrix}p_0&0\\0&p_1\end{pmatrix},
+\qquad H_B=\begin{pmatrix}0&0\\0&\Delta\end{pmatrix},
 ```
 
-The rightmost rotation occurs first. This is one fixed unitary, not a controller told which input was supplied. With C = cos(theta) and v = sin(theta), its basis action is
+```math
+\beta\Delta=2\,\mathrm{atanh}(b).
+```
+
+Here $`\beta=1/(k_{\mathrm B}T)`$ and $`\mathrm{atanh}`$ is the inverse hyperbolic tangent. The domain gives $`(1-c)/2<u<1/2`$, hence $`0<b<1`$: both Gibbs populations are positive and the gap is finite.
+
+Apply
+
+```math
+U=\mathrm{CNOT}_{S\to B}\,R,
+\qquad R=e^{i\theta X_S\otimes Y_B}.
+```
+
+The rotation $`R`$ occurs first. This is one fixed unitary; no controller receives the unknown input label. Set $`C=\cos\theta`$ and $`v=\sin\theta`$. In system–bath order its basis action is
 
 ```math
 \begin{aligned}
@@ -35,73 +50,134 @@ The rightmost rotation occurs first. This is one fixed unitary, not a controller
 \end{aligned}
 ```
 
-Mixing over the thermal populations gives
+Mixing with weights $`p_0,p_1`$ gives the system outputs. Write $`z_x=(-1)^x(c-2\epsilon)`$; then
 
 ```math
-\sigma_x=\frac{I-sX+(-1)^x(c-2\epsilon)Z}{2},
-\qquad B'_0=\gamma_b,\quad B'_1=X\gamma_bX.
+\sigma_x=\frac{I-sX+z_xZ}{2},
 ```
 
-Each branch output has trace error exactly epsilon and the common transverse polarization is unchanged. The final branch states are mixtures diagonal in the bath basis; no final system–bath entanglement is required on those branches. This is not a claim about all intermediate dynamics or a classical implementation of the complete task.
-
-The average bath is I/2. Its mean energy increase is
+and conditional bath states
 
 ```math
-\beta Q_{\mathrm{bare}}=b\,\mathrm{atanh}(b).
+B'_0=\gamma_b,
+\qquad B'_1=X\gamma_bX.
 ```
 
-The complete spent bath energy is charged. The bare operation is already a valid finite upper bound; it does not require the bath to be reused.
+Each system output has trace error exactly $`\epsilon`$, and the common transverse polarization remains $`-s`$. The final branch states are mixtures of product states with orthogonal bath basis states. They require no final system–bath entanglement. This observation concerns the two specified branches; it does not describe every intermediate state or establish a classical implementation of the complete task.
 
+The equal-prior average bath is $`I/2`$. Its excited population rises by $`b/2`$, so its complete mean energy increase is
+
+```math
+Q_{\mathrm{bare}}=\frac{b\Delta}{2},
+```
+
+```math
+\beta Q_{\mathrm{bare}}
+=b\,\mathrm{atanh}(b).
+```
+
+The bare operation is a valid finite upper bound. The bath can be spent after this one use; no reuse assumption enters this calculation.
+
+<a id="channel-error"></a>
 ## Channel versus two-input error
 
-Tracing the bath eliminates the input off-diagonal operator. This particular channel first dephases in the input basis and then prepares the corresponding sigma_x. Its half-diamond distance from the analogous target channel equals epsilon: reference inputs give positive conditional reference blocks whose traces sum to one, and a basis input attains the error.
+For either initial bath basis state, the basis action sends the two system inputs to orthogonal bath basis states. Tracing the bath therefore eliminates the input off-diagonal operator. This channel first dephases in the input basis and then prepares the corresponding $`\sigma_x`$.
 
-The lower bound only requires the two branch tests. Two measured outputs alone do not certify the complete channel of an arbitrary unknown apparatus.
+Its half-diamond distance from the analogous target channel equals $`\epsilon`$. To see the upper bound, include a reference system and denote its unnormalized positive conditional blocks by $`R_x`$. The difference of the two channel outputs is
 
+```math
+\sum_{x=0}^1(\sigma_x-\phi_x)\otimes R_x,
+```
+
+```math
+\sum_{x=0}^1\mathrm{Tr}\,R_x=1.
+```
+
+The trace-norm triangle inequality bounds half its norm by $`\epsilon`$. A basis input attains that value. This additional channel statement concerns this specified construction. The [universal lower bound](THEOREM.md#finite-bound) requires only the two branch tests; two observed outputs do not certify the full channel of an arbitrary unknown apparatus.
+
+<a id="recovery"></a>
 ## Recover the available work
 
-The maximally mixed spent bath is not in equilibrium with its nondegenerate Hamiltonian. Its excess energy includes a recoverable nonequilibrium contribution:
+The spent bath $`I/2`$ is not at equilibrium with its nondegenerate Hamiltonian. Its excess energy includes a recoverable nonequilibrium contribution:
 
 ```math
-b\,\mathrm{atanh}(b)
-=J(b)+D(I/2\Vert\gamma_b),
-\qquad J(b)=\ln2\,J_2(b),
+b\,\mathrm{atanh}(b)=J(b)+D(I/2\Vert\gamma_b),
 ```
 
 ```math
-D(I/2\Vert\gamma_b)=-\tfrac12\ln(1-b^2).
+J(b)=\ln2\,J_2(b),
 ```
-
-Bring M fresh Gibbs qubits with biases b_j = jb/M, j = 1,...,M, and swap each sequentially with the working bath qubit. All are part of the complete initial thermal reservoir. Their different energy gaps are allowed engineered resources. The system is untouched during recovery.
-
-After the last swap, the working qubit is restored to gamma_b and decorrelated. The first spent qubit carries its earlier state and correlations; these are not erased globally. Including every component's energy change gives
 
 ```math
-\beta Q_M=\frac bM\sum_{j=1}^{M}\mathrm{atanh}(jb/M).
+D(I/2\Vert\gamma_b)=-\frac12\ln(1-b^2).
 ```
 
-One way to verify the sum is to note that each spent qubit receives the preceding bias, while the working qubit returns to its initial bias. The bath energy changes telescope. Under the model's boundary conditions, the total switching work gives the same net energy balance. Successive-Gibbs-swap recovery is an established construction [R1](LITERATURE.md), not a new thermodynamic primitive.
+Here $`J_2`$ is the [binary entropy deficit](THEOREM.md#optimal-crossover), and $`D`$ uses natural logarithms. Recovery exchanges states with a ladder of Gibbs qubits. It uses the successive-swap construction of [Reeb–Wolf, Proposition 8 and its proof](LITERATURE.md#r1).
 
-As a right Riemann sum,
+Choose a finite positive integer $`M`$. Bring $`M`$ independent fresh Gibbs qubits, indexed by $`j=1,\ldots,M`$, with
 
 ```math
-J(b)\le\beta Q_M\le J(b)+\frac{b\,\mathrm{atanh}(b)}M.
+b_j=\frac{jb}{M},
+\qquad \beta\Delta_j=2\,\mathrm{atanh}(b_j).
 ```
 
-Thus the infimum is approached without replacing finite bath states by pure resources. At fixed positive error, every chosen M is finite. Near the high-precision endpoint the bath gap and the recovery resources need not remain bounded.
+All these qubits are part of the complete initial thermal reservoir. Their engineered, unequal energy gaps are permitted resources. Swap each one sequentially with the working bath qubit, leaving the system untouched. Write $`b_0=0`$ for the working qubit's bias just after the collision; this local recovery index is unrelated to the finite theorem's lower-bound bias.
 
+At step $`j`$, the working qubit receives bias $`b_j`$, and fresh qubit $`j`$ receives bias $`b_{j-1}`$. After the last step the working qubit has its initial state $`\gamma_b`$ and is decorrelated. The first spent qubit carries its earlier state and its correlations with the system; those correlations have moved, not disappeared.
+
+The working qubit's energy change over collision plus recovery is zero. The final energy change of reservoir qubit $`j`$ is
+
+```math
+\Delta E_j=\frac{\Delta_j}{2}(b_j-b_{j-1}).
+```
+
+Summing over **every** reservoir qubit gives
+
+```math
+\beta Q_M=\frac bM
+\sum_{j=1}^{M}\mathrm{atanh}(jb/M).
+```
+
+This includes the collision heat and the negative energy change of the working qubit during recovery. The swaps need not conserve the uncoupled energy; the model allows external driving. With the stipulated boundary Hamiltonians, the net supplied work has this same total energy balance.
+
+The sum is a right Riemann sum for the increasing function $`\mathrm{atanh}`$:
+
+```math
+J(b)=\int_0^b\mathrm{atanh}(t)\,dt,
+```
+
+```math
+0\le\beta Q_M-J(b)
+\le\frac{b\,\mathrm{atanh}(b)}M.
+```
+
+Thus the recovered infimum is approached with full-rank finite Gibbs states at every stage. At fixed positive error, each chosen $`M`$ is finite. Along the high-precision limit, bath gaps and recovery resources need not remain bounded. The [matching-limit proof](PROOF.md#matching-limit) states how this construction meets the universal lower bound.
+
+<a id="heat-ledger"></a>
 ## The complete ledger
 
-For the bath-only construction,
+For the bath-only construction, the microscopic identity of [Reeb–Wolf, Theorem 3, Eqs. (21)–(22)](LITERATURE.md#r1) reads
 
 ```math
 \beta Q=\Delta S_S+I(S:B)'+D(B'\Vert\gamma_B).
 ```
 
-This microscopic identity is inherited [R1](LITERATURE.md); entropies in this display are in nats. Initially the system and complete reservoir are independent. Here Delta S_S = J(s), and the final system–complete-reservoir mutual information is J(b)-J(s). Adding independent thermal components and acting unitarily on the complete reservoir does not change that mutual information. Recovery removes its disequilibrium term, not its correlations with the output.
+Entropies in this identity use natural logarithms. Here $`\Delta S_S`$ means the system entropy **decrease**, initial minus final. The [notation reference](NOTATION.md) distinguishes this from the auxiliary entropy increase used in the theorem. Initially the system and complete reservoir are independent.
 
-With internal workspace, replace this explanation by the full A+B ledger in the [proof](PROOF.md). The bath alone need not hold the label record.
+The averaged system output is $`(I-sX)/2`$, so
+
+```math
+\Delta S_S=J(s).
+```
+
+The post-collision average bath is maximally mixed. Unitary invariance of the joint entropy therefore gives
+
+```math
+I(S:B)'=J(b)-J(s).
+```
+
+Adding independent thermal components and applying unitaries on the complete reservoir preserves its mutual information with the system. Recovery reduces the disequilibrium term toward zero; the correlation term remains. In the presence of internal workspace, use the full $`A+B`$ [heat ledger](PROOF.md#heat-ledger): the bath alone need not hold the input record.
 
 ## Numerical boundaries
 
-The reference code rejects parameters whose finite bath bias has rounded to one in double precision. It does not silently replace a tiny positive Gibbs population by zero. Large recovery ladders use the exact sum, not an exponentially large density-matrix simulation. Small joint systems are checked directly.
+The reference implementation, [`collision`](../qph/core.py), rejects parameters whose finite bath bias has rounded to one in double precision. It never silently replaces a positive Gibbs population by zero. [`recovery_heat`](../qph/core.py) evaluates the finite sum without constructing an exponentially large density matrix. Small joint systems are checked directly in the [tests](../tests/test_core.py).

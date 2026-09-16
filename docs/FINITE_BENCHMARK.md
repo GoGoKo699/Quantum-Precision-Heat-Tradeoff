@@ -1,37 +1,57 @@
 # A finite precision–heat separation
 
-[Home](../README.md) · [Model](MODEL.md) · [Theorem](THEOREM.md) · [Reproduce](REPRODUCIBILITY.md)
+[Home](../README.md) · [Model](MODEL.md) · [Theorem](THEOREM.md#finite-bound) · [Reproduce](REPRODUCIBILITY.md)
 
-Fix the target overlap at s = 0.05. Compare two output-accuracy specifications for exactly the same target states and thermal resource convention.
+<a id="comparison"></a>
+## Compare two accuracy specifications
 
-| Specification | Heat in units of k_B T ln 2 | Meaning |
-|---|---:|---|
-| Strict branch trace error at most 0.0001 | At least 0.498044180 | Universal finite lower bound |
-| Relaxed branch trace error 0.0025 | 0.311484646 | Explicit one-bath-qubit construction |
-| Strict specification, plus 16-level auxiliary returned within trace distance 0.0001 | At least 0.496180457 | Lower bound with charged return allowance |
+Fix the target overlap at $`s=0.05`$. The target states and thermal resource convention stay the same. Heat values below use $`k_{\mathrm B}T\ln2`$ as one unit. Every number is a theoretical calculation.
 
-Neither displayed cost is asserted to be the exact finite optimum. The strict lower bound already exceeds the complete cost of the relaxed construction, which establishes the ordering without solving either finite optimization.
+| Device specification | Heat in these units |
+|---|---:|
+| Strict: branch error at most $`0.0001`$ | At least **0.498044180** |
+| Relaxed: branch error $`0.0025`$ | **0.311484646** |
+| Strict, with the workspace allowance below | At least **0.496180457** |
 
+The strict values are universal finite **lower bounds**. The relaxed value is the complete heat of **one explicit construction**. Neither is asserted to be the exact finite optimum. The strict lower bound already exceeds the relaxed construction's cost, establishing a finite separation without solving either optimization problem.
+
+<a id="relaxed-device"></a>
 ## The relaxed device
 
-Its initial bath populations are approximately 0.723943 and 0.276057. The energy gap is approximately 0.964105468 k_B T. Both levels have positive thermal population. The unitary is given in the [construction](CONSTRUCTION.md).
+Its initial bath populations are approximately $`0.723943`$ and $`0.276057`$. Both are positive. Its energy gap is
 
-There is no recovery ladder in this comparison. The bath is spent, and its entire mean energy increase is charged. Its final average excited population is one half, so the heat follows directly from the calibrated gap times the change in that population. The intended common transverse polarization remains exactly s.
+```math
+\frac{\Delta}{k_{\mathrm B}T}\simeq0.964105468.
+```
+
+The [collision unitary](CONSTRUCTION.md#collision) preserves the intended common transverse polarization exactly. No recovery ladder is used in this comparison. The bath is spent, and its entire mean energy increase is charged.
+
+The final average excited population is $`1/2`$. Multiplying its increase by the calibrated gap gives the displayed heat:
+
+```math
+Q=\Delta\left(\frac12-p_1\right).
+```
+
+The [tutorial calculation](tutorial/02_device.md#energy) derives the bath populations, system errors, and energy together.
 
 ## Workspace return
 
-For the strict device, a 16-level auxiliary with return tolerance 0.0001 has an entropy-capacity allowance of approximately 0.001863722588 bits. Subtracting it from the strict lower bound gives the third row. This applies to the whole auxiliary marginal, not independently to each small subsystem. Any auxiliary boundary-energy change must be included before interpreting heat as work.
+For the strict device, consider a 16-level auxiliary whose **ensemble-average marginal** returns within trace distance $`0.0001`$ of its initial state. Its entropy-capacity allowance is approximately $`0.001863722588`$ bits. Subtracting this allowance from the strict lower bound gives the third row.
 
-## What is and is not finite here
+The allowance applies to the whole auxiliary marginal, not separately to each small subsystem. Any auxiliary boundary-energy change must also be included before interpreting heat as work. See the [return correction](THEOREM.md#workspace-return) and [boundary energy convention](MODEL.md#heat-work).
 
-No parameter tends to zero and the relaxed device uses a single finite thermal qubit. The strict class is nonempty: the same construction at the stricter error has full-rank finite thermal input, although its bare cost is higher.
+## What is finite here
 
-The comparison is theoretical. The input preparations and ideal joint unitary are specified mathematically. These numbers are not experimental observations, certified hardware tolerances, or a wall-plug saving. Platform-specific error budgets require additional accounting rather than substituting an average gate fidelity for a trace-distance or operator-norm condition.
+No parameter tends to zero. The relaxed device uses one finite thermal qubit. The strict class is nonempty: the same construction at the stricter error has a full-rank finite thermal input, although its bare cost is higher.
+
+The input preparations and ideal joint unitary are specified mathematically. These values are not experimental observations, certified hardware tolerances, or a wall-plug saving. A platform-specific error budget must account for these state tests; replacing their metric by average gate fidelity changes the specification.
 
 ## Reproduce the values
+
+From the repository root, run
 
 ```bash
 python scripts/reproduce.py
 ```
 
-The script also evaluates selected points on the crossover curve and a finite recovery ladder. Its output is written separately from the committed reference data. The checks compare against independently retained numeric values from the source calculations, not against a newly fitted curve.
+The script also evaluates selected crossover points and a finite recovery ladder. Its output is written separately from the committed [reference data](../results/reference.json). The checks compare against independently retained values from the source calculations. The [claim map](CLAIMS.md) connects these computed examples to the proof and named tests.

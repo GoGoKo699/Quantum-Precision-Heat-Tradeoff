@@ -1,0 +1,23 @@
+{
+  "name": "quantum-precision-heat-doc-checks",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Local documentation checks; no documentation website or deployment",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "docs:check": "node scripts/check_docs.cjs",
+    "docs:test": "node --test tests/docs_checks.test.cjs",
+    "docs:render": "node scripts/check_docs.cjs --render build/docs-preview"
+  },
+  "devDependencies": {
+    "github-slugger": "2.0.0",
+    "markdown-it": "14.1.0",
+    "mathjax-full": "3.2.2",
+    "parse5": "7.2.1"
+  },
+  "overrides": {
+    "@xmldom/xmldom": "0.9.12"
+  }
+}

@@ -1,0 +1,3 @@
+# Optional reproducible figures; numerical runtime dependencies stay separate.
+-r requirements.txt
+matplotlib==3.10.8

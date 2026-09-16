@@ -1,11 +1,17 @@
 #!/usr/bin/env python3
-"""Check local links, math-source hygiene, metadata, and reference calculations."""
+"""Check retained calculations, displayed values, metadata, and parsed/rendered docs.
+
+Install runtime requirements and run ``npm ci`` before this command. The Node
+checker uses actual MathJax compilation; its width estimate is local SVG font
+geometry, not a claim about live GitHub or browser layout.
+"""
 from pathlib import Path
 import json
 import re
+import shutil
+import subprocess
 import sys
 import tomllib
-from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -31,30 +37,52 @@ def compare(expected, actual, path='calculations'):
         raise AssertionError(f'Value mismatch at {path}')
 
 
+def check_displayed_values(calculations, pages):
+    """Compare the canonical benchmark's printed precision with retained data.
+
+    Across active pages also reject unexplained six-or-more decimal numbers in
+    (0,1): these are benchmark/crossover outputs, not independent datasets.
+    Coarse rounded summaries and scientific prose still require human review.
+    """
+    required = {
+        'strict lower bound': (calculations['strict_lower_bound'], 9),
+        'relaxed heat': (calculations['relaxed_device']['heat'], 9),
+        'charged return lower bound': (calculations['strict_with_return_allowance'], 9),
+        'thermal gap': (calculations['relaxed_device']['gap_over_kBT'], 9),
+        'auxiliary allowance': (calculations['auxiliary_entropy_allowance_bits'], 12),
+    }
+    benchmark = pages['docs/FINITE_BENCHMARK.md']
+    for label, (value, digits) in required.items():
+        token = f'{value:.{digits}f}'
+        if not re.search(r'(?<![\d.])' + re.escape(token) + r'(?!\d)', benchmark):
+            raise AssertionError(f'Canonical benchmark missing retained {label}: {token}')
+
+    values = []
+    def collect(value):
+        if isinstance(value, dict):
+            for item in value.values():
+                collect(item)
+        elif isinstance(value, list):
+            for item in value:
+                collect(item)
+        elif isinstance(value, (float, int)):
+            values.append(value)
+    collect(calculations)
+    values.append(1-calculations['relaxed_device']['minimum_initial_bath_population'])
+    checked = 0
+    for name, text in pages.items():
+        # Omit URLs, including arXiv and DOI identifiers.
+        text = re.sub(r'https?://\S+', '', text)
+        for match in re.finditer(r'(?<![\w.])0\.(\d{6,})(?!\w|\.\d)', text):
+            token = match.group(0)
+            digits = len(match.group(1))
+            if not any(token == f'{value:.{digits}f}' for value in values):
+                raise AssertionError(f'Unmatched high-precision result in {name}: {token}')
+            checked += 1
+    return checked
+
+
 def main():
-    checked_links = 0
-    for file in sorted(ROOT.rglob('*.md')):
-        if any(part.startswith('.') for part in file.relative_to(ROOT).parts[:-1]):
-            continue
-        text = file.read_text()
-        if len(re.findall(r'^```', text, re.M)) % 2:
-            raise AssertionError(f'Unbalanced code fences: {file}')
-        if any(token in text for token in [r'\[', r'\]', r'\operatorname', 'sandbox:/', 'turn0search']):
-            raise AssertionError(f'Unsupported or environment-specific markup: {file}')
-        for block in re.findall(r'```math\n(.*?)```', text, re.S):
-            clean = re.sub(r'\\[{}]', '', block)
-            if clean.count('{') != clean.count('}'):
-                raise AssertionError(f'Unbalanced TeX braces: {file}')
-        urls = re.findall(r'\[[^\]\n]+\]\(([^\s)]+)', text)
-        urls += re.findall(r'^\[[^\]]+\]:\s*(\S+)', text, re.M)
-        for url in urls:
-            if re.match(r'^[a-z]+:', url) or url.startswith('#'):
-                continue
-            destination = unquote(url.split('#', 1)[0])
-            resolved = (file.parent/destination).resolve()
-            if not resolved.is_relative_to(ROOT) or not resolved.exists():
-                raise AssertionError(f'Broken local link in {file.relative_to(ROOT)}: {url}')
-            checked_links += 1
     metadata = tomllib.loads((ROOT/'pyproject.toml').read_text())
     assert metadata['project']['name'] == 'quantum-precision-heat-tradeoff'
     citation = (ROOT/'CITATION.cff').read_text()
@@ -65,7 +93,18 @@ def main():
     assert 'Copyright (c) 2026 Ruge Lin' in (ROOT/'LICENSE').read_text()
     reference = json.loads((ROOT/'results'/'reference.json').read_text())
     compare(reference['calculations'], calculate())
-    print(f'PASS: {checked_links} local link destinations, math-source checks, metadata, and reference values.')
+    excluded = {'tests', 'node_modules', 'build', 'dist', '.venv'}
+    pages = {file.relative_to(ROOT).as_posix(): file.read_text()
+             for file in ROOT.rglob('*.md')
+             if not any(part.startswith('.') or part in excluded
+                        for part in file.relative_to(ROOT).parts[:-1])}
+    checked_values = check_displayed_values(reference['calculations'], pages)
+    print(f'PASS: metadata, retained calculations, and {checked_values} displayed high-precision values.', flush=True)
+    node = shutil.which('node')
+    if node is None or not (ROOT/'node_modules'/'mathjax-full').is_dir():
+        raise SystemExit('Documentation checks require Node.js >=22.12 and `npm ci`.')
+    subprocess.run([node, '--test', 'tests/docs_checks.test.cjs'], cwd=ROOT, check=True)
+    subprocess.run([node, 'scripts/check_docs.cjs'], cwd=ROOT, check=True)
 
 
 if __name__ == '__main__':

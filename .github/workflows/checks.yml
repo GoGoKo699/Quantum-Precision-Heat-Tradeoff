@@ -15,7 +15,24 @@ jobs:
         with:
           python-version: "3.13"
           cache: pip
-      - run: python -m pip install -r requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: python -m pip install -r requirements-dev.txt
+      - run: npm ci --ignore-scripts
       - run: python -m unittest discover -s tests -v
       - run: python scripts/reproduce.py
       - run: python scripts/check_repository.py
+      - run: python scripts/make_figures.py
+      - run: git diff --exit-code -- docs/figures
+      - name: Render every active Markdown page locally
+        if: always()
+        run: npm run docs:render
+      - name: Preserve local rendering evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: local-documentation-preview
+          path: build/docs-preview/
+          if-no-files-found: error
