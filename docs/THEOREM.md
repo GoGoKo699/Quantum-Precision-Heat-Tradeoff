@@ -11,9 +11,7 @@ Let $`q_{\min}(s,\epsilon)`$ be the infimum of mean heat over allowed **finite**
 
 ```math
 b_*(r)=\frac1{\sqrt{1+4r}},
-```
-
-```math
+\qquad
 F(r)=1-h_2\!\left(\frac{1+b_*(r)}2\right).
 ```
 
@@ -53,9 +51,7 @@ where $`[v]_+=\max\{0,v\}`$. The following functions specify the finite correcti
 
 ```math
 J_2(b)=1-h_2\!\left(\frac{1+b}2\right),
-```
-
-```math
+\qquad
 f(d)=\sqrt{d(1-3d/4)}+d/2.
 ```
 
@@ -70,9 +66,7 @@ and then $`g(\eta)=\min\{1,g_0(\eta)\}`$. To keep the three corrections visible,
 
 ```math
 L_0(s,\epsilon)=J_2(b_0)-g(f(d))-h_2(\epsilon),
-```
-
-```math
+\qquad
 L(s,\epsilon)=\max\{0,L_0(s,\epsilon)\}.
 ```
 
@@ -85,10 +79,7 @@ q+\Delta H_A\ge L(s,\epsilon).
 A stronger version retains the nonnegative final correlation and bath disequilibrium terms:
 
 ```math
-\begin{aligned}
-q+\Delta H_A\ge{}&L(s,\epsilon)+I(A:B)'\\
-&+D_2(\rho'_B\Vert\gamma_B).
-\end{aligned}
+q+\Delta H_A\ge L(s,\epsilon)+I(A:B)'+D_2(\rho'_B\Vert\gamma_B).
 ```
 
 Here $`\Delta H_A`$ is the **increase** in workspace entropy. All final marginals and mutual information refer to the equal-prior ensemble average. Exact marginal return gives $`\Delta H_A=0`$ and hence $`q\ge L`$. The bound is independent of workspace and bath dimensions. It is not asserted to be the best bound at each finite parameter pair.
@@ -102,9 +93,7 @@ For a workspace of dimension $`n\ge2`$ with $`D(\rho'_A,\tau_A)\le\delta`$, defi
 
 ```math
 t=\min\{\delta,1-1/n\},
-```
-
-```math
+\qquad
 a_n(\delta)=h_2(t)+t\log_2(n-1).
 ```
 

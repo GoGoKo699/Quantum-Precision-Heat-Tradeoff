@@ -19,15 +19,11 @@ Each target is pure: $`\phi_x=|\phi_x\rangle\langle\phi_x|`$. Their state-vector
 
 ```math
 \max_{x\in\{0,1\}}D(\sigma_x,\phi_x)\le\epsilon,
-```
-
-with trace distance
-
-```math
+\qquad
 D(\rho,\sigma)=\frac12\|\rho-\sigma\|_1.
 ```
 
-Equal priors determine the **mean heat**; accuracy is the **maximum branch error**. The principal finite statement assumes $`0<\epsilon<c/2`$. These two branch tests do not specify an arbitrary channel's action on coherent or reference-entangled inputs. The explicit device has an additional [channel-error property](CONSTRUCTION.md#channel-error).
+Here $`D`$ denotes trace distance. Equal priors determine the **mean heat**; accuracy is the **maximum branch error**. The principal finite statement assumes $`0<\epsilon<c/2`$. These two branch tests do not specify an arbitrary channel's action on coherent or reference-entangled inputs. The explicit device has an additional [channel-error property](CONSTRUCTION.md#channel-error).
 
 <a id="apparatus"></a>
 ## Complete finite apparatus

@@ -49,10 +49,7 @@ Let $`r`$ describe the ratio $`\epsilon/s^2`$ along a limiting sequence. For fin
 
 ```math
 b_*(r)=\frac{1}{\sqrt{1+4r}},
-```
-
-```math
-F(r)=1-h_2\!\left(\frac{1+b_*(r)}2\right).
+\qquad F(r)=1-h_2\!\left(\frac{1+b_*(r)}2\right).
 ```
 
 The [canonical theorem](../THEOREM.md#optimal-crossover) states that the infimum heat $`q_{\min}(s,\epsilon)`$ approaches $`F(r)`$ when

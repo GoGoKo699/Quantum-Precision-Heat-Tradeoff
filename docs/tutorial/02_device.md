@@ -18,10 +18,7 @@ where $`\beta=1/(k_{\mathrm B}T)`$ and $`p_0=1-p_1`$. Write the population bias 
 ```math
 p_0=\frac{1+b}{2},
 \qquad p_1=\frac{1-b}{2},
-```
-
-```math
-\gamma_b=\begin{pmatrix}p_0&0\\0&p_1\end{pmatrix}.
+\qquad \gamma_b=\begin{pmatrix}p_0&0\\0&p_1\end{pmatrix}.
 ```
 
 The ratio $`p_0/p_1=e^{\beta\Delta}`$ determines the gap:
@@ -40,14 +37,8 @@ For target $`s`$, define $`c=\sqrt{1-s^2}`$ and choose $`0<\epsilon<c/2`$. Set
 
 ```math
 u=\frac{s^2}{2(1+c)}+\epsilon,
-```
-
-```math
-\theta=\arcsin\sqrt u,
-```
-
-```math
-b=\frac{s}{2\sqrt{u(1-u)}}.
+\qquad \theta=\arcsin\sqrt u,
+\qquad b=\frac{s}{2\sqrt{u(1-u)}}.
 ```
 
 The first term in $`u`$ equals $`(1-c)/2`$; its displayed form is numerically stable when $`s`$ is small. The chosen range gives $`0<b<1`$, as checked in the [construction](../CONSTRUCTION.md#collision).
@@ -56,10 +47,7 @@ First apply a joint rotation $`R`$, then a controlled flip:
 
 ```math
 R=e^{i\theta X_S\otimes Y_B},
-```
-
-```math
-U=\mathrm{CNOT}_{S\to B}\,R.
+\qquad U=\mathrm{CNOT}_{S\to B}\,R.
 ```
 
 The controlled flip exchanges the bath's basis states when the physical system qubit is in $`|1\rangle`$. No external observer supplies the unknown label. Since $`(X\otimes Y)^2=I`$, the rotation can be evaluated as
@@ -76,11 +64,10 @@ This identity and the controlled flip give the [four basis transformations](../C
 Let $`C=\cos\theta`$ and $`v=\sin\theta`$. For input $`|0\rangle`$, the two bath basis components evolve as
 
 ```math
-|0,0\rangle\mapsto(C|0\rangle-v|1\rangle)|0\rangle,
-```
-
-```math
-|0,1\rangle\mapsto(C|0\rangle+v|1\rangle)|1\rangle.
+\begin{aligned}
+|0,0\rangle&\mapsto(C|0\rangle-v|1\rangle)|0\rangle,\\
+|0,1\rangle&\mapsto(C|0\rangle+v|1\rangle)|1\rangle.
+\end{aligned}
 ```
 
 Their probabilities are $`p_0`$ and $`p_1`$. Form each output projector, multiply by its probability, and trace out the bath. This leaves
@@ -95,10 +82,7 @@ Its transverse and vertical Bloch components are
 
 ```math
 -2bCv=-s,
-```
-
-```math
-C^2-v^2=1-2u=c-2\epsilon.
+\qquad C^2-v^2=1-2u=c-2\epsilon.
 ```
 
 For input $`|1\rangle`$, the same unitary gives vertical component $`-(c-2\epsilon)`$ and again transverse component $`-s`$. Define $`z_x=(-1)^x(c-2\epsilon)`$. Both outputs are then
@@ -124,11 +108,8 @@ Q=\Delta\left(\frac12-\frac{1-b}{2}\right)
 In units of $`k_{\mathrm B}T\ln2`$, this becomes
 
 ```math
-q=\frac{Q}{k_{\mathrm B}T\ln2},
-```
-
-```math
-q=\frac{b\,\mathrm{atanh}(b)}{\ln2}.
+q=\frac{Q}{k_{\mathrm B}T\ln2}
+=\frac{b\,\mathrm{atanh}(b)}{\ln2}.
 ```
 
 This calculation charges the spent bath's complete energy increase. No assumption that an entropy decrease is attainable as work was used.

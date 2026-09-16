@@ -24,13 +24,7 @@ The targets share transverse polarization $`-s`$, while their longitudinal polar
 
 ## Main result
 
-Measure heat in bit-erasure units:
-
-```math
-q=\frac{Q}{k_{\mathrm B}T\ln2}.
-```
-
-Let $`q_{\min}(s,\epsilon)`$ be the infimum over the finite devices in the [physical model](docs/MODEL.md), with exact return of the workspace's ensemble-average marginal. The optimal limiting heat depends on the ratio of error to **squared** overlap:
+Measure heat in bit-erasure units, $`q=Q/(k_{\mathrm B}T\ln2)`$. Let $`q_{\min}(s,\epsilon)`$ be the infimum over the finite devices in the [physical model](docs/MODEL.md), with exact return of the workspace's ensemble-average marginal. The optimal limiting heat depends on the ratio of error to **squared** overlap:
 
 ```math
 \lim_{\substack{s\to0\\\epsilon/s^2\to r}}
@@ -41,9 +35,7 @@ For each finite $`r\ge0`$, define
 
 ```math
 b_*(r)=(1+4r)^{-1/2},
-```
-
-```math
+\qquad
 F(r)=1-h_2\!\left(\frac{1+b_*(r)}{2}\right).
 ```
 

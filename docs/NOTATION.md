@@ -45,11 +45,10 @@ The spectral quantity $`\mathcal T`$ is the normalized triangular discrimination
 Von Neumann entropy $`H`$ and binary entropy $`h_2`$ use base-two logarithms:
 
 ```math
-H(\rho)=-\mathrm{Tr}\,\rho\log_2\rho,
-```
-
-```math
-h_2(p)=-p\log_2p-(1-p)\log_2(1-p).
+\begin{aligned}
+H(\rho)&=-\mathrm{Tr}\,\rho\log_2\rho,\\
+h_2(p)&=-p\log_2p-(1-p)\log_2(1-p).
+\end{aligned}
 ```
 
 The convention is $`0\log 0=0`$. The natural-log binary entropy is $`h(p)=(\ln2)h_2(p)`$; entropy in nats is $`(\ln2)H`$.
