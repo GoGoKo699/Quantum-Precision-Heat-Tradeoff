@@ -1,0 +1,40 @@
+{
+  "purpose": "Input identification; not an installation dependency",
+  "sources": [
+    {
+      "source": "precision_heat_crossover/CROSSOVER.md",
+      "sha256": "1104d314d72071930b3763ba954349a2571fbd71a4525a9a2cc9512337bd4492",
+      "bytes": 23557
+    },
+    {
+      "source": "precision_heat_adversarial_audit/ADVERSARIAL_AUDIT.md",
+      "sha256": "8b470697d599778b52aebaf19612d0a7952749c5bf83dca6ce76f2f1921d5bad",
+      "bytes": 19061
+    },
+    {
+      "source": "precision_heat_model_comparison/MODEL_COMPARISON.md",
+      "sha256": "3171c1ccccd1ab096d8b901068259aa70f71c6f1955b66ca926d82ab9c56fa05",
+      "bytes": 21615
+    },
+    {
+      "source": "precision_heat_assumptions_impact/ASSUMPTION_REGISTER.md",
+      "sha256": "b180ff6e12730dfde41116ee9701785965a3eeef411398b6793fbd1f6fd04917",
+      "bytes": 23799
+    },
+    {
+      "source": "precision_heat_finite_benchmark/FINITE_BENCHMARK.md",
+      "sha256": "edc9baf9fe8663c3ec3507b8fd56e49ffdb5e2aa1f23ed74157bee1575a5c1db",
+      "bytes": 21933
+    },
+    {
+      "source": "precision_heat_referee_check/CYCLIC_DEVICE_AUDIT.md",
+      "sha256": "616bcb4bd087723c71222076123705ae5f7edceefbcf063347e9d2e1d0adb397",
+      "bytes": 23200
+    },
+    {
+      "source": "precision_heat_referee_check.zip",
+      "sha256": "589784b94a75a70663c289e9ff09f8858c11199f3c2483b38f5c77b5cd9e3b7c",
+      "bytes": 399537
+    }
+  ]
+}

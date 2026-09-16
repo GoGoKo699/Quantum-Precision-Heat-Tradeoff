@@ -1,0 +1,44 @@
+{
+  "calculations": {
+    "auxiliary_entropy_allowance_bits": 0.0018637225878890273,
+    "crossover": {
+      "0": 1.0,
+      "0.01": 0.9211378190304381,
+      "0.1": 0.6069672201306809,
+      "1": 0.1495103748978384,
+      "10": 0.017666068655520634,
+      "100": 0.0017996200295409541
+    },
+    "finite_recovery": {
+      "epsilon": 1e-10,
+      "heat": 0.14958617576918243,
+      "infimum_upper_bound": 0.14951037491646688,
+      "s": 1e-05,
+      "steps": 2048
+    },
+    "relaxed_device": {
+      "branch_errors": [
+        0.002499999999999974,
+        0.0024999999999999736
+      ],
+      "epsilon": 0.0025,
+      "gap_over_kBT": 0.9641054679613188,
+      "heat": 0.31148464627710154,
+      "minimum_initial_bath_population": 0.27605696520813927,
+      "s": 0.05,
+      "thermal_bias": 0.4478860695837214,
+      "transverse_components": [
+        -0.05000000000000002,
+        -0.05
+      ]
+    },
+    "strict_lower_bound": 0.4980441797133478,
+    "strict_with_return_allowance": 0.4961804571254588,
+    "units": "Q/(k_B T ln 2)"
+  },
+  "environment": {
+    "numpy": "2.3.5",
+    "python": "3.13.5",
+    "scipy": "1.17.0"
+  }
+}

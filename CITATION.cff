@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "Please cite this repository when using its research documentation or code."
+title: "Precision and Heat in Quantum Operations"
+type: software
+authors:
+  - family-names: Lin
+    given-names: Ruge
+    email: gogoko699@gmail.com
+repository-code: "https://github.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff"
+url: "https://github.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff"
+license: MIT
+keywords:
+  - quantum thermodynamics
+  - quantum information
+  - Landauer principle
+  - quantum channels
+  - reproducible research
+abstract: >-
+  Precision-dependent mean heat for a single-use two-input quantum operation,
+  including mathematical bounds, explicit thermal constructions,
+  reproducible calculations, and a textbook-based tutorial.
