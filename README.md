@@ -94,12 +94,8 @@ python scripts/reproduce.py
 
 On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. The calculation writes a separate generated result and preserves the committed [reference record](results/reference.json). The [reproducibility guide](docs/REPRODUCIBILITY.md) gives package installation, documentation checks, figure regeneration, numerical domains, and tested environments.
 
-## Collaboration and contributions
+## Contact and collaboration
 
-For an editorial correction, open an issue or pull request with the affected passage. For a scientific or implementation change, identify the precise claim, affected assumptions, calculations, and any additional physical resources. Keep mathematical derivations distinct from finite numerical evidence. Changes to the physical model or manuscript scope should be discussed with the maintainer.
-
-Run the tests, reproduction command, and [repository checks](docs/REPRODUCIBILITY.md#documentation-checks) before submitting changes. Preserve stable source identifiers, explicit error conventions, and complete energy accounting. Do not replace the conditional two-input task by an average-state task, treat a formal purification as a physical resource, or switch between mean heat and a battery-resource cost.
-
-Typeset mathematical notation in prose, lists, and tables with GitHub's protected inline math form, for example ``$`\tau_0`$``, outside bold or italic wrappers. Use fenced `math` blocks for display equations; reserve code formatting for executable code, commands, paths, and program identifiers. Group related short equations for desktop reading, retain meaningful derivation steps, and check the rendered page as well as the source.
+For collaboration, questions, corrections, suggestions, or any other inquiry about this project, please email **Ruge Lin** at **[gogoko699@gmail.com](mailto:gogoko699@gmail.com)**. For a correction, include the relevant page or passage and a brief explanation.
 
 Original code and documentation use the [MIT License](LICENSE), copyright 2026 Ruge Lin. Retain applicable third-party notices; scientific citations are scholarly attribution, not an added license condition. See [citation metadata](CITATION.cff) and the [source inventory and AI-assistance disclosure](provenance/README.md).
