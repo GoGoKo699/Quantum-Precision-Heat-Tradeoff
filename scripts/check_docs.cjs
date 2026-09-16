@@ -110,6 +110,25 @@ function compileMath(source, display) {
   return {html, width_px: parseFloat(width) * 8, height_px: parseFloat(height) * 8};
 }
 
+function rawMathInProse(text) {
+  // Deliberately bounded: a single-letter or spelled-out Greek symbol with a
+  // mathematical index/power is strong evidence of an omitted math wrapper.
+  // Longer snake_case identifiers are not classified as mathematics. This does
+  // not attempt to infer every formula from English or catch a bare "J(s)".
+  const greek = 'alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega';
+  const symbol = `(?:[A-Za-z\\u0370-\\u03ff]|${greek})`;
+  const index = '(?:[A-Za-z]|[0-9]+|\\{[A-Za-z0-9,+ -]+\\})';
+  const pattern = new RegExp(`(?<![\\w\\u0370-\\u03ff])${symbol}[_^]${index}(?![\\w\\u0370-\\u03ff])`, 'gi');
+  // Only inspect visible prose. Destinations never reach this function, while
+  // autolinks/bare URLs and recognizable file paths can also be visible text.
+  const prose = text
+    .replace(/\b(?:[a-z][a-z\d+.-]*:\/\/|www\.)[^\s<>]+/gi, ' ')
+    .replace(/[\w.%+-]+@[\w.-]+\.[a-z]{2,}/gi, ' ')
+    .replace(/(?<![\w])(?:\.{0,2}\/|[\w.-]+\/)[^\s,;)]+/g, ' ')
+    .replace(/\b[\w.-]+\.[a-z][a-z\d]{1,7}(?:#[\w-]+)?\b/gi, ' ');
+  return [...new Set(prose.match(pattern) || [])];
+}
+
 function inspectMarkdown(source, name = 'fixture.md') {
   const md = parser();
   const environment = {};
@@ -169,13 +188,23 @@ function inspectMarkdown(source, name = 'fixture.md') {
     }
     if (token.type === 'math_block') recordMath(token, line, true);
     if (token.type === 'math_error') issue('math', line, token.content);
-    let emphasisDepth = 0;
+    let emphasisDepth = 0, proseLine = line;
+    const htmlStack = [];
+    const htmlVoid = /^(?:area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/i;
     for (const child of token.children || []) {
+      if (['softbreak', 'hardbreak'].includes(child.type)) proseLine++;
       if (['em_open', 'strong_open'].includes(child.type)) emphasisDepth++;
       if (['em_close', 'strong_close'].includes(child.type)) emphasisDepth--;
       if (child.type === 'html_inline') {
         if (/^<(?:em|strong)\b[^>]*>$/i.test(child.content)) emphasisDepth++;
         if (/^<\/(?:em|strong)\s*>$/i.test(child.content)) emphasisDepth--;
+        const tag = child.content.match(/^<(\/?)([a-z][\w:-]*)\b/i);
+        if (tag && tag[1]) {
+          const at = htmlStack.lastIndexOf(tag[2].toLowerCase());
+          if (at !== -1) htmlStack.length = at;
+        } else if (tag && !htmlVoid.test(tag[2]) && !/\/\s*>$/.test(child.content)) {
+          htmlStack.push(tag[2].toLowerCase());
+        }
       }
       if (child.type === 'math_inline') recordMath(child, line, false, emphasisDepth > 0);
       if (child.type === 'math_error') issue('math', line, child.content);
@@ -183,6 +212,10 @@ function inspectMarkdown(source, name = 'fixture.md') {
         issue('reference', line, 'Unresolved Markdown reference link');
       if (child.type === 'text' && /\[[^\]\n]+\]\(/.test(child.content))
         issue('markdown', line, 'Malformed Markdown link');
+      if (child.type === 'text' && !htmlStack.length) {
+        for (const raw of rawMathInProse(child.content))
+          issue('raw-math', proseLine, `Unwrapped mathematical notation "${raw}"; use protected inline math ($\`...\`$), or code formatting for a code identifier`);
+      }
     }
   }
   const originalFence = md.renderer.rules.fence;

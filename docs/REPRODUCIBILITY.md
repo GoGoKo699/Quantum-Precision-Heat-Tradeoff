@@ -56,6 +56,8 @@ npm run docs:render
 
 The checker parses Markdown, compiles inline and display TeX with MathJax, resolves local destinations and fragments, checks heading and explicit anchors, checks image presence and alt text, rejects environment-specific markup, and compares displayed benchmark values with the reference. Deliberately broken fixtures verify that syntax, anchor, image, and excessive-width failures are detected.
 
+It also rejects unformatted mathematical subscripts and superscripts in parsed prose. Code, file paths, and link destinations are excluded. This targeted guard catches common notation regressions; it does not classify every possible formula or replace visual inspection.
+
 The local renderer uses markdown-it and MathJax SVG output. It estimates intrinsic SVG widths at 8 pixels per ex unit, with 16-pixel surrounding text, against a 310-pixel reading column, corresponding to a 350-pixel stress viewport with 20-pixel side margins. It writes HTML and a manifest to `build/docs-preview`. Preview frames also allow inspection at 390 and 430 pixels, in light and dark presentation. Font sizes are not reduced to make long expressions pass.
 
 **These are local checks.** They do not reproduce GitHub's entire styling or certify its live layout. Live GitHub visual inspection at desktop and phone widths is a separate acceptance step. External destination availability also requires a separate check. Rendering evidence belongs in build artifacts, rather than the scientific reference data.

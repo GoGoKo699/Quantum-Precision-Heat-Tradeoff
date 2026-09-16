@@ -71,3 +71,48 @@ test('local MathJax glyph ids cannot validate Markdown fragment links', () => {
   checkLinks([doc], fixtures);
   assert.ok(doc.issues.some(issue => issue.kind === 'link' && issue.message.includes(generatedId)));
 });
+test('raw prose regressions from the reported screenshots are rejected', () => {
+  for (const text of [
+    'For eigenpairs (p_i,u_i) and (q_j,v_j) of tau_0 and tau_1, define',
+    'A term with p_i = q_j = 0 contributes zero.',
+    'The second weighted sum is delta_0 + delta_1.',
+    'Here Delta S_S = J(s), and the entropy is in nats.',
+  ]) {
+    assert.ok(inspectMarkdown(text).issues.some(issue => issue.kind === 'raw-math'), text);
+  }
+});
+test('the raw-prose guard also covers powers, braced indices, and visible link labels', () => {
+  for (const text of ['The scale is s^2.', 'The entry is r_{ij}.', '[tau_0](#state)']) {
+    assert.ok(inspectMarkdown(text).issues.some(issue => issue.kind === 'raw-math'), text);
+  }
+  const doc = inspectMarkdown('The first line is prose.\nThe second has tau_0.');
+  assert.equal(doc.issues.find(issue => issue.kind === 'raw-math').line, 2);
+});
+test('proper inline math and actual code stay outside the raw-prose guard', () => {
+  const doc = inspectMarkdown([
+    'Use $`\\tau_0`$, $`p_i=q_j=0`$, and $`\\Delta S_S=J(s)`$.',
+    'The code identifiers `tau_0`, `S_S`, and `p_i` are literal code.',
+    '', '```python', 'tau_0 = p_i + q_j', '```',
+    '', '    delta_0 = delta_1',
+  ].join('\n'));
+  assert.deepEqual(doc.issues, []);
+  assert.equal(doc.formulas.length, 3);
+});
+test('URLs, destinations, filenames, paths, and raw HTML do not become prose math', () => {
+  const doc = inspectMarkdown([
+    '[Source](https://example.org/tau_0) and <https://example.org/p_i>.',
+    'The URL https://example.org/q_j and path docs/tau_0.md are references.',
+    'Files p_i.csv and ../data/q_j.json are artifacts.',
+    'Directory (docs/tau_0) and email <p_i@example.org> are references.',
+    '<span data-state="tau_0">p_i = q_j</span> and <code>S_S</code>.',
+    '<br>Normal text.',
+    '', '<div>', 'delta_0 + delta_1', '</div>',
+  ].join('\n'));
+  assert.deepEqual(doc.issues, []);
+});
+test('ordinary prose and longer code identifiers do not require a math wrapper', () => {
+  assert.deepEqual(inspectMarkdown(
+    'The input_state, error_bound, check_docs, and delta_scale identifiers are names. ' +
+    'Version 2.1 and a low-temperature bath are ordinary prose.'
+  ).issues, []);
+});
