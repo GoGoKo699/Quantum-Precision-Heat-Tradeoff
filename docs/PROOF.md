@@ -1,224 +1,476 @@
 # Proof of the precision–heat crossover
 
-[Home](../README.md) · [Model](MODEL.md) · [Theorem](THEOREM.md) · [Construction](CONSTRUCTION.md)
+[Home](../README.md) · [Model](MODEL.md) · [Theorem](THEOREM.md) · [Notation](NOTATION.md) · [Construction](CONSTRUCTION.md)
 
-This document gives the lower-bound argument and the passage to the optimal limit. The attaining operation and its complete thermal energy calculation are in the construction document. Entropies are in bits unless stated otherwise. Numbered source labels refer to the [literature guide](LITERATURE.md).
+This document proves the dimension-uniform lower bound and its limiting match to the thermal construction. Entropies are in bits unless a natural-log calculation is explicitly marked. All states and unitaries below are finite dimensional.
 
-## 1. Separate state kinematics from thermodynamics
+<a id="dependencies"></a>
+## Proof dependencies
 
-Set E = AB and Omega = tau_A tensor gamma_B. The first part of the argument uses only that Omega is a fixed finite density operator independent of the input. It may be rank deficient. Gibbs structure is used only after establishing an entropy increase of this complete environment.
+Each step identifies its assumptions and the statement passed to the next step:
 
-The target tests imply a mean wrong-basis output probability at most d and a total output coherence of magnitude at least s - 2 epsilon, where d is defined in the theorem. If z_x is the off-diagonal element of the conditional system output and delta_x its wrong-basis probability, then
+1. [Conditional output tests](#output-tests) bound wrong-basis probability and enforce common coherence.
+2. [Arbitrary-unitary kinematics](#unitary-reduction) express those constraints through comparison environment states.
+3. [Spectral discrimination](#spectral-discrimination) gives a quantitative separation between those states.
+4. [Information bound](#information-bound) converts that separation to Holevo information without assuming commutation.
+5. [Actual-environment transfer](#environment-transfer) charges the distance from comparison states to physical outputs.
+6. [Environment entropy](#environment-entropy) turns the retained information into an entropy increase.
+7. [Gibbs/auxiliary accounting](#heat-ledger) converts that increase into actual bath heat.
+8. [Matching limit](#matching-limit) combines the uniform converse with the [thermal construction](CONSTRUCTION.md#recovery).
+
+The first six steps use only $E=AB$ and its fixed input-independent initial state $\Omega=\tau_A\otimes\gamma_B$. They allow rank-deficient $\Omega$ and do not use Gibbs structure.
+
+<a id="output-tests"></a>
+## Lemma 1: conditional output constraints
+
+**Input.** The two output tests in the [model](MODEL.md#task), with $0<s<1$ and $0<\epsilon<c/2$.
+
+**Output.** Let $\delta_0=\langle1|\sigma_0|1\rangle$ and $\delta_1=\langle0|\sigma_1|0\rangle$ be wrong-basis probabilities. Let $z_x=\langle0|\sigma_x|1\rangle$. Then
 
 ```math
 \bar\delta=\frac{\delta_0+\delta_1}{2}\le d,
-\qquad |z_0+z_1|\ge s-2\epsilon.
 ```
 
-Trace distance controls each measurement probability and each off-diagonal error with the conventions used here.
-
-## 2. Arbitrary-unitary reduction
-
-A complete cosine–sine decomposition parametrizes a joint unitary on a qubit and E as
-
 ```math
-U=\begin{pmatrix}V_0C_0&-V_0K^\dagger\\V_1K&V_1C_1\end{pmatrix},
-\quad C_0=\sqrt{I-K^\dagger K},\quad C_1=\sqrt{I-KK^\dagger}.
+|z_0+z_1|\ge s-2\epsilon.
 ```
 
-V_0 and V_1 are unitaries and K is a contraction. Zero and unit singular values are allowed. This is not a restriction to commuting reservoirs or to the achieving circuit. A standard reference for the decomposition is [R7].
+Here $d=(1-c)/2+\epsilon$ is the [finite theorem's parameter](THEOREM.md#finite-bound).
 
-Put tau_i = V_i Omega V_i^dagger and T = V_1 K V_0^dagger. Define
+**Proof.** Each target has wrong-basis probability $(1-c)/2$. Trace distance bounds the difference of any measurement probability, giving $\delta_x\le d$. For a traceless Hermitian qubit difference with diagonal entry $a$ and off-diagonal entry $z$, the eigenvalues are $\pm\sqrt{a^2+|z|^2}$. Consequently, its trace distance from zero bounds the magnitude of its off-diagonal entry. Both target off-diagonal entries are $-s/2$, so $|z_x+s/2|\le\epsilon$. The triangle inequality gives the coherence claim.
+
+These are elementary consequences of the specified error metric; no energy statement has yet been used.
+
+<a id="unitary-reduction"></a>
+## Lemma 2: exhaustive unitary reduction
+
+**Input.** Any unitary $U$ on a qubit and the finite environment $E$, with a fixed initial state $\Omega$.
+
+**Output.** There are environment unitaries $V_0,V_1$ and a contraction $K$ for which
 
 ```math
-\ell=\mathrm{Tr}[(\tau_0-\tau_1)T^\dagger].
+U=\begin{pmatrix}
+V_0C_0&-V_0K^\dagger\\
+V_1K&V_1C_1
+\end{pmatrix},
 ```
 
-The block calculation gives
+```math
+C_0=\sqrt{I-K^\dagger K},
+```
 
 ```math
-\delta_0=\mathrm{Tr}(\tau_0T^\dagger T),\qquad
+C_1=\sqrt{I-KK^\dagger}.
+```
+
+Define comparison states and a transition operator by
+
+```math
+\tau_i=V_i\Omega V_i^\dagger,
+\qquad T=V_1KV_0^\dagger,
+```
+
+and put $\ell=\mathrm{Tr}[(\tau_0-\tau_1)T^\dagger]$. Then
+
+```math
+\delta_0=\mathrm{Tr}(\tau_0T^\dagger T),
+```
+
+```math
 \delta_1=\mathrm{Tr}(\tau_1TT^\dagger),
-\qquad |\ell-z_0-z_1|\le\delta_0+\delta_1.
 ```
 
-For the last estimate, replace each survival factor C_i by I. Weighted Hilbert–Schmidt Cauchy–Schwarz bounds the replacement on branch i by delta_i, using (I - C_i)^2 <= I - C_i^2. Consequently
+```math
+|\ell-z_0-z_1|\le\delta_0+\delta_1.
+```
+
+In particular, Lemma 1 gives
 
 ```math
 |\ell|\ge[s-2\epsilon-2d]_+.
 ```
 
-The order of this replacement error is d, not its square root. This distinction determines the useful limiting constant.
-
-## 3. A spectral information quantity
-
-For eigenpairs (p_i,u_i) and (q_j,v_j) of tau_0 and tau_1, define
+**Why every unitary is included.** The complete cosine–sine decomposition [Sutton, Equation (1.1)](LITERATURE.md#r7), specialized to two equally sized block rows and columns, writes $U=\mathsf L\mathsf C\mathsf R^\dagger$. The outer factors are block-diagonal unitaries with blocks $L_i,R_i$. After an allowed sign convention for those factors, the central matrix is
 
 ```math
-w_{ij}=|\langle u_i|v_j\rangle|^2,\qquad
+\mathsf C=
+\begin{pmatrix}\Gamma&-\Lambda\\
+\Lambda&\Gamma\end{pmatrix}.
+```
+
+Here $\Gamma$ and $\Lambda$ are diagonal matrices with entries $\cos\theta_j$ and $\sin\theta_j$, for $\theta_j\in[0,\pi/2]$. Set
+
+```math
+V_i=L_iR_i^\dagger,
+\qquad K=R_1\Lambda R_0^\dagger.
+```
+
+Then $C_0=R_0\Gamma R_0^\dagger$ and $C_1=R_1\Gamma R_1^\dagger$, giving the displayed parametrization. Angles zero and $\pi/2$ are included: zero singular values of $K$ give survival blocks, and unit singular values give zero survival factors. No block is inverted, no full-rank condition is imposed on $\Omega$, and no channel or bath basis is selected in advance.
+
+**Coherence calculation.** Directly taking the system off-diagonal block gives
+
+```math
+z_0=\mathrm{Tr}(V_0C_0\Omega K^\dagger V_1^\dagger),
+```
+
+```math
+z_1=-\mathrm{Tr}(V_0K^\dagger\Omega C_1V_1^\dagger).
+```
+
+Replacing each survival factor $C_i$ by $I$ makes their sum exactly $\ell$. To bound the error, write $W=V_1^\dagger V_0$. The first replacement error has magnitude
+
+```math
+|\mathrm{Tr}[\Omega K^\dagger W(I-C_0)]|.
+```
+
+Weighted Hilbert–Schmidt Cauchy–Schwarz bounds its square by
+
+```math
+\mathrm{Tr}(\Omega K^\dagger K)\,
+\mathrm{Tr}[\Omega(I-C_0)^2].
+```
+
+Since $(I-C_0)^2\le I-C_0^2=K^\dagger K$, this is at most $\delta_0^2$. The second replacement error, written as $\mathrm{Tr}[\Omega(I-C_1)WK^\dagger]$, is similarly at most $\delta_1$. Adding the two errors proves the claim.
+
+The error is of order $d$, rather than $\sqrt d$. Keeping this order is essential to the limiting constant.
+
+<a id="spectral-discrimination"></a>
+## Lemma 3: spectral discrimination from kinematics
+
+**Input.** The comparison states, transition operator, and constraints from Lemma 2.
+
+**Output.** If $(p_i,u_i)$ and $(q_j,v_j)$ are complete eigenpairs of $\tau_0,\tau_1$, define
+
+```math
+w_{ij}=|\langle u_i|v_j\rangle|^2,
+```
+
+```math
 \mathcal T=\frac12\sum_{ij}
-\frac{(p_i-q_j)^2}{p_i+q_j}w_{ij}.
+\frac{(p_i-q_j)^2}{p_i+q_j}\,w_{ij}.
 ```
 
-A term with p_i = q_j = 0 contributes zero. No inverse of a density matrix is required. Expand ell in the mixed eigenbases and apply weighted Cauchy–Schwarz:
+A term with $p_i=q_j=0$ is defined to be zero. Then
 
 ```math
-|\ell|^2\le4\bar\delta\,\mathcal T.
+|\ell|^2\le4\bar\delta\,\mathcal T,
+\qquad \mathcal T\ge b_0^2.
 ```
 
-The second weighted sum is delta_0 + delta_1. Combining with the previous step yields
+**Proof.** Let $t_{ij}=\langle u_i|T^\dagger|v_j\rangle$. Inserting complete eigenbases gives
 
 ```math
-\mathcal T\ge b_0^2.
+\ell=\sum_{ij}(p_i-q_j)
+\langle v_j|u_i\rangle\,t_{ij}.
 ```
 
-This is a particular spectral discrimination. It must not be replaced by another quantum divergence with the same classical specialization without proof.
+The two factors in weighted Cauchy–Schwarz are $2\mathcal T$ and
 
-## 4. From spectral discrimination to information
+```math
+\begin{aligned}
+\sum_{ij}(p_i+q_j)|t_{ij}|^2
+&=\mathrm{Tr}(\tau_0T^\dagger T)\\
+&\quad+\mathrm{Tr}(\tau_1TT^\dagger)\\
+&=2\bar\delta.
+\end{aligned}
+```
 
-Define classical distributions P_ij = p_i w_ij and Q_ij = q_j w_ij. Both are normalized. Their Jensen–Shannon divergence is bounded above by the quantum Holevo information:
+Terms whose denominator vanishes also have zero numerator and zero weight in this bound. Thus $|\ell|^2\le4\bar\delta\mathcal T\le4d\mathcal T$. Combine with Lemma 2 and the definition of $b_0$.
+
+This particular spectral expression is used throughout the argument. Another quantum divergence with the same classical specialization cannot be substituted without proof.
+
+<a id="information-bound"></a>
+## Lemma 4: spectral discrimination implies information
+
+**Input.** Any two finite density operators $\tau_0,\tau_1$, including noncommuting or rank-deficient ones.
+
+**Output.** With the mixed-spectral weights from Lemma 3,
 
 ```math
 \chi(\tau_0,\tau_1)
-=H((\tau_0+\tau_1)/2)-\tfrac12H(\tau_0)-\tfrac12H(\tau_1)
-\ge\mathrm{JS}(P,Q).
+\ge \mathrm{JS}(P,Q)
+\ge J_2(\sqrt{\mathcal T}),
 ```
 
-For completeness, this follows from Golden–Thompson and a positive integral representation. In natural logarithms,
+where $P_{ij}=p_iw_{ij}$ and $Q_{ij}=q_jw_{ij}$. Hence the kinematic states satisfy $\chi(\tau_0,\tau_1)\ge J_2(b_0)$.
+
+### Noncommuting comparison and its direction
+
+The matrix $w$ is doubly stochastic, so $P,Q$ are normalized distributions. They are algebraic comparison distributions; the proof does not assume that one measurement simultaneously reveals both eigenbases.
+
+Let $M=(\tau_0+\tau_1)/2$ and $m_{ij}=(p_i+q_j)/2$. Work in natural logarithms just in this calculation. Put
 
 ```math
-x\ln x=x-1+\int_0^\infty
-\frac{e^{-tx}-e^{-t}+(x-1)t e^{-t}}{t^2}\,dt.
+A_0=\frac12\sum_i p_i\ln p_i
++\frac12\sum_j q_j\ln q_j.
 ```
 
-Apply Golden–Thompson to -(t/2)(tau_0 + tau_1). The trace of the exponential of that sum is at most the mixed-spectral sum of exp[-t(p_i+q_j)/2]. Constant and linear terms cancel because w is doubly stochastic. Integration gives the upper bound on the trace of x ln x at the mean state, hence the required **lower** bound on Holevo information. Divide by ln 2 to convert to bits. Zero eigenvalues follow by continuity in finite dimension.
-
-The sharp classical inequality [R4] is
+The two information quantities are
 
 ```math
-\mathrm{JS}(P,Q)\ge J_2(\sqrt{\mathcal T}).
+(\ln2)\chi=A_0-\mathrm{Tr}(M\ln M),
 ```
-
-One direct verification uses weights (P+Q)/2 and a = (P-Q)/(P+Q). Jensen–Shannon information is the weighted mean of J_2(a), while triangular discrimination is the weighted mean of a². Convexity in a² follows from
 
 ```math
-J_2(a)=\frac1{\ln2}\sum_{k=1}^\infty
-\frac{a^{2k}}{(2k)(2k-1)}.
+(\ln2)\mathrm{JS}
+=A_0-\sum_{ij}w_{ij}m_{ij}\ln m_{ij}.
 ```
 
-Jensen's inequality then applies. The sharp scalar inequality and its mirrored binary equality cases are inherited, not a new information inequality of this repository. Altogether,
+It therefore suffices to prove an **upper** bound on $\mathrm{Tr}(M\ln M)$. The inherited [Golden–Thompson inequality](LITERATURE.md#r8) gives, for $t>0$,
 
 ```math
-\chi(\tau_0,\tau_1)\ge J_2(b_0).
+\begin{aligned}
+\mathrm{Tr}(e^{-tM})
+&\le\mathrm{Tr}(e^{-t\tau_0/2}e^{-t\tau_1/2})\\
+&=\sum_{ij}w_{ij}e^{-tm_{ij}}.
+\end{aligned}
 ```
 
-## 5. Transfer to the actual environment
-
-The comparison states tau_i are not automatically the actual conditional environment states E'_i. Their difference must be charged.
-
-Purify Omega only as a mathematical device. Let v be a unit reference purification and a the survival vector for one branch. If its wrong-basis probability is delta, then
+To convert this into the needed entropy comparison, define
 
 ```math
-\langle a|a\rangle=1-\delta,\qquad
-\langle v|a\rangle=\mathrm{Tr}(\Omega C)\ge1-\delta,
+R_t(x)=e^{-tx}-e^{-t}+(x-1)t e^{-t}.
 ```
 
-because 0 <= C <= I and C >= C². The rank-one trace-norm formula gives
+The scalar identity is
 
 ```math
-\big\||v\rangle\langle v|-|a\rangle\langle a|\big\|_1
-\le\sqrt{4\delta-3\delta^2}.
+x\ln x=x-1+
+\int_0^\infty\frac{R_t(x)}{t^2}\,dt.
 ```
 
-The failed-branch operator adds at most delta to the trace norm. Divide by two and discard the mathematical purification by trace-distance contraction:
+For $x>0$, it follows by differentiating twice: the integral has second derivative $1/x$, and value and first derivative zero at $x=1$. The affine term supplies the first derivative of $x\ln x$ there. Also $R_t(x)\ge0$ by convexity of the exponential.
+
+Apply the identity to the eigenvalues of $M$ and to the $m_{ij}$. The constant and linear terms cancel because $\sum_{ij}w_{ij}=\dim E$ and both weighted traces equal one. Integrating the Golden–Thompson inequality with its positive weight yields
 
 ```math
-D(E'_i,\tau_i)\le f(\delta_i)
-=\sqrt{\delta_i(1-3\delta_i/4)}+\delta_i/2.
+\mathrm{Tr}(M\ln M)
+\le\sum_{ij}w_{ij}m_{ij}\ln m_{ij}.
 ```
 
-The function f is increasing and concave, so the mean branch distance is at most f(d).
+The two preceding expressions now give $\chi\ge\mathrm{JS}$, with the stated direction. Zero eigenvalues follow by continuity: replace both states by their mixtures with the same maximally mixed state, keep complete eigenbases, and let the mixing weight vanish. In finite dimension, $x\ln x$ is continuous at zero.
 
-Compare the two classical–quantum states formed by appending a binary bookkeeping label. Winter's cq conditional-entropy continuity bound [R5] uses the **label dimension two**, not the environment dimension. Their Holevo informations differ by at most g(f(d)), with g as in the theorem. The cap at one bit follows from the range of binary-label conditional entropy. Therefore
+Golden–Thompson is the inherited trace inequality; the integral conversion above spells out its use for this spectral-information comparison.
+
+### Sharp scalar inequality and equality cases
+
+On cells with $P_{ij}+Q_{ij}>0$, define
+
+```math
+\mu_{ij}=\frac{P_{ij}+Q_{ij}}2,
+\qquad
+a_{ij}=\frac{P_{ij}-Q_{ij}}{P_{ij}+Q_{ij}}.
+```
+
+Then $\sum_{ij}\mu_{ij}=1$, $|a_{ij}|\le1$, and
+
+```math
+\mathrm{JS}(P,Q)=\sum_{ij}\mu_{ij}J_2(a_{ij}),
+```
+
+```math
+\mathcal T=\sum_{ij}\mu_{ij}a_{ij}^2.
+```
+
+The formula for $J_2$ is even, so here it also applies to negative $a_{ij}$. The power series
+
+```math
+J_2(a)=\frac1{\ln2}
+\sum_{k=1}^{\infty}\frac{a^{2k}}{(2k)(2k-1)}
+```
+
+shows that $t\mapsto J_2(\sqrt t)$ is convex on $[0,1]$, with the endpoints defined by continuity. Jensen's inequality proves $\mathrm{JS}\ge J_2(\sqrt{\mathcal T})$.
+
+This is the inherited sharp classical inequality in [Nishiyama, Theorem 1 and Equation (29)](LITERATURE.md#r4), using the same factor $1/2$ in triangular discrimination. Mirrored binary distributions attain it:
+
+```math
+P=\left(\frac{1+b}2,\frac{1-b}2\right),
+```
+
+```math
+Q=\left(\frac{1-b}2,\frac{1+b}2\right).
+```
+
+They have $\mathcal T=b^2$ and $\mathrm{JS}=J_2(b)$. More generally, scalar equality requires constant $a_{ij}^2$ on positive-weight cells, as follows from strict convexity. Commuting mirrored binary density operators attain both information comparisons. These equality cases do not assert equality in every earlier finite kinematic estimate.
+
+<a id="environment-transfer"></a>
+## Lemma 5: transfer to the physical environment
+
+**Input.** The arbitrary-unitary decomposition from Lemma 2, with actual conditional environment states $E'_x=\rho'_{E,x}$.
+
+**Output.** The actual environment retains
 
 ```math
 \chi(X:E')\ge J_2(b_0)-g(f(d)).
 ```
 
-No energy or entropy of a formal purification has been charged, and no correction grows with the physical environment dimension.
+The correction is independent of $\dim E$.
 
-## 6. An entropy increase of the complete environment
+### Distance from each comparison state
 
-Each branch starts with a pure system, so global unitarity preserves total branch entropy H(Omega). Subadditivity gives
+Purify $\Omega$ for a mathematical estimate only. In the frame of the appropriate $V_x$, let $v$ be a unit purification of the comparison state and $a=(C_x\otimes I)v$ its unnormalized survival vector. For $\delta=\delta_x$,
+
+```math
+\langle a|a\rangle=1-\delta,
+\qquad
+\langle v|a\rangle\ge1-\delta.
+```
+
+The second inequality follows from $0\le C_x\le I$ and $C_x\ge C_x^2$. Set $N=\||v\rangle\langle v|-|a\rangle\langle a|\|_1$. The rank-one trace-norm identity gives
+
+```math
+N^2=(2-\delta)^2-4|\langle v|a\rangle|^2
+\le4\delta-3\delta^2.
+```
+
+The failed-branch operator is positive with trace $\delta$. Adding it, dividing the trace norm by two, and tracing out the formal purification yields
+
+```math
+D(E'_x,\tau_x)\le f(\delta_x),
+```
+
+with $f$ defined in the theorem. The function $f$ is increasing and concave on $[0,1]$. For example, in the interior,
+
+```math
+f''(t)=-\frac1{4[t(1-3t/4)]^{3/2}}<0,
+```
+
+and $f'(1)=0$. Consequently the mean branch distance is at most $f(\bar\delta)\le f(d)$.
+
+### Continuity with a binary classical label
+
+Append the formal label to each pair of environment states:
+
+```math
+\omega_{XE}=\frac12\sum_x
+|x\rangle\langle x|\otimes\tau_x,
+```
+
+```math
+\zeta_{XE}=\frac12\sum_x
+|x\rangle\langle x|\otimes E'_x.
+```
+
+Their block-diagonal structure makes their trace distance the mean branch distance. Write this distance as $\eta\le f(d)$.
+
+[Winter, Lemma 2, cq specialization](LITERATURE.md#r5) bounds the conditional-entropy difference by
+
+```math
+\eta\log_2\dim X+
+(1+\eta)h_2\!\left(\frac{\eta}{1+\eta}\right).
+```
+
+Here the bounded-dimensional subsystem is **the classical label $X$**, with $\dim X=2$. The conditioning subsystem is the entire environment. Both states have $H(X)=1$, so this is also a bound on the difference of their Holevo informations. Since $0\le H(X|E)\le1$, that difference is additionally capped at one bit. Monotonicity of the correction in $\eta$ gives $g(f(d))$ and proves the lemma.
+
+The inspected source, arXiv:1507.07775v6, explicitly treats both qc and cq states in Lemma 2. No entropy-continuity factor involving the reservoir dimension enters here, and the formal purification is not a charged physical resource.
+
+<a id="environment-entropy"></a>
+## Lemma 6: entropy increase of the complete environment
+
+**Input.** Lemma 5, a pure input system on each branch, and an initially independent environment $\Omega$.
+
+**Output.**
+
+```math
+\Delta H_E
+=H(\rho'_E)-H(\Omega)
+\ge L(s,\epsilon).
+```
+
+**Proof.** Each branch starts with total entropy $H(\Omega)$, which the joint unitary preserves. Subadditivity gives
 
 ```math
 H(E'_x)\ge H(\Omega)-H(\sigma_x).
 ```
 
-A qubit within trace distance epsilon < 1/2 of a pure state has entropy at most h_2(epsilon). Using the definition of Holevo information,
+A qubit within trace distance $\epsilon<1/2$ of a pure state has entropy at most $h_2(\epsilon)$; this is also the dimension-two case of [Audenaert's sharp continuity bound](LITERATURE.md#r6). Averaging the branch inequality and adding the Holevo information yields
 
 ```math
 \Delta H_E\ge\chi(X:E')-h_2(\epsilon).
 ```
 
-Also Delta H_E >= 0. Indeed, the average initial joint entropy is 1 + H(Omega), and the final qubit has entropy at most one bit. This proves
+There is a second bound, $\Delta H_E\ge0$, specific to the equally likely orthogonal inputs. The entropy of the initial averaged joint state $(I/2)\otimes\Omega$ is $1+H(\Omega)$. The final system entropy is at most one bit, so subadditivity after the same unitary gives
 
 ```math
-\Delta H_E\ge L(s,\epsilon).
+1+H(\Omega)\le1+H(\rho'_E).
 ```
 
-## 7. Convert that increase into actual bath heat
+Taking the maximum of this zero bound and the information bound proves exactly the function $L$ in the theorem.
 
-Only now use Gibbs structure, and only on B [R1]:
+<a id="heat-ledger"></a>
+## Lemma 7: Gibbs and workspace accounting
+
+**Input.** The environment entropy bound and the [physical model](MODEL.md#apparatus), with $\Omega=\tau_A\otimes\gamma_B$.
+
+**Output.** Every implementation obeys the finite theorem, including its retained nonnegative terms.
+
+**Proof.** Apply Gibbs structure only to $B$. Its logarithm gives the exact identity
 
 ```math
-q=H(B')-H(\gamma_B)+D_2(\rho'_B\Vert\gamma_B).
+q=\Delta H_B+D_2(\rho'_B\Vert\gamma_B),
 ```
 
-Initial independence of A and B implies the exact ledger
+where $\Delta H_B=H(\rho'_B)-H(\gamma_B)$. This is the reservoir form of the microscopic heat identity in [Reeb–Wolf, Theorem 3, Equations (21)–(22)](LITERATURE.md#r1).
+
+Initial independence of $A,B$ implies
 
 ```math
-q=\Delta H_E-\Delta H_A+I(A:B)'+D_2(\rho'_B\Vert\gamma_B).
+\Delta H_E=\Delta H_A+\Delta H_B-I(A:B)'.
 ```
 
-The last two terms are nonnegative. Substituting the bound on Delta H_E proves both finite inequalities in the theorem. Exact average marginal return sets Delta H_A = 0. Approximate return is charged using [R6], with the dimension-dependent allowance stated there.
-
-The required record concerns E = AB. With a correlated, marginally returned auxiliary, the record need not reside in B alone. A heat-only assertion that ignores consumed auxiliary entropy capacity would be false.
-
-## 8. Take the limit and match it
-
-For positive-error sequences with epsilon/s² tending to finite r,
+Substitute this expression for $\Delta H_B$:
 
 ```math
-d/s^2\to\tfrac14+r,\qquad
-b_0\to(1+4r)^{-1/2},\qquad
-g(f(d))+h_2(\epsilon)\to0.
+\begin{aligned}
+q+\Delta H_A={}&\Delta H_E+I(A:B)'\\
+&+D_2(\rho'_B\Vert\gamma_B).
+\end{aligned}
 ```
 
-The correction is uniform in dimensions. This gives the required lower limit for the infimum over all finite cyclic devices.
+Mutual information and relative entropy are nonnegative. Lemma 6 therefore proves both finite inequalities. Exact ensemble-marginal return sets $\Delta H_A=0$. Approximate return uses [Audenaert, Theorem 1, Equation (6)](LITERATURE.md#r6), with the capped allowance in the [theorem](THEOREM.md#workspace-return).
 
-The [construction](CONSTRUCTION.md) has thermal bias
+The necessary information concerns $E=AB$. When a workspace is marginally returned but correlated, the record need not be in $B$ alone. Applying a Gibbs identity to a possibly nonthermal $\tau_A$, or ignoring a consumed positive $\Delta H_A$, would change the resource model.
+
+<a id="matching-limit"></a>
+## The limiting match
+
+**Lower direction.** Let $s\to0$ along any sequence with $\epsilon>0$ and $\epsilon/s^2\to r<\infty$. The finite definitions give
 
 ```math
-b=\frac{s}{2\sqrt{d(1-d)}}\to(1+4r)^{-1/2}.
+\frac d{s^2}\longrightarrow\frac14+r,
 ```
-
-After M charged recovery swaps its heat satisfies
 
 ```math
-J_2(b)\le q_M\le J_2(b)+\frac{b\,\mathrm{atanh}(b)}{M\ln2}.
+b_0\longrightarrow\frac1{\sqrt{1+4r}},
 ```
 
-For each positive-error pair (s,epsilon), b < 1 and a finite M makes the residual arbitrarily small. Choose M along the sequence so that the residual tends to zero. This also covers r = 0, where b approaches one and M may need to grow faster. Every member remains finite; no exact pure bath is substituted.
+```math
+g(f(d))+h_2(\epsilon)\longrightarrow0.
+```
 
-The upper and lower limits coincide, proving the crossover. The construction uses no auxiliary, so it remains a valid upper bound when exactly returned auxiliaries are permitted.
+The lower bound holds for every finite returned-workspace device and has no dimension-dependent correction. It therefore survives taking the infimum over devices and gives $\liminf q_{\min}\ge F(r)$.
 
-## What the computation contributes
+**Upper direction.** In the [explicit collision](CONSTRUCTION.md#collision), the construction parameter $u$ equals the theorem's $d$. Its thermal bias obeys
 
-The tests check finite-dimensional instances of the unitary reduction, spectral information bridge, environment disturbance, Gibbs ledger, auxiliary controls, and explicit construction. These tests help detect implementation and algebra errors. Arbitrary-dimension validity rests on the argument above, not on sampling finite matrices.
+```math
+b=\frac{s}{2\sqrt{d(1-d)}}
+\longrightarrow\frac1{\sqrt{1+4r}}.
+```
 
-[R1]: LITERATURE.md#r1
-[R4]: LITERATURE.md#r4
-[R5]: LITERATURE.md#r5
-[R6]: LITERATURE.md#r6
-[R7]: LITERATURE.md#r7
+For each positive-error pair in the stated domain, $0<b<1$. The [charged recovery calculation](CONSTRUCTION.md#recovery) gives
+
+```math
+J_2(b)\le q_M
+\le J_2(b)+\frac{b\,\mathrm{atanh}(b)}{M\ln2}.
+```
+
+For any desired positive residual, a finite integer $M$ makes the last term smaller than it. Along the parameter sequence, choose the residual to tend to zero and choose such a finite $M$ at each stage. This gives $\limsup q_{\min}\le F(r)$.
+
+At $r=0$, the bias tends to one. The gap and the necessary recovery resources may grow, but every finite stage still has positive error, $b<1$, and a full-rank finite Gibbs bath. The proof never substitutes an exact pure bath resource. The two limits coincide.
+
+Recovery is needed to approach the optimal curve. The [finite strict/relaxed separation](FINITE_BENCHMARK.md#comparison) already uses the bare collision heat and requires no recovery claim.
+
+<a id="computational-support"></a>
+## What the calculations check
+
+The [claim-to-evidence map](CLAIMS.md) links each lemma to finite matrix checks, exact formulas, and numerical records where applicable. These calculations can detect algebra and implementation errors. Arbitrary-dimension validity rests on the lemmas above; the calculation of the upper bound additionally rests on the complete construction's energy ledger.

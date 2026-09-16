@@ -1,8 +1,12 @@
 # Source inventory
 
+[Home](../README.md) · [Literature](../docs/LITERATURE.md) · [Direct comparisons](../docs/RELATED_WORK.md) · [Inventory](sources.json)
+
 The canonical documents consolidate the supplied precision–heat research materials into one model, theorem, proof, and construction. The source inventory records SHA-256 identifiers for the input documents and the complete supplied evidence archive. It is provenance metadata, not a runtime dependency.
 
 The current calculation package is self-contained. Its tests and reference data run without source archives or conversation history. The source inventory is not a claim that every earlier exploratory script is part of the current command set.
+
+The inventory also identifies the versioned primary texts and exact locators used for the direct comparisons and proof ingredients. This is a bounded source check. The wider assumption register preserves its component-level support and unmatched conjunctions; its inclusion does not represent an exhaustive new literature audit. The original input hashes and sizes are retained unchanged.
 
 AI assistance was used in research development and repository preparation. Mathematical arguments, primary-source attribution, and executed finite checks are presented separately so that their roles are explicit. No claim of external validation is inferred from a successful computational test.
 

@@ -36,5 +36,171 @@
       "sha256": "589784b94a75a70663c289e9ff09f8858c11199f3c2483b38f5c77b5cd9e3b7c",
       "bytes": 399537
     }
+  ],
+  "primary_source_locator_scope": "Versioned locators for direct comparisons and proof ingredients; the broader assumption register is retained, not represented as an exhaustive new literature audit.",
+  "primary_source_locators": [
+    {
+      "id": "R1 / P01",
+      "arxiv_version": "1306.4352v3",
+      "primary_url": "https://arxiv.org/abs/1306.4352v3",
+      "read_format": "html",
+      "locators": [
+        "Section 2.1",
+        "Theorem 3, Eqs. (21)-(22)",
+        "Section 6, Proposition 8"
+      ]
+    },
+    {
+      "id": "R2 / P07",
+      "arxiv_version": "1002.0733v2",
+      "primary_url": "https://arxiv.org/abs/1002.0733v2",
+      "read_format": "html",
+      "locators": [
+        "Section 2",
+        "Theorem 4(b), Eqs. (38)-(39)"
+      ]
+    },
+    {
+      "id": "R3 / P06",
+      "arxiv_version": "1604.03749v1",
+      "primary_url": "https://arxiv.org/abs/1604.03749v1",
+      "read_format": "pdf",
+      "locators": [
+        "Eqs. (3)-(4)",
+        "Eq. (9)",
+        "Appendix A",
+        "Appendix E"
+      ]
+    },
+    {
+      "id": "R4",
+      "arxiv_version": "2210.09571v2",
+      "primary_url": "https://arxiv.org/abs/2210.09571v2",
+      "read_format": "html",
+      "locators": [
+        "Eq. (2)",
+        "Definition 3",
+        "Theorem 1, Eq. (8)",
+        "Section IV-A, Eq. (29)"
+      ]
+    },
+    {
+      "id": "R5",
+      "arxiv_version": "1507.07775v6",
+      "primary_url": "https://arxiv.org/abs/1507.07775v6",
+      "read_format": "pdf",
+      "locators": [
+        "Section II, Lemma 2, pp. 2-3"
+      ]
+    },
+    {
+      "id": "R6",
+      "arxiv_version": "quant-ph/0610146v1",
+      "primary_url": "https://arxiv.org/abs/quant-ph/0610146v1",
+      "read_format": "html",
+      "locators": [
+        "Theorem 1, Eq. (6)"
+      ]
+    },
+    {
+      "id": "R7",
+      "arxiv_version": "0707.1838v3",
+      "primary_url": "https://arxiv.org/abs/0707.1838v3",
+      "read_format": "pdf",
+      "locators": [
+        "Eq. (1.1), p. 1"
+      ]
+    },
+    {
+      "id": "R8",
+      "arxiv_version": "1408.2008v1",
+      "primary_url": "https://arxiv.org/abs/1408.2008v1",
+      "read_format": "html",
+      "locators": [
+        "Eq. (1.1)",
+        "Sections 2.2-2.3"
+      ]
+    },
+    {
+      "id": "P10",
+      "arxiv_version": "1709.00506v2",
+      "primary_url": "https://arxiv.org/abs/1709.00506v2",
+      "read_format": "html",
+      "locators": [
+        "Sections II-III.1, Eqs. (2)-(6)",
+        "Section III.2, Eq. (12)"
+      ]
+    },
+    {
+      "id": "P11",
+      "arxiv_version": "2203.09369v2",
+      "primary_url": "https://arxiv.org/abs/2203.09369v2",
+      "read_format": "html",
+      "locators": [
+        "Section II, Eqs. (1)-(3)",
+        "Theorem 1",
+        "Methods, task-cost optimization"
+      ]
+    },
+    {
+      "id": "P29",
+      "arxiv_version": "1807.05610v2",
+      "primary_url": "https://arxiv.org/abs/1807.05610v2",
+      "read_format": "html",
+      "locators": [
+        "Eq. (3)",
+        "Implementation based on quantum typicality",
+        "Thermal Operations"
+      ]
+    },
+    {
+      "id": "C01",
+      "arxiv_version": "1807.08773v1",
+      "primary_url": "https://arxiv.org/abs/1807.08773v1",
+      "read_format": "html",
+      "locators": [
+        "Theorem 1, Eqs. (1)-(2)"
+      ]
+    },
+    {
+      "id": "C02",
+      "arxiv_version": "2012.05573v2",
+      "primary_url": "https://arxiv.org/abs/2012.05573v2",
+      "read_format": "html",
+      "locators": [
+        "Definition 1, Eqs. (2)-(3)",
+        "Theorem 2"
+      ]
+    },
+    {
+      "id": "C03",
+      "arxiv_version": "2010.11036v3",
+      "primary_url": "https://arxiv.org/abs/2010.11036v3",
+      "read_format": "pdf",
+      "locators": [
+        "Theorems 1-2",
+        "Supplemental Material, Theorem 3"
+      ]
+    },
+    {
+      "id": "C04",
+      "arxiv_version": "2010.09070v3",
+      "primary_url": "https://arxiv.org/abs/2010.09070v3",
+      "read_format": "pdf",
+      "locators": [
+        "Section 3",
+        "Section 4.1, Eqs. (4)-(5)"
+      ]
+    },
+    {
+      "id": "C05",
+      "arxiv_version": "1405.3039v1",
+      "primary_url": "https://arxiv.org/abs/1405.3039v1",
+      "read_format": "html",
+      "locators": [
+        "Sections II.1-II.2",
+        "Supplemental Material, Theorem II.3"
+      ]
+    }
   ]
 }

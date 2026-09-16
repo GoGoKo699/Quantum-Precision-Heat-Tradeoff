@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="824" viewBox="0 0 600 824" role="img" aria-labelledby="resource-title resource-desc">
+<title id="resource-title">Resource boundary of the quantum operation</title>
+<desc id="resource-desc">An equally likely binary input qubit S, fixed workspace A, and complete Gibbs reservoir B begin independently. One input-independent unitary produces the approximate target on S, restores the ensemble-average marginal of A, and changes the energy of B. Final correlations are allowed. There is no free input label for the controller. All reservoir systems, including those used for recovery, are charged in the mean heat.</desc>
+<rect width="600" height="824" rx="14" fill="#ffffff"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker></defs>
+<g font-family="DejaVu Sans, Arial, sans-serif" fill="#172b45">
+<text x="300" y="46" font-size="30" font-weight="700" text-anchor="middle">The resource boundary</text>
+<text x="300" y="85" font-size="24" text-anchor="middle">One preset unitary on S + A + B</text>
+<text x="300" y="121" font-size="24" text-anchor="middle">No free input label for the controls</text>
+<text x="35" y="169" font-size="24" font-weight="700">SUPPLIED</text>
+<text x="315" y="169" font-size="24" font-weight="700">FINAL</text>
+<rect x="20" y="190" width="244" height="140" rx="10" fill="#edf5ff" stroke="#cbdcf0" stroke-width="2"/>
+<rect x="302" y="190" width="278" height="140" rx="10" fill="#edf5ff" stroke="#cbdcf0" stroke-width="2"/>
+<path d="M 268 260 H 295" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<text x="35" y="225" font-size="24" font-weight="700">Input S</text>
+<text x="35" y="266" font-size="24">|x⟩, x = 0 or 1</text>
+<text x="35" y="301" font-size="24">equal probabilities</text>
+<text x="315" y="225" font-size="24" font-weight="700">Retained S</text>
+<text x="315" y="266" font-size="24">approximate target</text>
+<text x="315" y="301" font-size="24">max trace error ≤ ε</text>
+<rect x="20" y="348" width="244" height="140" rx="10" fill="#eff9f4" stroke="#c7e1d4" stroke-width="2"/>
+<rect x="302" y="348" width="278" height="140" rx="10" fill="#eff9f4" stroke="#c7e1d4" stroke-width="2"/>
+<path d="M 268 418 H 295" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<text x="35" y="383" font-size="24" font-weight="700">Workspace A</text>
+<text x="35" y="424" font-size="24">fixed initial state</text>
+<text x="35" y="459" font-size="24">need not be Gibbs</text>
+<text x="315" y="383" font-size="24" font-weight="700">Returned A</text>
+<text x="315" y="424" font-size="24">ensemble marginal</text>
+<text x="315" y="459" font-size="24">equals initial state</text>
+<rect x="20" y="506" width="244" height="140" rx="10" fill="#fff6e9" stroke="#ebd6b4" stroke-width="2"/>
+<rect x="302" y="506" width="278" height="140" rx="10" fill="#fff6e9" stroke="#ebd6b4" stroke-width="2"/>
+<path d="M 268 576 H 295" stroke="#475569" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<text x="35" y="541" font-size="24" font-weight="700">Reservoir B</text>
+<text x="35" y="582" font-size="24">initial Gibbs state</text>
+<text x="35" y="617" font-size="24">complete reservoir</text>
+<text x="315" y="541" font-size="24" font-weight="700">Spent reservoir B</text>
+<text x="315" y="582" font-size="24">recovery systems</text>
+<text x="315" y="617" font-size="24">included from start</text>
+<text x="300" y="685" font-size="24" text-anchor="middle">Final correlations are allowed</text>
+<rect x="20" y="712" width="560" height="92" rx="10" fill="#172b45"/><g fill="#ffffff">
+<text x="300" y="749" font-size="24" font-weight="700" text-anchor="middle">Mean heat = energy change of all B</text>
+<text x="300" y="783" font-size="24" text-anchor="middle">Reservoir Hamiltonian fixed at boundaries</text>
+</g></g></svg>
