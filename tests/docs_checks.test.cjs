@@ -47,6 +47,14 @@ test('math compilation distinguishes a compact multiline equation from a wide li
   assert.deepEqual(doc.issues, []);
   assert.ok(doc.formulas[0].width_px < 310);
 });
+test('a coherent desktop-width formula passes while an oversized line is rejected', () => {
+  const desktop = inspectMarkdown('```math\nx=' +
+    Array.from({length: 10}, (_, i) => `a_{${i + 1}}`).join('+') + '.\n```\n');
+  assert.deepEqual(desktop.issues, []);
+  assert.ok(desktop.formulas[0].width_px > 310);
+  assert.ok(desktop.formulas[0].width_px < 760);
+  assert.ok(inspect('bad_width.md').issues.some(issue => issue.kind === 'width'));
+});
 test('protected inline syntax preserves literal-brace source without changing the formula', () => {
   const ordinary = inspectMarkdown('The label is $x\\in\\{0,1\\}$.');
   const protectedMath = inspectMarkdown('The label is $`x\\in\\{0,1\\}`$.');

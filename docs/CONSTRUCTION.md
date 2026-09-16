@@ -12,10 +12,7 @@ Fix $`0<s<1`$, write $`c=\sqrt{1-s^2}`$, and choose a positive error $`\epsilon<
 
 ```math
 u=\frac{s^2}{2(1+c)}+\epsilon,
-```
-
-```math
-\theta=\arcsin\sqrt u,
+\qquad \theta=\arcsin\sqrt u,
 \qquad b=\frac{s}{2\sqrt{u(1-u)}}.
 ```
 
@@ -24,10 +21,7 @@ The bath populations are $`p_0=(1+b)/2`$ and $`p_1=(1-b)/2`$. Its state and boun
 ```math
 \gamma_b=\begin{pmatrix}p_0&0\\0&p_1\end{pmatrix},
 \qquad H_B=\begin{pmatrix}0&0\\0&\Delta\end{pmatrix},
-```
-
-```math
-\beta\Delta=2\,\mathrm{atanh}(b).
+\qquad \beta\Delta=2\,\mathrm{atanh}(b).
 ```
 
 Here $`\beta=1/(k_{\mathrm B}T)`$ and $`\mathrm{atanh}`$ is the inverse hyperbolic tangent. The domain gives $`(1-c)/2<u<1/2`$, hence $`0<b<1`$: both Gibbs populations are positive and the gap is finite.
@@ -69,11 +63,7 @@ The equal-prior average bath is $`I/2`$. Its excited population rises by $`b/2`$
 
 ```math
 Q_{\mathrm{bare}}=\frac{b\Delta}{2},
-```
-
-```math
-\beta Q_{\mathrm{bare}}
-=b\,\mathrm{atanh}(b).
+\qquad \beta Q_{\mathrm{bare}}=b\,\mathrm{atanh}(b).
 ```
 
 The bare operation is a valid finite upper bound. The bath can be spent after this one use; no reuse assumption enters this calculation.
@@ -87,10 +77,7 @@ Its half-diamond distance from the analogous target channel equals $`\epsilon`$.
 
 ```math
 \sum_{x=0}^1(\sigma_x-\phi_x)\otimes R_x,
-```
-
-```math
-\sum_{x=0}^1\mathrm{Tr}\,R_x=1.
+\qquad \sum_{x=0}^1\mathrm{Tr}\,R_x=1.
 ```
 
 The trace-norm triangle inequality bounds half its norm by $`\epsilon`$. A basis input attains that value. This additional channel statement concerns this specified construction. The [universal lower bound](THEOREM.md#finite-bound) requires only the two branch tests; two observed outputs do not certify the full channel of an arbitrary unknown apparatus.
@@ -101,15 +88,11 @@ The trace-norm triangle inequality bounds half its norm by $`\epsilon`$. A basis
 The spent bath $`I/2`$ is not at equilibrium with its nondegenerate Hamiltonian. Its excess energy includes a recoverable nonequilibrium contribution:
 
 ```math
-b\,\mathrm{atanh}(b)=J(b)+D(I/2\Vert\gamma_b),
-```
-
-```math
-J(b)=\ln2\,J_2(b),
-```
-
-```math
-D(I/2\Vert\gamma_b)=-\frac12\ln(1-b^2).
+\begin{aligned}
+b\,\mathrm{atanh}(b)&=J(b)+D(I/2\Vert\gamma_b),\\
+J(b)&=\ln2\,J_2(b),
+\qquad D(I/2\Vert\gamma_b)=-\frac12\ln(1-b^2).
+\end{aligned}
 ```
 
 Here $`J_2`$ is the [binary entropy deficit](THEOREM.md#optimal-crossover), and $`D`$ uses natural logarithms. Recovery exchanges states with a ladder of Gibbs qubits. It uses the successive-swap construction of [Reeb–Wolf, Proposition 8 and its proof](LITERATURE.md#r1).
@@ -144,11 +127,7 @@ The sum is a right Riemann sum for the increasing function $`\mathrm{atanh}`$:
 
 ```math
 J(b)=\int_0^b\mathrm{atanh}(t)\,dt,
-```
-
-```math
-0\le\beta Q_M-J(b)
-\le\frac{b\,\mathrm{atanh}(b)}M.
+\qquad 0\le\beta Q_M-J(b)\le\frac{b\,\mathrm{atanh}(b)}M.
 ```
 
 Thus the recovered infimum is approached with full-rank finite Gibbs states at every stage. At fixed positive error, each chosen $`M`$ is finite. Along the high-precision limit, bath gaps and recovery resources need not remain bounded. The [matching-limit proof](PROOF.md#matching-limit) states how this construction meets the universal lower bound.

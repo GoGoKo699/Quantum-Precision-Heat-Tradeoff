@@ -29,10 +29,7 @@ The first six steps use only $`E=AB`$ and its fixed input-independent initial st
 
 ```math
 \bar\delta=\frac{\delta_0+\delta_1}{2}\le d,
-```
-
-```math
-|z_0+z_1|\ge s-2\epsilon.
+\qquad |z_0+z_1|\ge s-2\epsilon.
 ```
 
 Here $`d=(1-c)/2+\epsilon`$ is the [finite theorem's parameter](THEOREM.md#finite-bound).
@@ -53,14 +50,11 @@ U=\begin{pmatrix}
 V_0C_0&-V_0K^\dagger\\
 V_1K&V_1C_1
 \end{pmatrix},
-```
-
-```math
-C_0=\sqrt{I-K^\dagger K},
-```
-
-```math
-C_1=\sqrt{I-KK^\dagger}.
+\qquad
+\begin{aligned}
+C_0&=\sqrt{I-K^\dagger K},\\
+C_1&=\sqrt{I-KK^\dagger}.
+\end{aligned}
 ```
 
 Define comparison states and a transition operator by
@@ -73,15 +67,11 @@ Define comparison states and a transition operator by
 and put $`\ell=\mathrm{Tr}[(\tau_0-\tau_1)T^\dagger]`$. Then
 
 ```math
+\begin{gathered}
 \delta_0=\mathrm{Tr}(\tau_0T^\dagger T),
-```
-
-```math
-\delta_1=\mathrm{Tr}(\tau_1TT^\dagger),
-```
-
-```math
+\qquad \delta_1=\mathrm{Tr}(\tau_1TT^\dagger),\\
 |\ell-z_0-z_1|\le\delta_0+\delta_1.
+\end{gathered}
 ```
 
 In particular, Lemma 1 gives
@@ -110,11 +100,10 @@ Then $`C_0=R_0\Gamma R_0^\dagger`$ and $`C_1=R_1\Gamma R_1^\dagger`$, giving the
 **Coherence calculation.** Directly taking the system off-diagonal block gives
 
 ```math
-z_0=\mathrm{Tr}(V_0C_0\Omega K^\dagger V_1^\dagger),
-```
-
-```math
-z_1=-\mathrm{Tr}(V_0K^\dagger\Omega C_1V_1^\dagger).
+\begin{aligned}
+z_0&=\mathrm{Tr}(V_0C_0\Omega K^\dagger V_1^\dagger),\\
+z_1&=-\mathrm{Tr}(V_0K^\dagger\Omega C_1V_1^\dagger).
+\end{aligned}
 ```
 
 Replacing each survival factor $`C_i`$ by $`I`$ makes their sum exactly $`\ell`$. To bound the error, write $`W=V_1^\dagger V_0`$. The first replacement error has magnitude
@@ -143,10 +132,7 @@ The error is of order $`d`$, rather than $`\sqrt d`$. Keeping this order is esse
 
 ```math
 w_{ij}=|\langle u_i|v_j\rangle|^2,
-```
-
-```math
-\mathcal T=\frac12\sum_{ij}
+\qquad \mathcal T=\frac12\sum_{ij}
 \frac{(p_i-q_j)^2}{p_i+q_j}\,w_{ij}.
 ```
 
@@ -169,8 +155,7 @@ The two factors in weighted Cauchy–Schwarz are $`2\mathcal T`$ and
 ```math
 \begin{aligned}
 \sum_{ij}(p_i+q_j)|t_{ij}|^2
-&=\mathrm{Tr}(\tau_0T^\dagger T)\\
-&\quad+\mathrm{Tr}(\tau_1TT^\dagger)\\
+&=\mathrm{Tr}(\tau_0T^\dagger T)+\mathrm{Tr}(\tau_1TT^\dagger)\\
 &=2\bar\delta.
 \end{aligned}
 ```
@@ -208,12 +193,10 @@ A_0=\frac12\sum_i p_i\ln p_i
 The two information quantities are
 
 ```math
-(\ln2)\chi=A_0-\mathrm{Tr}(M\ln M),
-```
-
-```math
-(\ln2)\mathrm{JS}
-=A_0-\sum_{ij}w_{ij}m_{ij}\ln m_{ij}.
+\begin{aligned}
+(\ln2)\chi&=A_0-\mathrm{Tr}(M\ln M),\\
+(\ln2)\mathrm{JS}&=A_0-\sum_{ij}w_{ij}m_{ij}\ln m_{ij}.
+\end{aligned}
 ```
 
 It therefore suffices to prove an **upper** bound on $`\mathrm{Tr}(M\ln M)`$. The inherited [Golden–Thompson inequality](LITERATURE.md#r8) gives, for $`t>0`$,
@@ -266,10 +249,7 @@ Then $`\sum_{ij}\mu_{ij}=1`$, $`|a_{ij}|\le1`$, and
 
 ```math
 \mathrm{JS}(P,Q)=\sum_{ij}\mu_{ij}J_2(a_{ij}),
-```
-
-```math
-\mathcal T=\sum_{ij}\mu_{ij}a_{ij}^2.
+\qquad \mathcal T=\sum_{ij}\mu_{ij}a_{ij}^2.
 ```
 
 The formula for $`J_2`$ is even, so here it also applies to negative $`a_{ij}`$. The power series
@@ -285,10 +265,7 @@ This is the inherited sharp classical inequality in [Nishiyama, Theorem 1 and Eq
 
 ```math
 P=\left(\frac{1+b}2,\frac{1-b}2\right),
-```
-
-```math
-Q=\left(\frac{1-b}2,\frac{1+b}2\right).
+\qquad Q=\left(\frac{1-b}2,\frac{1+b}2\right).
 ```
 
 They have $`\mathcal T=b^2`$ and $`\mathrm{JS}=J_2(b)`$. More generally, scalar equality requires constant $`a_{ij}^2`$ on positive-weight cells, as follows from strict convexity. Commuting mirrored binary density operators attain both information comparisons. These equality cases do not assert equality in every earlier finite kinematic estimate.
@@ -342,13 +319,8 @@ and $`f'(1)=0`$. Consequently the mean branch distance is at most $`f(\bar\delta
 Append the formal label to each pair of environment states:
 
 ```math
-\omega_{XE}=\frac12\sum_x
-|x\rangle\langle x|\otimes\tau_x,
-```
-
-```math
-\zeta_{XE}=\frac12\sum_x
-|x\rangle\langle x|\otimes E'_x.
+\omega_{XE}=\frac12\sum_x|x\rangle\langle x|\otimes\tau_x,
+\qquad \zeta_{XE}=\frac12\sum_x|x\rangle\langle x|\otimes E'_x.
 ```
 
 Their block-diagonal structure makes their trace distance the mean branch distance. Write this distance as $`\eta\le f(d)`$.
@@ -421,10 +393,7 @@ Initial independence of $`A,B`$ implies
 Substitute this expression for $`\Delta H_B`$:
 
 ```math
-\begin{aligned}
-q+\Delta H_A={}&\Delta H_E+I(A:B)'\\
-&+D_2(\rho'_B\Vert\gamma_B).
-\end{aligned}
+q+\Delta H_A=\Delta H_E+I(A:B)'+D_2(\rho'_B\Vert\gamma_B).
 ```
 
 Mutual information and relative entropy are nonnegative. Lemma 6 therefore proves both finite inequalities. Exact ensemble-marginal return sets $`\Delta H_A=0`$. Approximate return uses [Audenaert, Theorem 1, Equation (6)](LITERATURE.md#r6), with the capped allowance in the [theorem](THEOREM.md#workspace-return).
@@ -438,14 +407,8 @@ The necessary information concerns $`E=AB`$. When a workspace is marginally retu
 
 ```math
 \frac d{s^2}\longrightarrow\frac14+r,
-```
-
-```math
-b_0\longrightarrow\frac1{\sqrt{1+4r}},
-```
-
-```math
-g(f(d))+h_2(\epsilon)\longrightarrow0.
+\qquad b_0\longrightarrow\frac1{\sqrt{1+4r}},
+\qquad g(f(d))+h_2(\epsilon)\longrightarrow0.
 ```
 
 The lower bound holds for every finite returned-workspace device and has no dimension-dependent correction. It therefore survives taking the infimum over devices and gives $`\liminf q_{\min}\ge F(r)`$.

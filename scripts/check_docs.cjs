@@ -19,7 +19,7 @@ require('mathjax-full/js/input/tex/newcommand/NewcommandConfiguration.js');
 require('mathjax-full/js/input/tex/boldsymbol/BoldsymbolConfiguration.js');
 
 const ROOT = path.resolve(__dirname, '..');
-const WIDTH = 310;
+const WIDTH = 760;
 const adaptor = liteAdaptor();
 RegisterHTMLHandler(adaptor);
 const tex = new TeX({packages: ['base', 'ams', 'newcommand', 'boldsymbol'],
@@ -293,7 +293,7 @@ function checkLinks(documents, root) {
   return checked;
 }
 
-const CSS = `:root{color-scheme:light dark;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;line-height:1.6;color:#1f2328;background:#fff}*{box-sizing:border-box}body{margin:0}main{max-width:1012px;padding:24px 32px;margin:auto}h1,h2{border-bottom:1px solid #d0d7de;padding-bottom:.3em}h1{font-size:2em}h2{font-size:1.5em}a{color:#0969da}img{max-width:100%;height:auto}p,li{overflow-wrap:break-word}pre{padding:16px;overflow:auto;background:#f6f8fa;border-radius:6px}code{font-family:ui-monospace,monospace;font-size:.85em}table{display:block;width:max-content;max-width:100%;overflow:auto;border-collapse:collapse}td,th{border:1px solid #d0d7de;padding:6px 10px;min-width:110px}tr:nth-child(2n){background:#f6f8fa}.math-display{margin:1em 0;text-align:center}.math-display mjx-container{display:block;margin:0}mjx-container svg{max-width:none}mjx-container:not([display="true"]){display:inline-block}.renderer-note{font-size:12px;color:#57606a;border-bottom:1px solid #d0d7de;padding:8px 20px}.math-error{color:#b42318}@media(max-width:600px){main{padding:16px 20px}h1{font-size:1.8em}}@media(prefers-color-scheme:dark){:root{color:#e6edf3;background:#0d1117}a{color:#58a6ff}pre,tr:nth-child(2n){background:#161b22}td,th,h1,h2,.renderer-note{border-color:#30363d}.renderer-note{color:#8b949e}}html[data-theme="dark"]{color:#e6edf3;background:#0d1117}html[data-theme="dark"] a{color:#58a6ff}html[data-theme="dark"] pre,html[data-theme="dark"] tr:nth-child(2n){background:#161b22}html[data-theme="dark"] td,html[data-theme="dark"] th,html[data-theme="dark"] h1,html[data-theme="dark"] h2{border-color:#30363d}`;
+const CSS = `:root{color-scheme:light dark;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:16px;line-height:1.6;color:#1f2328;background:#fff}*{box-sizing:border-box}body{margin:0}main{max-width:1012px;padding:24px 32px;margin:auto}h1,h2{border-bottom:1px solid #d0d7de;padding-bottom:.3em}h1{font-size:2em}h2{font-size:1.5em}a{color:#0969da}img{max-width:100%;height:auto}p,li{overflow-wrap:break-word}pre{padding:16px;overflow:auto;background:#f6f8fa;border-radius:6px}code{font-family:ui-monospace,monospace;font-size:.85em}table{display:block;width:max-content;max-width:100%;overflow:auto;border-collapse:collapse}td,th{border:1px solid #d0d7de;padding:6px 10px;min-width:110px}tr:nth-child(2n){background:#f6f8fa}.math-display{margin:1em 0;text-align:center;overflow-x:auto;overflow-y:hidden}.math-display mjx-container{display:block;min-width:max-content;margin:0}mjx-container svg{max-width:none}mjx-container:not([display="true"]){display:inline-block}.renderer-note{font-size:12px;color:#57606a;border-bottom:1px solid #d0d7de;padding:8px 20px}.math-error{color:#b42318}@media(max-width:600px){main{padding:16px 20px}h1{font-size:1.8em}}@media(prefers-color-scheme:dark){:root{color:#e6edf3;background:#0d1117}a{color:#58a6ff}pre,tr:nth-child(2n){background:#161b22}td,th,h1,h2,.renderer-note{border-color:#30363d}.renderer-note{color:#8b949e}}html[data-theme="dark"]{color:#e6edf3;background:#0d1117}html[data-theme="dark"] a{color:#58a6ff}html[data-theme="dark"] pre,html[data-theme="dark"] tr:nth-child(2n){background:#161b22}html[data-theme="dark"] td,html[data-theme="dark"] th,html[data-theme="dark"] h1,html[data-theme="dark"] h2{border-color:#30363d}`;
 
 function render(documents, root, destination, report) {
   fs.mkdirSync(destination, {recursive: true});
@@ -320,7 +320,7 @@ function render(documents, root, destination, report) {
     }
   }
   const options = documents.map(doc => `<option value="${escape(doc.name.replace(/\.md$/, '.html'))}">${escape(doc.name)}</option>`).join('');
-  const controls = `<label>Page <select id="page">${options}</select></label> <label>Width <select id="width">${[350,390,430,1280,1440].map(n=>`<option>${n}</option>`).join('')}</select></label> <label>Theme <select id="theme"><option>light</option><option>dark</option></select></label> <button id="measure">Measure browser overflow</button><pre id="metrics"></pre><iframe id="frame" title="Local document render" style="height:2200px;border:1px solid #888"></iframe>`;
+  const controls = `<label>Page <select id="page">${options}</select></label> <label>Width <select id="width">${[1280,1440,430,390,350].map(n=>`<option>${n}</option>`).join('')}</select></label> <label>Theme <select id="theme"><option>light</option><option>dark</option></select></label> <button id="measure">Measure browser overflow</button><pre id="metrics"></pre><iframe id="frame" title="Local document render" style="height:2200px;border:1px solid #888"></iframe>`;
   const script = `<script>const frame=document.querySelector('#frame'),page=document.querySelector('#page'),width=document.querySelector('#width'),theme=document.querySelector('#theme');function update(){frame.style.width=width.value+'px';frame.src=page.value+'?theme='+theme.value}for(const el of [page,width,theme])el.onchange=update;document.querySelector('#measure').onclick=()=>{try{const d=frame.contentDocument,r=d.documentElement;const wide=[...d.querySelectorAll('mjx-container,table,pre,img')].filter(e=>e.getBoundingClientRect().right>r.clientWidth||e.scrollWidth>e.clientWidth+1).map(e=>({tag:e.tagName,width:e.getBoundingClientRect().width,scrollWidth:e.scrollWidth,clientWidth:e.clientWidth}));document.querySelector('#metrics').textContent=JSON.stringify({renderer:'local markdown-it/MathJax SVG; not GitHub',viewportWidth:r.clientWidth,pageScrollWidth:r.scrollWidth,theme:theme.value,wideElements:wide},null,2)}catch(e){document.querySelector('#metrics').textContent='DOM measurement blocked by file-origin policy: '+e.message}};update();</script>`;
   fs.writeFileSync(path.join(destination, 'index.html'), `<!doctype html><html lang="en"><meta charset="utf-8"><title>Local documentation QA</title><body><h1>Local documentation QA</h1><p>Standalone iframe widths are local viewport simulations; these are not live GitHub screenshots.</p>${controls}${script}</body></html>`);
   fs.writeFileSync(path.join(destination, 'manifest.json'), JSON.stringify(report, null, 2)+'\n');
@@ -331,8 +331,9 @@ function inspectRepository(root = ROOT, destination = null) {
   const links = checkLinks(documents, root);
   const report = {renderer: 'markdown-it 14.1.0 + MathJax 3.2.2 SVG; repository CSS; not live GitHub',
     measurements: 'MathJax SVG intrinsic ex units at 8 px/ex (16 px text); not browser pixel layout',
-    stress_viewport_px: 350, reading_column_px: WIDTH,
-    preview_viewports_px: [350, 390, 430, 1280, 1440],
+    layout_priority: 'desktop GitHub reading', reading_column_px: WIDTH,
+    primary_viewports_px: [1280, 1440],
+    preview_viewports_px: [1280, 1440, 430, 390, 350],
     pages: documents.map(doc => ({file: doc.name, html: doc.name.replace(/\.md$/, '.html'), formulas: doc.formulas.length, anchors: [...doc.anchors]})),
     checked_local_links: links, formulas: documents.flatMap(doc => doc.formulas), issues: documents.flatMap(doc => doc.issues)};
   if (destination) render(documents, root, destination, report);

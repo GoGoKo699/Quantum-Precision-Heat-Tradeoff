@@ -8,6 +8,8 @@ Run the tests, reproduction command, and repository checks before submitting cha
 
 Typeset mathematical notation in sentences, lists, and tables with GitHub's protected inline math form, for example ``$`\tau_0`$``. Keep formulas outside bold or italic wrappers, and use fenced `math` blocks for display equations. Reserve code formatting for executable code, commands, paths, and program identifiers. Check the rendered page as well as the source.
 
+Use the desktop reading area: group related short equations and retain line breaks where a derivation takes a new step. Avoid a sequence of isolated display blocks for definitions that can be read together.
+
 Do not replace the conditional two-input task by an average-state task, treat a formal purification as a physical resource, or silently switch between mean heat and a battery-resource cost. Report any additional resource required by a proposed construction.
 
 Original contributions are covered by the repository's MIT License. Retain applicable third-party notices; scientific citations remain scholarly attribution, not an added license condition.

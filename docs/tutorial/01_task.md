@@ -9,10 +9,7 @@ A density operator $`\rho`$ describes the probabilities of all measurements on a
 
 ```math
 \rho=\frac{I+r_xX+r_yY+r_zZ}{2},
-```
-
-```math
-|\boldsymbol r|\le1.
+\qquad |\boldsymbol r|\le1.
 ```
 
 Here $`I`$ is the identity and $`X,Y,Z`$ are the Pauli matrices. The components are the mean outcomes of those three measurements. A pure state has vector length one; a shorter vector describes a mixed state. The maximally mixed state $`I/2`$ has all three components zero.
@@ -75,10 +72,7 @@ An operation that always outputs $`\bar\phi`$ would produce the correct average,
 The eigenvalues of $`\bar\phi`$ are $`(1+s)/2`$ and $`(1-s)/2`$. The entropy of a state is the Shannon entropy of its eigenvalues. For a binary probability distribution, define
 
 ```math
-\begin{aligned}
-h_2(p)&=-p\log_2p\\
-&\quad-(1-p)\log_2(1-p),
-\end{aligned}
+h_2(p)=-p\log_2p-(1-p)\log_2(1-p),
 ```
 
 with $`0\log_2 0=0`$. The average system's entropy decrease in bits is

@@ -29,8 +29,8 @@ from qph.core import crossover
 def resource_boundary(destination: Path) -> None:
     """Draw the exact-return model using selectable, accessible SVG text."""
     parts = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="600" height="824" '
-        'viewBox="0 0 600 824" role="img" '
+        '<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="520" '
+        'viewBox="0 0 1040 520" role="img" '
         'aria-labelledby="resource-title resource-desc">',
         '<title id="resource-title">Resource boundary of the quantum operation</title>',
         '<desc id="resource-desc">An equally likely binary input qubit S, fixed '
@@ -40,14 +40,14 @@ def resource_boundary(destination: Path) -> None:
         'correlations are allowed. There is no free input label for the controller. '
         'All reservoir systems, including those used for recovery, are charged '
         'in the mean heat.</desc>',
-        '<rect width="600" height="824" rx="14" fill="#ffffff"/>',
+        '<rect width="1040" height="520" rx="14" fill="#ffffff"/>',
         '<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" '
         'markerWidth="6" markerHeight="6" orient="auto-start-reverse">'
         '<path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/></marker></defs>',
         '<g font-family="DejaVu Sans, Arial, sans-serif" fill="#172b45">',
     ]
 
-    def text(x: int, y: int, words: str, *, size: int = 24,
+    def text(x: int, y: int, words: str, *, size: int = 20,
              bold: bool = False, center: bool = False) -> None:
         attributes = ' font-weight="700"' if bold else ""
         attributes += ' text-anchor="middle"' if center else ""
@@ -56,46 +56,57 @@ def resource_boundary(destination: Path) -> None:
             f'{escape(words)}</text>'
         )
 
-    text(300, 46, "The resource boundary", size=30, bold=True, center=True)
-    text(300, 85, "One preset unitary on S + A + B", center=True)
-    text(300, 121, "No free input label for the controls", center=True)
-    text(35, 169, "SUPPLIED", bold=True)
-    text(315, 169, "FINAL", bold=True)
+    text(520, 43, "The resource boundary", size=30, bold=True, center=True)
+    text(38, 87, "INDEPENDENT INPUTS", bold=True)
+    text(500, 87, "FIXED OPERATION", bold=True, center=True)
+    text(694, 87, "FINAL SYSTEMS", bold=True)
+
+    parts.append(
+        '<rect x="380" y="106" width="240" height="312" rx="12" '
+        'fill="#f1f5f9" stroke="#bdcad9" stroke-width="2"/>'
+    )
+    text(500, 187, "One preset", size=23, center=True)
+    text(500, 227, "unitary U", size=29, bold=True, center=True)
+    text(500, 263, "on S + A + B", size=23, center=True)
+    text(500, 327, "No input label", center=True)
+    text(500, 355, "for the controls", center=True)
 
     rows = (
-        (190, "#edf5ff", "#cbdcf0",
-         ("Input S", "|x⟩, x = 0 or 1", "equal probabilities"),
-         ("Retained S", "approximate target", "max trace error ≤ ε")),
-        (348, "#eff9f4", "#c7e1d4",
-         ("Workspace A", "fixed initial state", "need not be Gibbs"),
-         ("Returned A", "ensemble marginal", "equals initial state")),
-        (506, "#fff6e9", "#ebd6b4",
-         ("Reservoir B", "initial Gibbs state", "complete reservoir"),
-         ("Spent reservoir B", "recovery systems", "included from start")),
+        (106, "#edf5ff", "#cbdcf0",
+         ("Input S", "|x⟩, x = 0 or 1", "Equal probabilities"),
+         ("Retained S", "Approximate target", "Max. trace error ≤ ε")),
+        (216, "#eff9f4", "#c7e1d4",
+         ("Workspace A", "Fixed initial state", "May be nonthermal"),
+         ("Returned A", "Ensemble marginal", "Equals its initial state")),
+        (326, "#fff6e9", "#ebd6b4",
+         ("Reservoir B", "Complete Gibbs reservoir", "Recovery systems included"),
+         ("Spent reservoir B", "All energy changes", "Count toward mean heat")),
     )
     for y, fill, border, supplied, final in rows:
-        for x, width in ((20, 244), (302, 278)):
+        for x, width in ((24, 300), (678, 338)):
             parts.append(
-                f'<rect x="{x}" y="{y}" width="{width}" height="140" '
+                f'<rect x="{x}" y="{y}" width="{width}" height="92" '
                 f'rx="10" fill="{fill}" stroke="{border}" stroke-width="2"/>'
             )
-        parts.append(
-            f'<path d="M 268 {y+70} H 295" stroke="#475569" '
-            'stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>'
-        )
-        for x, labels in ((35, supplied), (315, final)):
-            text(x, y+35, labels[0], bold=True)
-            text(x, y+76, labels[1])
-            text(x, y+111, labels[2])
+        for start, end in ((330, 371), (626, 669)):
+            parts.append(
+                f'<path d="M {start} {y+46} H {end}" stroke="#475569" '
+                'stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>'
+            )
+        for x, labels in ((38, supplied), (694, final)):
+            text(x, y+28, labels[0], size=23, bold=True)
+            text(x, y+56, labels[1])
+            text(x, y+81, labels[2])
 
-    text(300, 685, "Final correlations are allowed", center=True)
+    text(520, 450, "Final correlations are allowed; only A’s ensemble marginal returns.",
+         center=True)
     parts.append(
-        '<rect x="20" y="712" width="560" height="92" rx="10" '
+        '<rect x="24" y="467" width="992" height="37" rx="8" '
         'fill="#172b45"/>'
         '<g fill="#ffffff">'
     )
-    text(300, 749, "Mean heat = energy change of all B", bold=True, center=True)
-    text(300, 783, "Reservoir Hamiltonian fixed at boundaries", center=True)
+    text(520, 492, "Mean heat = energy change of all B · reservoir Hamiltonian fixed at boundaries",
+         size=19, center=True)
     parts.append('</g></g></svg>\n')
     destination.write_text("\n".join(parts), encoding="utf-8")
 
@@ -119,15 +130,15 @@ def limiting_curve(destination: Path) -> None:
     ratios = np.geomspace(0.001, 100, 501)
     heat = np.array([crossover(float(r)) for r in ratios])
 
-    fig = plt.figure(figsize=(6.5, 5.8), facecolor="white")
-    ax = fig.add_axes([0.14, 0.25, 0.82, 0.48], facecolor="white")
-    fig.text(0.5, 0.94, "Optimal limiting heat", ha="center",
-             fontsize=22, weight="bold")
-    fig.text(0.5, 0.862,
+    fig = plt.figure(figsize=(11.5, 5.5), facecolor="white")
+    ax = fig.add_axes([0.085, 0.235, 0.89, 0.545], facecolor="white")
+    fig.text(0.085, 0.92, "Optimal limiting heat",
+             fontsize=24, weight="bold")
+    fig.text(0.975, 0.92,
              r"$s\to0,\quad \epsilon/s^2\to r,\quad \epsilon>0$",
-             ha="center", fontsize=19)
-    fig.text(0.14, 0.773, r"$F(r)$", fontsize=20)
-    fig.text(0.96, 0.773, r"Heat unit: $k_{\mathrm{B}}T\ln 2$",
+             ha="right", fontsize=18)
+    fig.text(0.085, 0.813, r"$F(r)$", fontsize=20)
+    fig.text(0.975, 0.813, r"Heat unit: $k_{\mathrm{B}}T\ln 2$",
              ha="right", fontsize=18)
 
     ax.plot(ratios, heat, color="#1265ac", linewidth=3.2)
@@ -142,9 +153,9 @@ def limiting_curve(destination: Path) -> None:
     ax.set_axisbelow(True)
     ax.spines[["top", "right"]].set_visible(False)
     ax.tick_params(length=5, pad=7)
-    ax.set_xlabel(r"Error ratio $r = \epsilon/s^2$ (log scale)", labelpad=14)
+    ax.set_xlabel(r"Error ratio $r = \epsilon/s^2$ (log scale)", labelpad=12)
 
-    fig.text(0.5, 0.061, r"$F(0)=1$; domain: finite $r\geq0$.",
+    fig.text(0.5, 0.035, r"$F(0)=1$; domain: finite $r\geq0$.",
              ha="center", fontsize=18)
     fig.savefig(destination, format="svg", facecolor="white", metadata={
         "Date": None,
@@ -175,6 +186,8 @@ def limiting_curve(destination: Path) -> None:
           'is in units of k_B T ln 2.</desc>'
         + svg[start+1:]
     )
+    # Matplotlib adds whitespace to path-data lines; keep generated diffs clean.
+    svg = "\n".join(line.rstrip() for line in svg.splitlines()) + "\n"
     destination.write_text(svg, encoding="utf-8")
 
 

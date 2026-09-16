@@ -1,5 +1,5 @@
-# Deliberately wide
+# Deliberately wider than a desktop reading column
 
 ```math
-x=a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w.
+x=a_{1}+a_{2}+a_{3}+a_{4}+a_{5}+a_{6}+a_{7}+a_{8}+a_{9}+a_{10}+a_{11}+a_{12}+a_{13}+a_{14}+a_{15}+a_{16}+a_{17}+a_{18}+a_{19}+a_{20}+a_{21}+a_{22}+a_{23}+a_{24}+a_{25}+a_{26}+a_{27}+a_{28}+a_{29}+a_{30}+a_{31}+a_{32}+a_{33}+a_{34}+a_{35}+a_{36}+a_{37}+a_{38}+a_{39}+a_{40}.
 ```
