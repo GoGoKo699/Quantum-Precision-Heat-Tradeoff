@@ -8,19 +8,19 @@ A device receives either of two orthogonal qubit states and must produce the cor
 
 ## Physical task
 
-The inputs are $|0\rangle$ and $|1\rangle$, each supplied with probability one half. The same apparatus must work for either input; the control receives no separate label. The desired pure output density operators are
+The inputs are $`|0\rangle`$ and $`|1\rangle`$, each supplied with probability one half. The same apparatus must work for either input; the control receives no separate label. The desired pure output density operators are
 
 ```math
 \phi_x(s)=\frac{I-sX+(-1)^x cZ}{2}.
 ```
 
-Here $x\in\{0,1\}$, $X$ and $Z$ are Pauli matrices, $c=\sqrt{1-s^2}$, and $0<s<1$. Their state-vector overlap has magnitude $s$. The actual conditional output $\sigma_x$ must pass both tests:
+Here $`x\in\{0,1\}`$, $`X`$ and $`Z`$ are Pauli matrices, $`c=\sqrt{1-s^2}`$, and $`0<s<1`$. Their state-vector overlap has magnitude $`s`$. The actual conditional output $`\sigma_x`$ must pass both tests:
 
 ```math
 \frac12\|\sigma_x-\phi_x(s)\|_1\le\epsilon.
 ```
 
-The targets share transverse polarization $-s$, while their longitudinal polarizations have opposite signs. Their average is $(I-sX)/2$. As $s$ tends to zero, this average approaches the maximally mixed input average. An entropy bound based only on the average state therefore tends to zero. The conditional task retains information that this average-state calculation leaves out.
+The targets share transverse polarization $`-s`$, while their longitudinal polarizations have opposite signs. Their average is $`(I-sX)/2`$. As $`s`$ tends to zero, this average approaches the maximally mixed input average. An entropy bound based only on the average state therefore tends to zero. The conditional task retains information that this average-state calculation leaves out.
 
 ## Main result
 
@@ -30,14 +30,14 @@ Measure heat in bit-erasure units:
 q=\frac{Q}{k_{\mathrm B}T\ln2}.
 ```
 
-Let $q_{\min}(s,\epsilon)$ be the infimum over the finite devices in the [physical model](docs/MODEL.md), with exact return of the workspace's ensemble-average marginal. The optimal limiting heat depends on the ratio of error to **squared** overlap:
+Let $`q_{\min}(s,\epsilon)`$ be the infimum over the finite devices in the [physical model](docs/MODEL.md), with exact return of the workspace's ensemble-average marginal. The optimal limiting heat depends on the ratio of error to **squared** overlap:
 
 ```math
 \lim_{\substack{s\to0\\\epsilon/s^2\to r}}
 q_{\min}(s,\epsilon)=F(r).
 ```
 
-For each finite $r\ge0$, define
+For each finite $`r\ge0`$, define
 
 ```math
 b_*(r)=(1+4r)^{-1/2},
@@ -47,22 +47,22 @@ b_*(r)=(1+4r)^{-1/2},
 F(r)=1-h_2\!\left(\frac{1+b_*(r)}{2}\right).
 ```
 
-The binary entropy $h_2$ is measured in bits. Every finite stage has **positive error**, including sequences approaching $r=0$. In that high-precision limit, $F(0)=1$: a full bit-erasure unit survives even as the average-state entropy loss vanishes. At $r=1$, the limiting heat is about $0.149510$ units.
+The binary entropy $`h_2`$ is measured in bits. Every finite stage has **positive error**, including sequences approaching $`r=0`$. In that high-precision limit, $`F(0)=1`$: a full bit-erasure unit survives even as the average-state entropy loss vanishes. At $`r=1`$, the limiting heat is about $`0.149510`$ units.
 
 ![Optimal limiting heat F(r), in bit-erasure units, versus the finite error-to-squared-overlap ratio r. The curve approaches one as the ratio tends to zero and decreases as the allowed error ratio increases.](docs/figures/limiting-crossover.svg)
 
-*Optimal limiting law computed from `qph.core.crossover`. The logarithmic axis shows positive finite ratios; the endpoint is $F(0)=1$. Each point specifies a joint small-overlap, positive-error limit, rather than a finite-device optimum. [Figure source](scripts/make_figures.py).*
+Optimal limiting law computed from `qph.core.crossover`. The logarithmic axis shows positive finite ratios; the endpoint is $`F(0)=1`$. Each point specifies a joint small-overlap, positive-error limit, rather than a finite-device optimum. [Figure source](scripts/make_figures.py).
 
 The [theorem](docs/THEOREM.md) gives the complete finite bound before taking the limit. The [proof](docs/PROOF.md) covers arbitrary finite Gibbs reservoirs and input-independent workspace states. The [thermal construction](docs/CONSTRUCTION.md) supplies the matching upper limit using a bath qubit followed by charged recovery swaps. Each implementation is finite; its bath size and energy gaps may grow along the optimizing sequence. The result identifies an **infimum**, without asserting an attained finite optimum.
 
 ## A finite comparison
 
-Fix $s=0.05$ and use the same targets for both accuracy requirements:
+Fix $`s=0.05`$ and use the same targets for both accuracy requirements:
 
 | Conditional error tolerance | Heat in bit-erasure units |
 |---|---|
-| $\epsilon=0.0001$ | Every allowed cyclic device has $q\ge0.498044$. |
-| $\epsilon=0.0025$ | One explicit bath-qubit device has $q\simeq0.311485$. |
+| $`\epsilon=0.0001`$ | Every allowed cyclic device has $`q\ge0.498044`$. |
+| $`\epsilon=0.0025`$ | One explicit bath-qubit device has $`q\simeq0.311485`$. |
 
 The relaxed device retains the intended transverse polarization exactly. Its direct energy calculation already establishes this separation, without recovery. The first number is a proved lower bound; the second is the calculated heat of one construction. Neither is an experimental measurement or an exact finite optimum. The [finite benchmark](docs/FINITE_BENCHMARK.md) gives the parameters, return correction, and reference values.
 
@@ -72,7 +72,7 @@ Heat is the mean energy increase of the **complete thermal reservoir**, includin
 
 ![Resource boundary: an unknown input qubit, input-independent workspace, and complete Gibbs reservoir enter one fixed operation. The output qubit leaves, the workspace marginal returns, and all reservoir energy changes count as heat. Final correlations may remain.](docs/figures/resource-boundary.svg)
 
-*The accounting is for one use. Returning a workspace marginal does not by itself establish independent reuse on arbitrary future inputs. [Diagram source](scripts/make_figures.py).*
+The accounting is for one use. Returning a workspace marginal does not by itself establish independent reuse on arbitrary future inputs. [Diagram source](scripts/make_figures.py).
 
 Predetermined external driving is allowed. Under the [boundary Hamiltonian conditions](docs/MODEL.md), heat equals mean supplied work. Controller construction and source preparation lie outside this accounting. The result concerns a conditional quantum operation, with no hardware performance or wall-plug energy estimate attached to it.
 

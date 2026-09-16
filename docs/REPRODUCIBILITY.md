@@ -32,7 +32,7 @@ From another directory, with the same environment activated:
 python -c 'from qph.core import crossover; print(crossover(1))'
 ```
 
-The expected value is approximately $0.1495103748978384$. Both the regular wheel installation and this outside-checkout import were checked on Python 3.12.14. An editable development installation is also available with `python -m pip install -e .`.
+The expected value is approximately $`0.1495103748978384`$. Both the regular wheel installation and this outside-checkout import were checked on Python 3.12.14. An editable development installation is also available with `python -m pip install -e .`.
 
 ## What the calculation checks
 
@@ -81,9 +81,9 @@ Heat values are normalized as
 q=\frac{Q}{k_{\mathrm B}T\ln2}.
 ```
 
-Code entropies are in bits. The collision Hamiltonian is returned in units of $k_{\mathrm B}T$, so its energy increase is divided by $\ln2$ before comparison with the public bounds.
+Code entropies are in bits. The collision Hamiltonian is returned in units of $`k_{\mathrm B}T`$, so its energy increase is divided by $`\ln2`$ before comparison with the public bounds.
 
-The finite collision domain is $0<s<1$ and
+The finite collision domain is $`0<s<1`$ and
 
 ```math
 0<\epsilon<\frac{\sqrt{1-s^2}}2.

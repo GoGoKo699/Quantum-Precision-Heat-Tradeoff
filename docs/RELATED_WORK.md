@@ -24,7 +24,7 @@ The contribution is the [positive-error precision–heat crossover](THEOREM.md#o
 
 **Task and resources.** A fixed quantum operation is implemented exactly using an input-independent canonical bath and an isometry. A heat-transfer operator specifies mean bath heat for each input state. Their finite-bath condition means a finite partition function, allowing infinitely many energy levels. No separately returned nonthermal workspace appears in this criterion.
 
-**Role here.** For the exact pure-target channel, the Kraus products are linearly independent when the target overlap is nonzero. Theorem 4(b)'s heat-transfer-matrix criterion then requires $\beta Q>\ln 2$ for equal priors in its exact model. This inherited restriction does not by itself supply a uniform positive-error estimate as overlap and error vanish together. The present [finite converse](THEOREM.md#finite-bound) and [limiting law](THEOREM.md#optimal-crossover) address that joint limit; they do not reinterpret the exact criterion as an attainable finite-dimensional endpoint.
+**Role here.** For the exact pure-target channel, the Kraus products are linearly independent when the target overlap is nonzero. Theorem 4(b)'s heat-transfer-matrix criterion then requires $`\beta Q>\ln 2`$ for equal priors in its exact model. This inherited restriction does not by itself supply a uniform positive-error estimate as overlap and error vanish together. The present [finite converse](THEOREM.md#finite-bound) and [limiting law](THEOREM.md#optimal-crossover) address that joint limit; they do not reinterpret the exact criterion as an attainable finite-dimensional endpoint.
 
 <a id="bedingham-maroney"></a>
 ### Bedingham and Maroney
@@ -49,7 +49,7 @@ J(s)=\ln 2-h\!\left(\frac{1+s}{2}\right),
 z=\sqrt{1-s^2}-2\epsilon,
 ```
 
-with $h$ the binary entropy in nats. This particular bound tends to zero in the crossover limit. The present converse uses only the allowed output tests and retains a positive limiting heat when the error is of order $s^2$. This evaluates one explicit predecessor inequality, not all its methods or possible stronger consequences. Operation-specific excess heat and ensemble-marginal auxiliary restoration are inherited.
+with $`h`$ the binary entropy in nats. This particular bound tends to zero in the crossover limit. The present converse uses only the allowed output tests and retains a positive limiting heat when the error is of order $`s^2`$. This evaluates one explicit predecessor inequality, not all its methods or possible stronger consequences. Operation-specific excess heat and ensemble-marginal auxiliary restoration are inherited.
 
 ## Battery cost and collective work
 
