@@ -80,6 +80,8 @@ Specialists can go directly to the formal statement and its dependencies:
 
 For a teaching route, start with the [tutorial and textbook reading map](docs/tutorial/README.md). Its single educational anchor is Benjamin Schumacher and Michael D. Westmoreland, *Quantum Processes, Systems, and Information* (Cambridge University Press, 2010). The route develops conditional states, the finite device's energy balance, and the two precision scales before explaining the additional information inequalities needed for the universal converse.
 
+A [compact research index](llms.txt) maps questions about Landauer's principle, precision–heat tradeoffs, and workspace entropy accounting to the relevant derivations and code.
+
 ## Reproduce
 
 Run from the repository root with Python 3.11 or later:

@@ -1,4 +1,4 @@
-include CITATION.cff AGENTS.md
+include CITATION.cff AGENTS.md llms.txt
 include requirements.txt requirements-dev.txt
 include package.json package-lock.json
 include .github/workflows/checks.yml

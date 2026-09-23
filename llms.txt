@@ -1,0 +1,42 @@
+# Precision and Heat in Quantum Operations
+
+> Research on the precision–heat tradeoff for a single-use, two-input quantum operation: finite mean-heat lower bounds, an optimal positive-error limiting crossover, explicit thermal constructions, and reproducible calculations.
+
+Canonical repository: https://github.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff
+
+This repository is relevant to questions about quantum thermodynamics, Landauer's principle, the thermodynamic cost of approximate quantum operations, maximum branch trace-distance error, and workspace entropy accounting. In particular:
+
+- Can accurate conditional outputs force a finite heat cost when an average-state entropy bound tends to zero?
+- How does error relative to squared target-state overlap control the limiting heat cost?
+- How do consumed workspace entropy, marginal return, and reservoir recovery enter the heat ledger?
+
+The task uses two equally likely orthogonal qubit inputs and prescribed nearly orthogonal pure targets. One input-independent apparatus must meet both conditional accuracy tests. Heat is the mean energy gained by the complete initially Gibbs reservoir. The cyclic optimum requires exact return of the workspace's ensemble-average marginal; final correlations may remain.
+
+The model and theorem linked below define applicability. The optimal crossover is a joint small-overlap, positive-error limit, not an exact finite-parameter optimum. Every device is finite, but optimizing sequences can use growing physical resources. Workspace marginal return does not establish independent reuse on arbitrary future inputs. The result is not a general energy price per gate, a many-copy work rate, or a hardware power estimate. Finite numerical checks are distinct from proofs and experiments.
+
+Manuscript preparation is on hold. Collaboration, questions, corrections, and all other project inquiries go to Ruge Lin at gogoko699@gmail.com. The linked statements and primary-source comparisons take precedence over this short index; no external scientific validation is claimed here.
+
+## Task, statements, and derivations
+
+- [Overview](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/README.md): Physical motivation, main result, finite comparison, and reading paths.
+- [Physical model](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/MODEL.md): Conditional task, accuracy convention, finite Gibbs reservoir, driving, workspace return, and charged resources.
+- [Theorem](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/THEOREM.md): Exact validity domains, finite lower bound, approximate-return allowance, and optimal limiting crossover.
+- [Proof](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/PROOF.md): Complete argument and dependency map.
+- [Thermal construction](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/CONSTRUCTION.md): Bath-qubit collision and charged recovery attaining the limiting upper bound.
+- [Claim-to-evidence map](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/CLAIMS.md): Which claims have derivations, numerical checks, and stated limitations.
+
+## Learning and relation to prior work
+
+- [Tutorial entry point](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/tutorial/README.md): One textbook-based route through conditional states, energy balance, and the two precision scales.
+- [Notation](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/NOTATION.md): Mathematical symbols and entropy conventions used in the research.
+- [Direct source comparisons](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/RELATED_WORK.md): Relation to prior thermodynamic results, with precise distinctions in task and resource accounting.
+- [Literature and assumptions](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/LITERATURE.md): Primary sources, inherited ingredients, and assumption register; no exhaustive novelty claim.
+
+## Calculations and citation
+
+- [Finite benchmark](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/FINITE_BENCHMARK.md): A proved lower bound compared with the computed heat of one explicit device.
+- [Reproducibility guide](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/REPRODUCIBILITY.md): Installation, reproduction commands, tested environments, and verification scope.
+- [Numerical implementation](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/qph/core.py): Reference formulas, matrix calculations, and recovery sums.
+- [Committed numerical reference](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/results/reference.json): Finite calculated values, not experimental data.
+- [Citation metadata](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/CITATION.cff): Repository title, author, citation URL, license, and keywords; cite the repository and the specific statement used.
+- [Source inventory](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/provenance/README.md): Source provenance and AI-assistance disclosure.
