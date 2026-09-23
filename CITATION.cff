@@ -14,6 +14,10 @@ keywords:
   - quantum information
   - Landauer principle
   - quantum channels
+  - precision-heat tradeoff
+  - approximate quantum operations
+  - trace distance
+  - workspace entropy
   - reproducible research
 abstract: >-
   Precision-dependent mean heat for a single-use two-input quantum operation,
