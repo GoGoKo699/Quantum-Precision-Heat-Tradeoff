@@ -4,7 +4,7 @@
 
 A device receives either of two orthogonal qubit states and must produce the corresponding prescribed output. The outputs are almost orthogonal, so their average entropy changes very little. Yet requiring sufficiently accurate outputs on **each input** forces a finite environmental information record. When internal workspace is returned, this also forces a finite mean heat cost. This repository gives the physical model, a universal lower bound, a matching limiting construction, and runnable finite examples.
 
-**Manuscript preparation is currently on hold.** Researchers interested in collaborating on this project are welcome to contact **Ruge Lin** at **[gogoko699@gmail.com](mailto:gogoko699@gmail.com)**.
+This repository serves as a record of the work and a guide for the author’s self-directed learning. For discussion or potential collaboration, please contact Ruge Lin at [gogoko699@gmail.com](mailto:gogoko699@gmail.com).
 
 ## Physical task
 
@@ -96,8 +96,8 @@ python scripts/reproduce.py
 
 On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. The calculation writes a separate generated result and preserves the committed [reference record](results/reference.json). The [reproducibility guide](docs/REPRODUCIBILITY.md) gives package installation, documentation checks, figure regeneration, numerical domains, and tested environments.
 
-## Contact and collaboration
+## Purpose and contact
 
-For collaboration, questions, corrections, suggestions, or any other inquiry about this project, please email **Ruge Lin** at **[gogoko699@gmail.com](mailto:gogoko699@gmail.com)**. For a correction, include the relevant page or passage and a brief explanation.
+This repository serves as a record of the work and a guide for the author’s self-directed learning. For discussion or potential collaboration, please contact Ruge Lin at [gogoko699@gmail.com](mailto:gogoko699@gmail.com).
 
 Original code and documentation use the [MIT License](LICENSE), copyright 2026 Ruge Lin. Retain applicable third-party notices; scientific citations are scholarly attribution, not an added license condition. See [citation metadata](CITATION.cff) and the [source inventory and AI-assistance disclosure](provenance/README.md).
