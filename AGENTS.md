@@ -2,7 +2,9 @@
 
 This repository presents a fixed precision–heat research result. The canonical scientific statement is `docs/THEOREM.md`, its resource model is `docs/MODEL.md`, and its complete argument is `docs/PROOF.md` plus `docs/CONSTRUCTION.md`.
 
-Manuscript preparation is on hold. Do not start manuscript drafting, a new research campaign, release tagging, or external correspondence without the owner's instruction.
+This repository serves as a record of the work and a guide for the author’s self-directed learning. For discussion or potential collaboration, please contact Ruge Lin at [gogoko699@gmail.com](mailto:gogoko699@gmail.com).
+
+Do not start manuscript drafting, a new research campaign, release tagging, or external correspondence without the owner's instruction.
 
 Preserve the distinction between proofs, finite tests, source comparisons, and experimental evidence. Do not infer universal correctness from sampled matrices or claim external validation that has not occurred. Public collaboration wording belongs in README; do not replace it with a request for validation. Direct collaboration, questions, corrections, suggestions, and other project inquiries to Ruge Lin at gogoko699@gmail.com. Do not instruct readers to open issues or pull requests. Keep maintainer instructions and literal math-markup examples out of the public contact section.
 

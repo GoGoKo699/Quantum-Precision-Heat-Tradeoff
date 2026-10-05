@@ -14,7 +14,9 @@ The task uses two equally likely orthogonal qubit inputs and prescribed nearly o
 
 The model and theorem linked below define applicability. The optimal crossover is a joint small-overlap, positive-error limit, not an exact finite-parameter optimum. Every device is finite, but optimizing sequences can use growing physical resources. Workspace marginal return does not establish independent reuse on arbitrary future inputs. The result is not a general energy price per gate, a many-copy work rate, or a hardware power estimate. Finite numerical checks are distinct from proofs and experiments.
 
-Manuscript preparation is on hold. Collaboration, questions, corrections, and all other project inquiries go to Ruge Lin at gogoko699@gmail.com. The linked statements and primary-source comparisons take precedence over this short index; no external scientific validation is claimed here.
+This repository serves as a record of the work and a guide for the author’s self-directed learning. For discussion or potential collaboration, please contact Ruge Lin at [gogoko699@gmail.com](mailto:gogoko699@gmail.com).
+
+The linked statements and primary-source comparisons take precedence over this short index; no external scientific validation is claimed here.
 
 ## Task, statements, and derivations
 
