@@ -2,12 +2,12 @@
 
 [Home](../README.md) · [Literature](../docs/LITERATURE.md) · [Direct comparisons](../docs/RELATED_WORK.md) · [Inventory](sources.json)
 
-The canonical documents consolidate the supplied precision–heat research materials into one model, theorem, proof, and construction. The source inventory records SHA-256 identifiers for the input documents and the complete supplied evidence archive. It is provenance metadata, not a runtime dependency.
+The [source inventory](sources.json) records SHA-256 identifiers and sizes for the research source documents and evidence archive, together with versioned primary texts and exact locators for the [direct comparisons](../docs/RELATED_WORK.md) and [proof ingredients](../docs/LITERATURE.md#ingredients-used-in-the-proof).
 
-The current calculation package is self-contained. Its tests and reference data run without source archives or conversation history. The source inventory is not a claim that every earlier exploratory script is part of the current command set.
+The [assumption register](../docs/LITERATURE.md#assumption-register) distinguishes direct precedents, component-level support, and model idealizations. The source comparisons are bounded in scope and do not constitute an exhaustive literature audit.
 
-The inventory also identifies the versioned primary texts and exact locators used for the direct comparisons and proof ingredients. This is a bounded source check. The wider assumption register preserves its component-level support and unmatched conjunctions; its inclusion does not represent an exhaustive new literature audit. The original input hashes and sizes are retained unchanged.
+The [calculation package and tests](../docs/REPRODUCIBILITY.md) run without external data or source archives. The inventory is provenance metadata, not a runtime dependency.
 
-AI assistance was used in research development and repository preparation. Mathematical arguments, primary-source attribution, and executed finite checks are presented separately so that their roles are explicit. No claim of external validation is inferred from a successful computational test.
+AI assistance was used in the research and documentation. The [claim-to-evidence map](../docs/CLAIMS.md) distinguishes mathematical arguments, primary-source attribution, and finite computational checks. Passing tests do not constitute external scientific validation.
 
-No third-party paper text, textbook scans, or font files are redistributed. The existing MIT license for original code and documentation is preserved.
+Original code and documentation use the [MIT License](../LICENSE). No third-party paper text, textbook scans, or font files are redistributed.
