@@ -12,11 +12,11 @@ This repository is relevant to questions about quantum thermodynamics, Landauer'
 
 The task uses two equally likely orthogonal qubit inputs and prescribed nearly orthogonal pure targets. One input-independent apparatus must meet both conditional accuracy tests. Heat is the mean energy gained by the complete initially Gibbs reservoir. The cyclic optimum requires exact return of the workspace's ensemble-average marginal; final correlations may remain.
 
-The model and theorem linked below define applicability. The optimal crossover is a joint small-overlap, positive-error limit, not an exact finite-parameter optimum. Every device is finite, but optimizing sequences can use growing physical resources. Workspace marginal return does not establish independent reuse on arbitrary future inputs. The result is not a general energy price per gate, a many-copy work rate, or a hardware power estimate. Finite numerical checks are distinct from proofs and experiments.
+The model and theorem linked below define applicability. The optimal crossover is a joint small-overlap, positive-error limit, not an exact finite-parameter optimum. Every device is finite, but optimizing sequences can use growing physical resources. Workspace marginal return does not establish independent reuse on arbitrary future inputs. Proofs establish the bounds; finite numerical checks test the implementation and selected identities.
 
 This repository serves as a record of the work and a guide for the author’s self-directed learning. For discussion or potential collaboration, please contact Ruge Lin at [gogoko699@gmail.com](mailto:gogoko699@gmail.com).
 
-The linked statements and primary-source comparisons take precedence over this short index; no external scientific validation is claimed here.
+The linked statements and primary-source comparisons take precedence over this short index.
 
 ## Task, statements, and derivations
 
@@ -32,13 +32,13 @@ The linked statements and primary-source comparisons take precedence over this s
 - [Tutorial entry point](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/tutorial/README.md): One textbook-based route through conditional states, energy balance, and the two precision scales.
 - [Notation](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/NOTATION.md): Mathematical symbols and entropy conventions used in the research.
 - [Direct source comparisons](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/RELATED_WORK.md): Relation to prior thermodynamic results, with precise distinctions in task and resource accounting.
-- [Literature and assumptions](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/LITERATURE.md): Primary sources, inherited ingredients, and assumption register; no exhaustive novelty claim.
+- [Literature and assumptions](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/LITERATURE.md): Primary sources, inherited ingredients, and assumption register.
 
 ## Calculations and citation
 
 - [Finite benchmark](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/FINITE_BENCHMARK.md): A proved lower bound compared with the computed heat of one explicit device.
 - [Reproducibility guide](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/REPRODUCIBILITY.md): Installation, reproduction commands, tested environments, and verification scope.
 - [Numerical implementation](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/qph/core.py): Reference formulas, matrix calculations, and recovery sums.
-- [Committed numerical reference](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/results/reference.json): Finite calculated values, not experimental data.
+- [Committed numerical reference](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/results/reference.json): Calculated benchmark, crossover, and recovery values.
 - [Citation metadata](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/CITATION.cff): Repository title, author, citation URL, license, and keywords; cite the repository and the specific statement used.
 - [Source inventory](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/provenance/README.md): Source provenance and AI-assistance disclosure.

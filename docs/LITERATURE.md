@@ -34,9 +34,9 @@ Version numbers below identify the cited arXiv texts; equation numbers refer to 
 
 ## What the present statement adds
 
-The theorem connects the conditional output tests to an environmental record uniformly in finite environment dimension, converts that record into actual bath heat with charged workspace, and matches the limiting lower bound with a complete thermal construction. The exact finite-parameter optimum is not claimed.
+The theorem connects the conditional output tests to an environmental record uniformly in finite environment dimension, converts that record into actual bath heat with charged workspace, and matches the limiting lower bound with a complete thermal construction.
 
-The [direct comparison page](RELATED_WORK.md) separates that contribution from operation-dependent heat, battery cost, collective work rates, task accuracy, and catalytic state conversion. It includes the explicit Bedingham–Maroney substitution without asserting that every method in that predecessor gives a weaker result.
+The [direct comparison page](RELATED_WORK.md) separates that contribution from operation-dependent heat, battery cost, collective work rates, task accuracy, and catalytic state conversion. It includes the explicit substitution into Bedingham–Maroney's Eq. (9).
 
 ## Assumption register
 
@@ -106,7 +106,7 @@ The bath-only framework is enlarged here by the proved cyclic-workspace extensio
 
 ## Primary-paper register
 
-Each P label identifies one paper. The direct comparisons use the versioned texts named above and on the comparison page. No paper or textbook content is redistributed.
+Each P label identifies one paper. The direct comparisons use the versioned texts named above and on the comparison page.
 
 <a id="p01"></a>
 **P01.** Reeb–Wolf, *An improved Landauer Principle with finite-size corrections*. NJP 16, 103011 (2014). [1306.4352](https://arxiv.org/abs/1306.4352v3).
@@ -195,7 +195,7 @@ Each P label identifies one paper. The direct comparisons use the versioned text
 <a id="p29"></a>
 **P29.** Faist–Berta–Brandão, *Thermodynamic Capacity of Quantum Processes*. PRL 122, 200601 (2019). [1807.05610v2](https://arxiv.org/abs/1807.05610v2). [Collective-work comparison](RELATED_WORK.md#faist-berta-brandao).
 
-P24 and P25 establish related experimental primitives, not a demonstration of this crossover. P26 makes clear why microscopic heat cannot be converted directly into wall-plug savings. P27 uses a restricted primitive set; P28 illustrates the importance of correlation resources. P29 supplies the collective-process comparison and is not an extra direct match to the entire microscopic model.
+P24 and P25 provide experimental context for quantum erasure. P26 addresses full-stack resource accounting. P27 uses a restricted primitive set; P28 illustrates the importance of correlation resources. P29 supplies the collective-process comparison.
 
 ## Returned-workspace references
 

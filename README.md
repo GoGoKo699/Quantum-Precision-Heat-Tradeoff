@@ -54,7 +54,7 @@ Fix $`s=0.05`$ and use the same targets for both accuracy requirements:
 | $`\epsilon=0.0001`$ | Every allowed cyclic device has $`q\ge0.498044`$. |
 | $`\epsilon=0.0025`$ | One explicit bath-qubit device has $`q\simeq0.311485`$. |
 
-The relaxed device retains the intended transverse polarization exactly. Its direct energy calculation already establishes this separation, without recovery. The first number is a proved lower bound; the second is the calculated heat of one construction. Neither is an experimental measurement or an exact finite optimum. The [finite benchmark](docs/FINITE_BENCHMARK.md) gives the parameters, return correction, and reference values.
+The relaxed device retains the intended transverse polarization exactly. Its direct energy calculation already establishes this separation, without recovery. The first number is a proved lower bound; the second is the calculated heat of one construction. The [finite benchmark](docs/FINITE_BENCHMARK.md) gives the parameters, return correction, and reference values.
 
 ## Resource accounting
 
@@ -64,7 +64,7 @@ Heat is the mean energy increase of the **complete thermal reservoir**, includin
 
 The accounting is for one use. Returning a workspace marginal does not by itself establish independent reuse on arbitrary future inputs. [Diagram source](scripts/make_figures.py).
 
-Predetermined external driving is allowed. Under the [boundary Hamiltonian conditions](docs/MODEL.md), heat equals mean supplied work. Controller construction and source preparation lie outside this accounting. The result concerns a conditional quantum operation, with no hardware performance or wall-plug energy estimate attached to it.
+Predetermined external driving is allowed. Under the [boundary Hamiltonian conditions](docs/MODEL.md), heat equals mean supplied work. Controller construction and source preparation lie outside this accounting.
 
 ## Reading paths
 

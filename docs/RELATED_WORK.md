@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Physical model](MODEL.md) · [Main result](THEOREM.md) · [Source and assumption register](LITERATURE.md)
 
-The contribution is the [positive-error precision–heat crossover](THEOREM.md#optimal-crossover) for the specified two-input task: a converse uniform in finite apparatus dimension, charged internal workspace, and a matching thermal construction. Operation-dependent cost, approximate processing, catalytic return, and work recovery have established predecessors. The comparisons below identify the particular results used; they do not establish an exhaustive novelty or subsumption theorem.
+The contribution is the [positive-error precision–heat crossover](THEOREM.md#optimal-crossover) for the specified two-input task: a converse uniform in finite apparatus dimension, charged internal workspace, and a matching thermal construction. Operation-dependent cost, approximate processing, catalytic return, and work recovery have established predecessors. The comparisons below identify the particular results used and their task and resource conventions.
 
 ## Microscopic heat and recovery
 
@@ -60,7 +60,7 @@ with $`h`$ the binary entropy in nats. This particular bound tends to zero in th
 
 **Task and resources.** A specified process acts on a specified input while preserving its prescribed correlations with a reference. Gibbs-preserving operations act on system and battery; trace-nonincreasing, Gibbs-sub-preserving maps provide an equivalent optimization description. The cost is battery depletion, with pure qubits convertible to work. Smoothing uses purified distance on the process state, rather than the maximum trace distance of two branch outputs. The battery may be consumed; it is not an exactly returned workspace.
 
-**Role here.** The Main Result, Eq. (3), characterizes optimal battery yield through coherent relative entropy; Proposition I links exact implementation to Gibbs-sub-preservation. Equation (12) concerns an independent-copy limit. These establish process-level resource accounting and distinguish a channel implementation from an average-state transition. The present theorem instead bounds the complete microscopic bath's mean heat for a two-input task. No equality between these cost functions, nor reduction proving either complete framework stronger, is established here.
+**Role here.** The Main Result, Eq. (3), characterizes optimal battery yield through coherent relative entropy; Proposition I links exact implementation to Gibbs-sub-preservation. Equation (12) concerns an independent-copy limit. These establish process-level resource accounting and distinguish a channel implementation from an average-state transition. The present theorem bounds the complete microscopic bath's mean heat for a two-input task. The two frameworks use different cost functions.
 
 <a id="faist-berta-brandao"></a>
 ### Faist, Berta, and Brandão
@@ -69,7 +69,7 @@ with $`h`$ the binary entropy in nats. This particular bound tends to zero in th
 
 **Task and resources.** Many independent uses of a specified channel are implemented universally, including reference-entangled inputs, with vanishing diamond-norm error. Equation (3) gives the asymptotic work rate as the largest input-to-output free-energy increase. The construction allows a work supply and Gibbs-preserving operations; the thermal-operation result is restricted to time-covariant channels. Its collective rate is not an exact-return condition on arbitrary single-use workspace.
 
-**Role here.** This is a direct predecessor for input-independent thermodynamic channel implementation. Its many-copy limit and work currency differ from the single-use mean-heat infimum at positive error used here. Comparing an entropy difference or capacity alone does not identify the heat of the complete finite apparatus. The cited Letter separates its announced results from the technical proofs in its companion work; no stronger cross-framework claim is inferred from the Letter's rate formula.
+**Role here.** This is a direct predecessor for input-independent thermodynamic channel implementation. Its many-copy limit and work currency differ from the single-use mean-heat infimum at positive error used here. Comparing an entropy difference or capacity alone does not identify the heat of the complete finite apparatus. The cited Letter states the rate formula and its companion work gives the technical proofs.
 
 ## Accuracy as an operational task
 
@@ -80,7 +80,7 @@ with $`h`$ the binary entropy in nats. This particular bound tends to zero in th
 
 **Task and resources.** A task specifies input states and output test observables. Accuracy is the minimum expected test score over inputs, with a general enough specification to test several observables per input. Channels are optimized subject to that task, using Gibbs-preserving operations and an information battery. The objective counts clean qubits consumed. This is not automatically the same numerical error parameter as branch trace distance.
 
-**Role here.** Equation (1) is an accuracy/nonequilibrium bound in terms of reverse entropy. Theorem 1 gives an attainability interval under its stated hypotheses. Its tradeoff varies task score and battery budget. Thus task-level optimization and thermodynamic accuracy tradeoffs are inherited concepts. Here the currency is actual bath heat, the workspace has a separate entropy ledger, and the limiting regime fixes error relative to squared overlap. Relating their exact task-cost optimization to this microscopic heat infimum would require an explicit matching of metrics and resource rules; that reduction is not established here.
+**Role here.** Equation (1) is an accuracy/nonequilibrium bound in terms of reverse entropy. Theorem 1 gives an attainability interval under its stated hypotheses. Its tradeoff varies task score and battery budget. Thus task-level optimization and thermodynamic accuracy tradeoffs are inherited concepts. Here the currency is actual bath heat, the workspace has a separate entropy ledger, and the limiting regime fixes error relative to squared overlap.
 
 ## Returned workspace and correlations
 
@@ -100,8 +100,8 @@ These are precedents for resource conventions, not ingredients proving the cross
 
 [Ng et al., arXiv:1405.3039v1](https://arxiv.org/abs/1405.3039v1), §II.1–II.2 and Supplemental Material Theorem II.3, examine approximate catalyst return under thermal operations. A small catalyst trace-distance change alone can permit otherwise forbidden state conversions when its dimension grows; dimension or energy constraints restrict this effect. Their objective is state-conversion feasibility, rather than this conditional task's mean heat.
 
-The present [approximate-return statement](THEOREM.md#workspace-return) charges the workspace's possible entropy increase. Its quantitative dimension-dependent allowance comes from [Audenaert's entropy continuity theorem](LITERATURE.md#r6), not a new catalysis criterion.
+The present [approximate-return statement](THEOREM.md#workspace-return) charges the workspace's possible entropy increase. Its quantitative dimension-dependent allowance comes from [Audenaert's entropy continuity theorem](LITERATURE.md#r6).
 
 ## Mathematical ingredients
 
-The [proof-source guide](LITERATURE.md#ingredients-used-in-the-proof) identifies the exact roles of Nishiyama's sharp scalar inequality, Winter's conditional-entropy continuity bound, Audenaert's entropy continuity bound, the complete CS decomposition, and Golden–Thompson. None of these standard ingredients is claimed as new. The noncommuting reduction and transfer to the actual environment are written out in the [proof](PROOF.md).
+The [proof-source guide](LITERATURE.md#ingredients-used-in-the-proof) identifies the exact roles of Nishiyama's sharp scalar inequality, Winter's conditional-entropy continuity bound, Audenaert's entropy continuity bound, the complete CS decomposition, and Golden–Thompson. The noncommuting reduction and transfer to the actual environment are written out in the [proof](PROOF.md).

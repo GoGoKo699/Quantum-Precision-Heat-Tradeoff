@@ -20,7 +20,7 @@ The book develops quantum mechanics alongside the physical meaning of informatio
 | Understanding the two-qubit circuit | Chapter 18, as needed |
 | Entropy, correlations, and thermodynamic cost | Chapter 19 |
 
-For a reader who already knows qubits, Chapters 8, 9, and 19 are the main bridge. In Chapter 19, sections 19.1 and 19.3 provide the classical and quantum entropy foundations; sections 19.5–19.6 connect them to thermodynamics and work. This is a targeted reading route, not a requirement to read the book cover to cover. No textbook pages, scans, or copied exercises are included.
+For a reader who already knows qubits, Chapters 8, 9, and 19 are the main bridge. In Chapter 19, sections 19.1 and 19.3 provide the classical and quantum entropy foundations; sections 19.5–19.6 connect them to thermodynamics and work. These chapters form the targeted reading route.
 
 <a id="route"></a>
 ## The tutorial route

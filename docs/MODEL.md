@@ -106,4 +106,4 @@ Small trace-distance return does not guarantee small entropy consumption when wo
 
 Each implementation is finite. The infimum may use a sequence with increasing bath size, energy gaps, operation duration, or control complexity. No uniform cap on these resources is imposed. Exact pure output at nonzero overlap is not assumed attainable with a finite full-rank bath in the bath-only setting: the [crossover limit](THEOREM.md#optimal-crossover) uses positive errors at every finite stage.
 
-This is a single-use, conditional-input task. It is not a many-copy amortized work rate, a general price per quantum gate, or a wall-plug energy estimate. The [source comparison](LITERATURE.md) records which assumptions and results are inherited; the [claim map](CLAIMS.md) separates proofs from computed examples.
+This is a single-use, conditional-input task. The [source comparison](LITERATURE.md) records which assumptions and results are inherited; the [claim map](CLAIMS.md) separates proofs from computed examples.

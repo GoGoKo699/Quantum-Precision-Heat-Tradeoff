@@ -43,7 +43,7 @@ The Python wheel contains the numerical package and its license. The source dist
 - [Reproduction script](../scripts/reproduce.py): evaluates the finite benchmark and selected limiting-function and recovery values.
 - [Reference record](../results/reference.json): unchanged expected values, compared recursively with a numerical tolerance by the repository checker.
 
-The [claim map](CLAIMS.md) links each test to the mathematical step it supports. Finite computations check the implementation and selected identities. The arbitrary-dimensional result rests on the [proof](PROOF.md), with no experimental evidence implied by a passing test.
+The [claim map](CLAIMS.md) links each test to the mathematical step it supports. Finite computations check the implementation and selected identities. The arbitrary-dimensional result rests on the [proof](PROOF.md).
 
 ## Documentation checks
 
@@ -73,7 +73,7 @@ python -m pip install -r requirements-dev.txt
 python scripts/make_figures.py
 ```
 
-The [source script](../scripts/make_figures.py) writes accessible SVGs under `docs/figures`. The logarithmic plot shows positive finite error ratios; its caption separately gives the endpoint. It plots an optimal limiting law, with no finite optimization or experimental dataset. The resource diagram includes all thermal recovery systems in the charged reservoir. Both figures have an explicit light background so their labels remain readable on dark pages.
+The [source script](../scripts/make_figures.py) writes accessible SVGs under `docs/figures`. The logarithmic plot shows the optimal limiting law at positive finite error ratios; its caption separately gives the endpoint. The resource diagram includes all thermal recovery systems in the charged reservoir. Both figures have an explicit light background so their labels remain readable on dark pages.
 
 ## Units and numerical domains
 
