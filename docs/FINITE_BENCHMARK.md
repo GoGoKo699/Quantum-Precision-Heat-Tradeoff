@@ -44,7 +44,7 @@ The allowance applies to the whole auxiliary marginal, not separately to each sm
 
 No parameter tends to zero. The relaxed device uses one finite thermal qubit. The strict class is nonempty: the same construction at the stricter error has a full-rank finite thermal input, although its bare cost is higher.
 
-The input preparations and ideal joint unitary are specified mathematically. These values are not experimental observations, certified hardware tolerances, or a wall-plug saving. A platform-specific error budget must account for these state tests; replacing their metric by average gate fidelity changes the specification.
+The input preparations and ideal joint unitary are specified mathematically. A platform-specific error budget must account for these state tests; replacing their metric by average gate fidelity changes the specification.
 
 ## Reproduce the values
 

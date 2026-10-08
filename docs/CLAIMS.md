@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Theorem](THEOREM.md) · [Proof](PROOF.md#dependencies) · [Reproduce](REPRODUCIBILITY.md)
 
-The proof establishes implications of the physical model. The tests check finite matrices and implemented formulas; the committed result record contains computed examples. Source comparisons establish attribution and model distinctions. None of these is an experimental measurement.
+The proof establishes implications of the physical model. The tests check finite matrices and implemented formulas; the committed result record contains computed examples. Source comparisons establish attribution and model distinctions.
 
 <a id="finite-lower-bound"></a>
 ## Dimension-uniform finite lower bound
@@ -52,6 +52,6 @@ The proof establishes implications of the physical model. The tests check finite
 <a id="source-roles"></a>
 ## Inherited ingredients and comparisons
 
-The [proof source register](LITERATURE.md#r1), [assumption register](LITERATURE.md#assumption-register), and [direct comparisons](RELATED_WORK.md) identify inherited identities, inequalities, constructions, and model conventions. Each cited theorem has a defined role. No numerical test certifies attribution or exhaustive novelty.
+The [proof source register](LITERATURE.md#r1), [assumption register](LITERATURE.md#assumption-register), and [direct comparisons](RELATED_WORK.md) identify inherited identities, inequalities, constructions, and model conventions. Each cited theorem has a defined role.
 
 The [tutorial](tutorial/README.md) explains the task and finite device before introducing what a universal converse requires. It is an educational route, not a replacement for the canonical proof.

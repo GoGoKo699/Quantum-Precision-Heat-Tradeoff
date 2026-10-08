@@ -93,6 +93,6 @@ That is much larger than an allowed error of order $`s^2`$. A fidelity-based sco
 
 **What has the theorem supplied?**
 
-It supplies an optimal limiting statement for this single-use physical task, together with finite lower bounds and explicit devices. It does not supply an exact finite-parameter optimum, an autonomous implementation, an experimental realization, or a universal cost per quantum gate.
+It supplies an optimal limiting statement for this single-use physical task, together with finite lower bounds and explicit devices.
 
 Continue directly to the [theorem](../THEOREM.md#optimal-crossover), [proof](../PROOF.md), or [finite benchmark](../FINITE_BENCHMARK.md#comparison).
