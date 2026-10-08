@@ -2,11 +2,11 @@
 
 [Home](../README.md) · [Direct comparisons](RELATED_WORK.md) · [Model](MODEL.md) · [Proof](PROOF.md)
 
-The [direct comparisons](RELATED_WORK.md) explain the closest predecessors by task, allowed resources, cost, error, and limiting regime. This page retains the assumption register and source identifiers. The [single-textbook tutorial](tutorial/README.md) is a separate teaching route.
+The [direct comparisons](RELATED_WORK.md) explain the closest predecessors by task, allowed resources, cost, error, and limiting regime. This page identifies the proof ingredients and the sources supporting each modeling assumption. The [single-textbook tutorial](tutorial/README.md) provides a teaching route.
 
 ## Ingredients used in the proof
 
-Version numbers below identify the inspected arXiv texts; equation numbers refer to those versions. A source is credited for its actual role, not for the complete conjunction of assumptions used here.
+Version numbers below identify the cited arXiv texts; equation numbers refer to those versions. Each source is credited for its specific role in the proof.
 
 <a id="r1"></a>
 **R1. Reeb and Wolf.** *An improved Landauer Principle with finite-size corrections*, New Journal of Physics 16, 103011 (2014). [1306.4352v3](https://arxiv.org/abs/1306.4352v3). Theorem 3, Eqs. (21)–(22): microscopic heat equality. Section 6, Proposition 8: successive-reservoir construction. [Comparison](RELATED_WORK.md#reeb-wolf).
@@ -40,19 +40,19 @@ The [direct comparison page](RELATED_WORK.md) separates that contribution from o
 
 ## Assumption register
 
-The register distinguishes direct microscopic precedents from component-level support. A publication count is not community consensus, and journal venue alone does not establish physical suitability. The complete conjunction is not claimed to occur in every cited framework.
+The register distinguishes direct microscopic precedents from support for individual assumptions. The cited frameworks differ in their tasks and resource rules; none is assumed to share the complete conjunction used here.
 
 ### Initially independent Gibbs reservoir, joint unitary, complete mean reservoir-energy heat
 
 **Precedents:** [P01–P05](#p01).
 
-Five direct framework precedents, including PRLs P02 and P03. These papers study different tasks.
+These microscopic heat frameworks study different tasks.
 
 ### Finite-reservoir modeling
 
 **Precedents:** [P01](#p01), [P02](#p02), [P04](#p04), [P05](#p05), [P22](#p22).
 
-Four close-framework precedents and one neighboring finite-bath treatment, not five identical models.
+These include close-framework precedents and a neighboring finite-bath treatment, with distinct models.
 
 ### Degenerate information-bearing boundary energies
 
@@ -76,13 +76,13 @@ Includes finite-time and measurement models with different allowed dynamics.
 
 **Precedents:** [P16–P20](#p16).
 
-Five quantum-information precedents, including PRL P17; they support the metric, not an application's need for this tolerance.
+These quantum-information results support the metric; the appropriate tolerance depends on the task.
 
 ### Returned auxiliary marginal, with possible correlations
 
 **Precedents:** [P06](#p06) and [C01–C04](#c01).
 
-Five related primary precedents, including three PRLs. C01 includes catalyst dephasing; P06 and C02–C04 impose exact marginal return in their respective frameworks. These are not five identical resource models, and marginal return alone does not ensure arbitrary multi-use composability.
+C01 includes catalyst dephasing; P06 and C02–C04 impose exact marginal return in their respective frameworks. Their resource models differ, and marginal return alone does not ensure arbitrary multi-use composability.
 
 ### Approximate auxiliary return
 
@@ -94,19 +94,19 @@ Dimension and entropy capacity must be charged. Trace distance alone is not dime
 
 **Precedents:** Related [P01](#p01), [P05](#p05), [P06](#p06), [P21](#p21), [P22](#p22).
 
-Five direct matches to the entire conjunction are not asserted. These remain visible model idealizations.
+The exact conjunction is a model idealization, rather than a shared assumption of all the related sources.
 
 ### Two inputs, equal priors, particular pure targets, and error-to-overlap scaling
 
 **Precedents:** [P07](#p07) and [P27](#p27) are close task precedents.
 
-A selected benchmark and a derived scaling law, not assumptions validated by counting publications.
+The input ensemble and target states define the selected benchmark; the error-to-overlap scaling follows from the theorem.
 
 The bath-only framework is enlarged here by the proved cyclic-workspace extension. Papers that omit auxiliaries do not prove that extension. Papers allowing consumed batteries do not make their entropy capacity free in this heat model.
 
 ## Primary-paper register
 
-Each P label identifies one paper, not separate counts for versions or corrections. The full original register is retained; the bounded direct comparisons use the versioned texts named above and on the comparison page. No paper or textbook content is redistributed.
+Each P label identifies one paper. The direct comparisons use the versioned texts named above and on the comparison page. No paper or textbook content is redistributed.
 
 <a id="p01"></a>
 **P01.** Reeb–Wolf, *An improved Landauer Principle with finite-size corrections*. NJP 16, 103011 (2014). [1306.4352](https://arxiv.org/abs/1306.4352v3).
@@ -187,7 +187,7 @@ Each P label identifies one paper, not separate counts for versions or correctio
 **P26.** Fellous-Asiani et al., *Optimizing Resource Efficiencies for Scalable Full-Stack Quantum Computers*. PRX Quantum 4, 040319 (2023). [2209.05469](https://arxiv.org/abs/2209.05469).
 
 <a id="p27"></a>
-**P27.** Dunlop et al., *Thermodynamically Optimal Protocols for Dual-Purpose Qubit Operations*. The inspected arXiv version is used here without assigning a journal-level count. [2306.09088v3](https://arxiv.org/abs/2306.09088v3).
+**P27.** Dunlop et al., *Thermodynamically Optimal Protocols for Dual-Purpose Qubit Operations*. [2306.09088v3](https://arxiv.org/abs/2306.09088v3).
 
 <a id="p28"></a>
 **P28.** Lostaglio–Mueller–Pastena, *Stochastic Independence as a Resource in Small-Scale Thermodynamics*. PRL 115, 150402 (2015). [1409.3258](https://arxiv.org/abs/1409.3258).
@@ -216,4 +216,4 @@ The [return-convention comparison](RELATED_WORK.md#returned-workspace) gives exa
 <a id="c05"></a>
 **C05.** Ng et al., *Limits to catalysis in quantum thermodynamics*, NJP 17, 085004 (2015). [1405.3039v1](https://arxiv.org/abs/1405.3039v1). Section II.1–II.2 and Supplemental Material Theorem II.3: approximate return and dimension/energy restrictions.
 
-The [source inventory](../provenance/README.md) preserves input identification and factual provenance separately from this scientific reading route.
+The [source inventory](../provenance/README.md) lists research source identifiers and versioned primary-source locators.

@@ -56,15 +56,13 @@ python scripts/check_repository.py
 npm run docs:render
 ```
 
-The checker parses Markdown, compiles inline and display TeX with MathJax, resolves local destinations and fragments, checks heading and explicit anchors, checks image presence and alt text, rejects environment-specific markup, and compares displayed benchmark values with the reference. Deliberately broken fixtures verify that syntax, anchor, image, and excessive-width failures are detected.
+The checker validates Markdown syntax, inline and display mathematics, local links and anchors, images and alt text, equation widths, and displayed benchmark values. Its tests include deliberately broken documents to verify that failures are detected.
 
-It also rejects unformatted mathematical subscripts and superscripts in parsed prose. Code, file paths, and link destinations are excluded. This targeted guard catches common notation regressions; it does not classify every possible formula or replace visual inspection.
+`npm run docs:render` writes an HTML preview of every active Markdown page and a validation manifest to `build/docs-preview`.
 
-The local renderer uses markdown-it and MathJax SVG output. It estimates intrinsic SVG widths at 8 pixels per ex unit, with 16-pixel surrounding text, against a 760-pixel desktop reading column. Related definitions share a line, while derivations retain meaningful aligned steps. It writes HTML and a manifest to `build/docs-preview`. The preview opens at 1280 pixels and also offers 1440 pixels; narrower widths remain available for additional inspection. Wide displays scroll within their own local preview container. Font sizes are not reduced to make expressions pass.
+These local checks do not certify live GitHub layout or external link availability, and the notation checks do not replace visual inspection.
 
-**These are local checks.** They do not reproduce GitHub's entire styling or certify its live layout. Live GitHub visual inspection at desktop widths is a separate acceptance step. External destination availability also requires a separate check. Rendering evidence belongs in build artifacts, rather than the scientific reference data.
-
-[Continuous integration](../.github/workflows/checks.yml) runs the numerical and documentation checks and retains the generated preview and its validation manifest as build artifacts. The published [GitHub math guidance](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions) defines the supported inline delimiters and fenced display syntax.
+[Continuous integration](../.github/workflows/checks.yml) runs the numerical and documentation checks and makes the generated preview and manifest available as build artifacts.
 
 ## Regenerate the figures
 
