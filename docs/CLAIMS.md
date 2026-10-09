@@ -22,6 +22,24 @@ The proof establishes implications of the physical model. The tests check finite
 
 **Executable support:** [test_entropy_and_limits](../tests/test_core.py#L25), [test_recovery_sum](../tests/test_core.py#L78), and the formula implementations in [qph/core.py](../qph/core.py). These check endpoint conventions and finite recovery sums and inequalities. They do not identify an exact finite-parameter optimum.
 
+<a id="channel-equivalence"></a>
+## Channel accuracy at the same optimal heat
+
+**Claim:** throughout the positive-error domain, the [half-diamond and branch-test heat infima coincide](THEOREM.md#channel-equivalence), so their optimal crossover is the same.
+
+**Mathematical evidence:** the [Gibbs dephasing conversion and channel-distance identity](PROOF.md#channel-equivalence) preserve each basis-input joint output and its heat, and bound the channel difference with every reference system.
+
+**Executable support:** [channel conversion tests](../tests/test_channel_conversion.py) check the controlled phase, basis-branch invariance, complete heat and workspace return, and the error expression on an entangled input for a coherent channel. These are finite consistency checks; the equality of infima follows from the analytic conversion.
+
+<a id="exact-output-obstruction"></a>
+## Exact-output obstruction with returned workspace
+
+**Claim:** [exact nonorthogonal pure targets are impossible](THEOREM.md#exact-output-obstruction) for a finite full-rank Gibbs reservoir and exactly returned ensemble-average workspace, including rank-deficient workspace states.
+
+**Mathematical evidence:** the [support-and-rank proof](PROOF.md#exact-output-obstruction) combines purity, positivity of the returned average, full bath rank, and preservation of orthogonal branch supports. It does not assume conditional workspace return.
+
+**Boundary example:** [test_consumed_purity_control](../tests/test_core.py#L156) illustrates the different consumed-workspace model. The arbitrary-apparatus obstruction is proved by the support argument.
+
 <a id="finite-device"></a>
 ## Explicit conditional outputs and energy cost
 

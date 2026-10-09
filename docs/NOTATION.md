@@ -35,6 +35,8 @@ D(\rho,\sigma)=\frac12\|\rho-\sigma\|_1.
 
 The tolerance $`\epsilon`$ bounds the maximum of the two output trace distances. The separate tolerance $`\delta`$ bounds workspace return. Neither is an infidelity.
 
+In the [channel corollary](THEOREM.md#channel-equivalence), $`\mathcal T_s`$ is the target measure-and-prepare channel, $`\mathcal N`$ is an apparatus's system channel, and $`\|\cdot\|_{\diamond}`$ is the completely bounded trace norm. The channel error is $`\|\mathcal N-\mathcal T_s\|_{\diamond}/2`$. The infima $`q_{\min}`$ and $`q_{\min}^{\diamond}`$ use branch accuracy and channel accuracy respectively, with the same mean-heat and workspace-return conventions.
+
 In the proof, $`\delta_x`$ is the probability that the output is in the wrong computational-basis state on input $`x`$, and $`\bar\delta=(\delta_0+\delta_1)/2`$. Its upper bound is $`d=(1-c)/2+\epsilon`$, with $`c=\sqrt{1-s^2}`$. The construction's parameter $`u`$ equals this same $`d`$.
 
 The spectral quantity $`\mathcal T`$ is the normalized triangular discrimination defined in the [spectral lemma](PROOF.md#spectral-discrimination). The symbol $`b_0`$ bounds $`\sqrt{\mathcal T}`$ from below; the different symbol $`b`$ is the explicit construction's thermal bias. Their limiting value is $`b_*(r)`$, with $`r=\lim\epsilon/s^2`$.

@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Model](MODEL.md) · [Theorem](THEOREM.md) · [Notation](NOTATION.md) · [Construction](CONSTRUCTION.md)
 
-This document proves the dimension-uniform lower bound and its limiting match to the thermal construction. Entropies are in bits unless a natural-log calculation is explicitly marked. All states and unitaries below are finite dimensional.
+This document proves the dimension-uniform lower bound, its limiting match to the thermal construction, and the channel-accuracy and exact-output consequences. Entropies are in bits unless a natural-log calculation is explicitly marked. All states and unitaries below are finite dimensional.
 
 <a id="dependencies"></a>
 ## Proof dependencies
@@ -19,6 +19,8 @@ Each step identifies its assumptions and the statement passed to the next step:
 8. [Matching limit](#matching-limit) combines the uniform converse with the [thermal construction](CONSTRUCTION.md#recovery).
 
 The first six steps use only $`E=AB`$ and its fixed input-independent initial state $`\Omega=\tau_A\otimes\gamma_B`$. They allow rank-deficient $`\Omega`$ and do not use Gibbs structure.
+
+Two further consequences use the same apparatus model: [thermal input dephasing](#channel-equivalence) equates the branch and channel heat infima, and a [support-and-rank argument](#exact-output-obstruction) rules out exact outputs with returned workspace.
 
 <a id="output-tests"></a>
 ## Lemma 1: conditional output constraints
@@ -432,6 +434,126 @@ For any desired positive residual, a finite integer $`M`$ makes the last term sm
 At $`r=0`$, the bias tends to one. The gap and the necessary recovery resources may grow, but every finite stage still has positive error, $`b<1`$, and a full-rank finite Gibbs bath. The proof never substitutes an exact pure bath resource. The two limits coincide.
 
 Recovery is needed to approach the optimal curve. The [finite strict/relaxed separation](FINITE_BENCHMARK.md#comparison) already uses the bare collision heat and requires no recovery claim.
+
+<a id="channel-equivalence"></a>
+## Full-channel accuracy at unchanged mean heat
+
+Use the two optimizations and target channel in the [channel-equivalence corollary](THEOREM.md#channel-equivalence), with $`0<s<1`$ and $`0<\epsilon<\sqrt{1-s^2}/2`$. The diamond norm is the completely bounded trace norm; see [Watrous](LITERATURE.md#p20) for this standard metric. Diamond feasibility implies both branch tests, hence $`q_{\min}\le q_{\min}^{\diamond}`$.
+
+**Physical dephasing.** Take any branch-feasible apparatus, with unitary $`U_{SAB}`$ and system channel $`\mathcal N`$. Add a reservoir qubit $`C`$ with $`H_C=0`$ and $`\gamma_C=I_C/2`$. At the same temperature the complete initial reservoir is
+
+```math
+\gamma_{BC}=\gamma_B\otimes\frac{I_C}{2},
+\qquad H_{BC}=H_B\otimes I_C.
+```
+
+This is a finite full-rank Gibbs state. Apply the standard controlled-phase realization of dephasing,
+
+```math
+W_{CS}=|0\rangle\langle0|_C\otimes I_S
+       +|1\rangle\langle1|_C\otimes Z_S,
+```
+
+then apply $`U_{SAB}`$, acting trivially on $`C`$. Their product is one input-independent joint unitary on the enlarged apparatus. Since $`Z|x\rangle=(-1)^x|x\rangle`$,
+
+```math
+W_{CS}\left(\frac{I_C}{2}\otimes|x\rangle\langle x|\right)W_{CS}^{\dagger}
+=\frac{I_C}{2}\otimes|x\rangle\langle x|.
+```
+
+Thus each original branch enters $`U_{SAB}`$ unchanged, and its entire final state on $`SAB`$ is preserved, with an independent $`I_C/2`$ factor. Both branch outputs, their reservoir energy changes, and the ensemble-average workspace return are identical to those of the original device. The additional component has zero energy at all times because $`H_C=0`$, so the complete charged heat is unchanged. Adding this qubit is permitted because the optimization imposes no fixed reservoir dimension.
+
+For a general system input, tracing out $`C`$ after the controlled phase gives
+
+```math
+\mathcal D_Z(\rho)=\frac{\rho+Z\rho Z}{2},
+\qquad
+\widetilde{\mathcal N}(\rho)
+=(\mathcal N\circ\mathcal D_Z)(\rho)
+=\sum_x\langle x|\rho|x\rangle\sigma_x.
+```
+
+The physical reservoir qubit supplies the dephasing; it is included in the initial Gibbs state and the heat ledger.
+
+<a id="dephased-channel-distance"></a>
+**Channel distance.** Write $`\Delta_x=\sigma_x-\phi_x`$ and $`e=\max_x\|\Delta_x\|_1/2`$. For any state $`\rho_{SR}`$ including a reference, its diagonal reference blocks $`R_x=\langle x|\rho_{SR}|x\rangle`$ are positive and have total trace one. Therefore
+
+```math
+\begin{aligned}
+[(\widetilde{\mathcal N}-\mathcal T_s)\otimes\mathrm{id}_R](\rho_{SR})
+&=\sum_x\Delta_x\otimes R_x,\\
+\frac12\left\|\sum_x\Delta_x\otimes R_x\right\|_1
+&\le\sum_x\frac{\|\Delta_x\|_1}{2}\,\mathrm{Tr}R_x\le e.
+\end{aligned}
+```
+
+The bound also holds for the induced norm on arbitrary operators. For any operator $`M`$ on $`SR`$, with diagonal blocks $`M_{xx}`$, unitary invariance and convexity of trace norm give the pinching bound
+
+```math
+\sum_x\|M_{xx}\|_1
+=\|(\mathcal D_Z\otimes\mathrm{id}_R)(M)\|_1
+\le\|M\|_1.
+```
+
+Indeed, this pinching is the average of conjugation by the identity and by $`Z_S\otimes I_R`$. Multiplicativity of trace norm on tensor products and the triangle inequality then bound the output norm by $`2e\sum_x\|M_{xx}\|_1\le2e\|M\|_1`$, for every reference dimension. A basis input attaining the largest branch error supplies the reverse inequality. Thus
+
+```math
+\frac12\|\widetilde{\mathcal N}-\mathcal T_s\|_{\diamond}
+=\max_x D(\sigma_x,\phi_x).
+```
+
+Every branch-feasible device consequently has a diamond-feasible implementation at the same mean heat. Taking infima gives $`q_{\min}^{\diamond}\le q_{\min}`$, proving equality without assuming attainment. The [existing limiting match](#matching-limit) then supplies the same crossover. The conversion changes the channel on coherent inputs; it is not a certification of the unmodified device from its two branch outputs.
+
+<a id="exact-output-obstruction"></a>
+## Exact-output obstruction with returned workspace
+
+Fix $`0<s<1`$ and suppose both branch system outputs are exactly $`\phi_x(s)`$. Let $`k=\mathrm{rank}\,\tau_A`$, $`d_B=\dim\mathcal H_B`$, and let $`P_A`$ project onto $`\mathrm{supp}\,\tau_A`$. Put
+
+```math
+\mathcal K=\mathrm{supp}(\tau_A)\otimes\mathcal H_B,
+\qquad
+\mathrm{rank}(\tau_A\otimes\gamma_B)=k d_B=\dim\mathcal K.
+```
+
+The rank identity uses the full rank of the finite Gibbs state. The following elementary support fact will be used below: if $`M\ge0`$ and $`P`$ is a projector, then
+
+```math
+\mathrm{Tr}[(I-P)M]
+=\|M^{1/2}(I-P)\|_2^2=0
+\quad\Longrightarrow\quad M=PMP,
+```
+
+where $`\|\cdot\|_2`$ is the Hilbert–Schmidt norm. Exact purity of the system marginal applies this fact with $`P=\phi_x\otimes I_{AB}`$. The final joint state must therefore factor as
+
+```math
+\rho'_{SAB,x}=\phi_x\otimes\omega_x,
+\qquad \mathrm{rank}\,\omega_x=k d_B,
+```
+
+where rank follows from the common unitary and the rank-one system factor. This factorization is forced by purity; correlations within $`AB`$ are still allowed.
+
+Write $`\eta_x=\mathrm{Tr}_B\omega_x`$. Exact ensemble-average return gives $`(\eta_0+\eta_1)/2=\tau_A`$, so
+
+```math
+0=\frac12\sum_x\mathrm{Tr}[(I_A-P_A)\eta_x].
+```
+
+Each summand is nonnegative. Hence each vanishes, and the support fact gives $`\eta_x=P_A\eta_xP_A`$. Also
+
+```math
+\mathrm{Tr}[((I_A-P_A)\otimes I_B)\omega_x]=0,
+```
+
+so the same fact with projector $`P_A\otimes I_B`$ gives $`\mathrm{supp}\,\omega_x\subseteq\mathcal K`$. Since each rank equals $`\dim\mathcal K`$, both states are strictly positive on the same support. If $`\lambda>0`$ is the smallest eigenvalue of $`\omega_0`$ restricted to $`\mathcal K`$, then $`\mathrm{Tr}(\omega_0\omega_1)\ge\lambda\mathrm{Tr}\omega_1=\lambda>0`$.
+
+The initial branch states have orthogonal supports because their system inputs are orthogonal. The common unitary preserves that orthogonality, whereas the final factorization implies
+
+```math
+0=\mathrm{Tr}(\rho'_{SAB,0}\rho'_{SAB,1})
+=s^2\mathrm{Tr}(\omega_0\omega_1)>0.
+```
+
+This contradiction proves the [proposition](THEOREM.md#exact-output-obstruction). Only ensemble-average return was used; the conditional workspace marginals may differ. Positive error is therefore necessary at every finite stage of the cyclic construction, including sequences approaching $`r=0`$. The [consumed-workspace example](MODEL.md#resource-boundary) evades this obstruction by changing the workspace's average marginal.
 
 <a id="computational-support"></a>
 ## What the calculations check

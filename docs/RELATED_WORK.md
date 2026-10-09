@@ -26,6 +26,8 @@ The contribution is the [positive-error precision–heat crossover](THEOREM.md#o
 
 **Role here.** For the exact pure-target channel, the Kraus products are linearly independent when the target overlap is nonzero. Theorem 4(b)'s heat-transfer-matrix criterion then requires $`\beta Q>\ln 2`$ for equal priors in its exact model. This inherited restriction does not by itself supply a uniform positive-error estimate as overlap and error vanish together. The present [finite converse](THEOREM.md#finite-bound) and [limiting law](THEOREM.md#optimal-crossover) address that joint limit; they do not reinterpret the exact criterion as an attainable finite-dimensional endpoint.
 
+For the finite-dimensional apparatus used here, the [support-and-rank argument](PROOF.md#exact-output-obstruction) rules out exact pure outputs even with ensemble-marginally returned workspace. The [channel-equivalence corollary](THEOREM.md#channel-equivalence) instead concerns positive-error mean-heat infima and uses a physical Gibbs implementation of standard input dephasing.
+
 <a id="bedingham-maroney"></a>
 ### Bedingham and Maroney
 
