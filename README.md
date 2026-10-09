@@ -37,13 +37,15 @@ b_*(r)=(1+4r)^{-1/2},
 F(r)=1-h_2\!\left(\frac{1+b_*(r)}{2}\right).
 ```
 
-The binary entropy $`h_2`$ is measured in bits. Every finite stage has **positive error**, including sequences approaching $`r=0`$. In that high-precision limit, $`F(0)=1`$: a full bit-erasure unit survives even as the average-state entropy loss vanishes. At $`r=1`$, the limiting heat is about $`0.149510`$ units.
+The binary entropy $`h_2`$ is measured in bits. Every finite stage has **positive error**, including sequences approaching $`r=0`$: [exact pure targets are impossible](docs/THEOREM.md#exact-output-obstruction) with a finite full-rank Gibbs reservoir and exactly returned ensemble-average workspace. In that high-precision limit, $`F(0)=1`$: a full bit-erasure unit survives even as the average-state entropy loss vanishes. At $`r=1`$, the limiting heat is about $`0.149510`$ units.
 
 ![Optimal limiting heat F(r), in bit-erasure units, versus the finite error-to-squared-overlap ratio r. The curve approaches one as the ratio tends to zero and decreases as the allowed error ratio increases.](docs/figures/limiting-crossover.svg)
 
 Optimal limiting law computed from `qph.core.crossover`. The logarithmic axis shows positive finite ratios; the endpoint is $`F(0)=1`$. Each point specifies a joint small-overlap, positive-error limit, rather than a finite-device optimum. [Figure source](scripts/make_figures.py).
 
 The [theorem](docs/THEOREM.md) gives the complete finite bound before taking the limit. The [proof](docs/PROOF.md) covers arbitrary finite Gibbs reservoirs and input-independent workspace states. The [thermal construction](docs/CONSTRUCTION.md) supplies the matching upper limit using a bath qubit followed by charged recovery swaps. Each implementation is finite; its bath size and energy gaps may grow along the optimizing sequence. The result identifies an **infimum**, without asserting an attained finite optimum.
+
+The [same optimal mean-heat infimum](docs/THEOREM.md#channel-equivalence) holds when accuracy is required in half-diamond norm for the target measure-and-prepare channel, including reference-entangled inputs. A finite degenerate Gibbs qubit converts any branch-feasible device at unchanged heat; the objective and workspace return remain evaluated on the equal-prior ensemble. Thus the same crossover governs full-channel accuracy.
 
 ## A finite comparison
 

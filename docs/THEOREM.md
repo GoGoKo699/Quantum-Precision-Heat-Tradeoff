@@ -2,7 +2,7 @@
 
 [Home](../README.md) · [Physical model](MODEL.md) · [Notation](NOTATION.md) · [Proof](PROOF.md) · [Thermal implementation](CONSTRUCTION.md)
 
-All statements use the [canonical model](MODEL.md): two equally likely basis inputs, maximum branch trace error, an input-independent unitary, and the complete initially Gibbs reservoir. Entropies are in bits and $`q=Q/(k_{\mathrm B}T\ln2)`$.
+All statements use the [canonical apparatus and heat accounting](MODEL.md): two equally likely basis inputs, an input-independent unitary, and the complete initially Gibbs reservoir. Accuracy is specified by the two branch tests or the full-channel condition below. Entropies are in bits and $`q=Q/(k_{\mathrm B}T\ln2)`$.
 
 <a id="optimal-crossover"></a>
 ## Optimal limiting crossover
@@ -31,6 +31,42 @@ q_{\min}(s,\epsilon)\longrightarrow F(r).
 Errors remain positive at every finite stage, including the endpoint $`r=0`$, where $`F(0)=1`$. A [dimension-uniform converse](PROOF.md#matching-limit) and a [thermal construction with recovery](CONSTRUCTION.md#recovery) establish the two directions. The construction uses no workspace, so it also supplies the upper bound when returned workspace is allowed.
 
 This is an optimal **joint limiting law**, not an exact finite-$`s`$ optimum. The large-$`r`$ expansion of $`F`$ is not automatically a uniform theorem over every path with $`\epsilon/s^2\to\infty`$. Individual implementations remain finite, while the optimizing sequence can use [growing physical resources](MODEL.md#limits).
+
+<a id="channel-equivalence"></a>
+## Corollary: the same optimum for full-channel accuracy
+
+Define the target measure-and-prepare channel
+
+```math
+\mathcal T_s(\rho)=\sum_{x=0}^1\langle x|\rho|x\rangle\phi_x(s).
+```
+
+Let $`q_{\min}^{\diamond}(s,\epsilon)`$ use the same finite apparatus class, equal-prior mean heat, and exact ensemble-average workspace return as $`q_{\min}`$, with the accuracy condition on its system channel $`\mathcal N`$ replaced by
+
+```math
+\frac12\|\mathcal N-\mathcal T_s\|_{\diamond}\le\epsilon.
+```
+
+For every $`0<s<1`$ and $`0<\epsilon<\sqrt{1-s^2}/2`$,
+
+```math
+q_{\min}^{\diamond}(s,\epsilon)=q_{\min}(s,\epsilon).
+```
+
+This is an exact equality of infima at each finite parameter pair, rather than a formula for their common finite value. Consequently, along every positive-error sequence in the [crossover statement](#optimal-crossover),
+
+```math
+q_{\min}^{\diamond}(s,\epsilon)\longrightarrow F(r).
+```
+
+The [proof](PROOF.md#channel-equivalence) converts any branch-feasible device by adding a degenerate Gibbs qubit that implements input dephasing at unchanged mean heat. Diamond accuracy includes reference-entangled inputs; heat and workspace return are still evaluated on the specified equal-prior ensemble. Passing the two branch tests alone does not certify diamond accuracy of an unmodified apparatus.
+
+<a id="exact-output-obstruction"></a>
+## Proposition: exact outputs are impossible with returned workspace
+
+For fixed $`0<s<1`$, no finite apparatus in the model can have both $`\sigma_x=\phi_x(s)`$ for $`x=0,1`$ and exact return of the ensemble-average workspace marginal. This holds for arbitrary, possibly rank-deficient $`\tau_A`$, with different conditional workspace marginals and final correlations allowed. The reservoir must be a finite full-rank Gibbs state, as in the model.
+
+The [support-and-rank proof](PROOF.md#exact-output-obstruction) makes positive finite-stage errors essential even with returned workspace. In particular, $`F(0)=1`$ is approached through $`\epsilon>0`$ devices, not by an exactly error-free finite cyclic device. At zero error the feasible set is empty; this is an obstruction to implementation, not heat released by an apparatus. The [consumed-workspace example](MODEL.md#resource-boundary) stores the label in fresh workspace and changes its marginal, so it obeys a different return condition.
 
 <a id="finite-bound"></a>
 ## Dimension-uniform finite lower bound

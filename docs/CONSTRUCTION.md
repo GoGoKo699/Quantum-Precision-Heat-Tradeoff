@@ -73,14 +73,9 @@ The bare operation is a valid finite upper bound. The bath can be spent after th
 
 For either initial bath basis state, the basis action sends the two system inputs to orthogonal bath basis states. Tracing the bath therefore eliminates the input off-diagonal operator. This channel first dephases in the input basis and then prepares the corresponding $`\sigma_x`$.
 
-Its half-diamond distance from the analogous target channel equals $`\epsilon`$. To see the upper bound, include a reference system and denote its unnormalized positive conditional blocks by $`R_x`$. The difference of the two channel outputs is
+The [dephased-channel distance identity](PROOF.md#dephased-channel-distance) therefore gives half-diamond distance exactly $`\epsilon`$ from $`\mathcal T_s`$. Recovery acts only on the reservoir and preserves this system channel. The construction already satisfies the full-channel condition, so it needs no extra dephasing qubit.
 
-```math
-\sum_{x=0}^1(\sigma_x-\phi_x)\otimes R_x,
-\qquad \sum_{x=0}^1\mathrm{Tr}\,R_x=1.
-```
-
-The trace-norm triangle inequality bounds half its norm by $`\epsilon`$. A basis input attains that value. This additional channel statement concerns this specified construction. The [universal lower bound](THEOREM.md#finite-bound) requires only the two branch tests; two observed outputs do not certify the full channel of an arbitrary unknown apparatus.
+The [optimization corollary](THEOREM.md#channel-equivalence) applies more generally: every branch-feasible device can be converted to a diamond-feasible one at the same mean heat. Its proof physically adds a degenerate Gibbs component and leaves the equal-prior heat and workspace return unchanged. This equality of infima does not certify the channel of an unmodified apparatus from two observed outputs.
 
 <a id="recovery"></a>
 ## Recover the available work

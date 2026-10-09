@@ -23,7 +23,7 @@ Each target is pure: $`\phi_x=|\phi_x\rangle\langle\phi_x|`$. Their state-vector
 D(\rho,\sigma)=\frac12\|\rho-\sigma\|_1.
 ```
 
-Here $`D`$ denotes trace distance. Equal priors determine the **mean heat**; accuracy is the **maximum branch error**. The principal finite statement assumes $`0<\epsilon<c/2`$. These two branch tests do not specify an arbitrary channel's action on coherent or reference-entangled inputs. The explicit device has an additional [channel-error property](CONSTRUCTION.md#channel-error).
+Here $`D`$ denotes trace distance. Equal priors determine the **mean heat**; accuracy is the **maximum branch error**. The principal finite statement assumes $`0<\epsilon<c/2`$. These two branch tests do not specify an arbitrary channel's action on coherent or reference-entangled inputs. For exactly returned workspace, a [finite Gibbs dephasing conversion](PROOF.md#channel-equivalence) gives the same optimal mean-heat infimum under half-diamond accuracy for the target measure-and-prepare channel. The heat objective and return condition still refer to the equal-prior ensemble. The [explicit device](CONSTRUCTION.md#channel-error) already has this dephased form.
 
 <a id="apparatus"></a>
 ## Complete finite apparatus
@@ -104,6 +104,6 @@ Small trace-distance return does not guarantee small entropy consumption when wo
 <a id="limits"></a>
 ## Finite implementations and ideal limits
 
-Each implementation is finite. The infimum may use a sequence with increasing bath size, energy gaps, operation duration, or control complexity. No uniform cap on these resources is imposed. Exact pure output at nonzero overlap is not assumed attainable with a finite full-rank bath in the bath-only setting: the [crossover limit](THEOREM.md#optimal-crossover) uses positive errors at every finite stage.
+Each implementation is finite. The infimum may use a sequence with increasing bath size, energy gaps, operation duration, or control complexity. No uniform cap on these resources is imposed. Exact nonorthogonal pure outputs are [impossible with exactly returned ensemble-average workspace](THEOREM.md#exact-output-obstruction), including rank-deficient nonthermal workspace, for a finite full-rank Gibbs reservoir. The [crossover limit](THEOREM.md#optimal-crossover) therefore uses positive errors at every finite stage, also when approaching $`r=0`$.
 
 This is a single-use, conditional-input task. The [source comparison](LITERATURE.md) records which assumptions and results are inherited; the [claim map](CLAIMS.md) separates proofs from computed examples.

@@ -9,8 +9,11 @@ This repository is relevant to questions about quantum thermodynamics, Landauer'
 - Can accurate conditional outputs force a finite heat cost when an average-state entropy bound tends to zero?
 - How does error relative to squared target-state overlap control the limiting heat cost?
 - How do consumed workspace entropy, marginal return, and reservoir recovery enter the heat ledger?
+- Does requiring half-diamond channel accuracy change the optimal mean heat, and can exact pure outputs be reached with returned workspace?
 
 The task uses two equally likely orthogonal qubit inputs and prescribed nearly orthogonal pure targets. One input-independent apparatus must meet both conditional accuracy tests. Heat is the mean energy gained by the complete initially Gibbs reservoir. The cyclic optimum requires exact return of the workspace's ensemble-average marginal; final correlations may remain.
+
+At each parameter pair in the positive-error domain, the optimal mean-heat infimum equals that for half-diamond accuracy to the target measure-and-prepare channel. A degenerate Gibbs qubit implements the conversion by input dephasing at unchanged heat. This is an equality of optimal costs, not certification of an unmodified device from its two outputs; heat and workspace return still refer to the equal-prior ensemble. Exact nonorthogonal pure targets are impossible with a finite full-rank Gibbs reservoir and exactly returned ensemble-average workspace, including rank-deficient workspace states.
 
 The model and theorem linked below define applicability. The optimal crossover is a joint small-overlap, positive-error limit, not an exact finite-parameter optimum. Every device is finite, but optimizing sequences can use growing physical resources. Workspace marginal return does not establish independent reuse on arbitrary future inputs. Proofs establish the bounds; finite numerical checks test the implementation and selected identities.
 
@@ -22,7 +25,7 @@ The linked statements and primary-source comparisons take precedence over this s
 
 - [Overview](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/README.md): Physical motivation, main result, finite comparison, and reading paths.
 - [Physical model](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/MODEL.md): Conditional task, accuracy convention, finite Gibbs reservoir, driving, workspace return, and charged resources.
-- [Theorem](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/THEOREM.md): Exact validity domains, finite lower bound, approximate-return allowance, and optimal limiting crossover.
+- [Theorem](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/THEOREM.md): Finite lower bound, optimal crossover, channel-accuracy equivalence, exact-output obstruction, and approximate-return allowance.
 - [Proof](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/PROOF.md): Complete argument and dependency map.
 - [Thermal construction](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/CONSTRUCTION.md): Bath-qubit collision and charged recovery attaining the limiting upper bound.
 - [Claim-to-evidence map](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/CLAIMS.md): Which claims have derivations, numerical checks, and stated limitations.

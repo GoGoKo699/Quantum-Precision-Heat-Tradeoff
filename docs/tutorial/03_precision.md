@@ -29,7 +29,7 @@ Consider a pure-environment illustration. Orthogonal complete input states remai
 
 Here $`|\phi_x\rangle`$ represents the pure target; the density operator is $`\phi_x=|\phi_x\rangle\langle\phi_x|`$. If the system overlap is nonzero, the environment vectors must be orthogonal. They hold a perfectly distinguishable input record.
 
-A mixed thermal environment requires more work. Exact-operation restrictions have direct precedent in [Aksak–Turgut, Theorem 4(b)](../LITERATURE.md#r2). Finite error also changes the argument: slightly mixed system outputs no longer force those complete product states. The quantitative question is how much distinguishability must remain in the actual environment.
+With a finite full-rank Gibbs reservoir and exactly returned ensemble-average workspace, a [support-and-rank argument](../PROOF.md#exact-output-obstruction) rules out exact nonorthogonal pure targets. Exact-operation restrictions have direct precedent in [Aksak–Turgut, Theorem 4(b)](../LITERATURE.md#r2). Finite error changes the argument: slightly mixed system outputs no longer force those complete product states. The quantitative question is how much distinguishability must remain in the actual environment.
 
 <a id="converse-boundary"></a>
 ## What the universal lower bound must establish

@@ -40,6 +40,7 @@ The Python wheel contains the numerical package and its license. The source dist
 
 - [Core formulas and matrix implementation](../qph/core.py): finite lower bound, entropy allowance, limiting function, explicit collision, bath heat, spectral information, and finite recovery sum.
 - [Named tests](../tests/test_core.py): deterministic scalar regressions and finite matrices, including noncommuting and rank-deficient states, singular unitary blocks, actual-environment disturbance, auxiliary controls, and the full heat ledger.
+- [Channel conversion tests](../tests/test_channel_conversion.py): the degenerate Gibbs dephasing unitary, unchanged basis-input joint states and charged heat, ensemble workspace return, and reference-entangled output errors. The diamond identity and exact-output obstruction have [analytic proofs](PROOF.md#channel-equivalence).
 - [Reproduction script](../scripts/reproduce.py): evaluates the finite benchmark and selected limiting-function and recovery values.
 - [Reference record](../results/reference.json): unchanged expected values, compared recursively with a numerical tolerance by the repository checker.
 
