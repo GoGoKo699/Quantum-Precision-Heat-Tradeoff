@@ -2,7 +2,11 @@
 
 [Home](../../README.md) · [Exact result](../THEOREM.md#optimal-crossover) · [Notation](../NOTATION.md)
 
-Start with the two-input task, calculate a complete finite device, and then examine what a universal lower bound needs beyond that example. Undergraduate linear algebra and basic quantum mechanics are enough for the device calculation. The additional research tools are introduced at the point where they become necessary.
+Use the [30-milestone understanding map](MILESTONES.md) for the complete project story. Its common targets serve human readers and LLMs: **M01–M14** build the background from individual concepts to the full physical task, and **M15–M30** connect the finite device, converse, recovery, optimal limit, and consequences. Each milestone records its question, understanding target, dependencies, source pointers, and suggested learning intensity.
+
+For interactive teaching, follow the [coaching protocol](COACHING.md). Each milestone starts with compact Revise → Learn preparation and a two-question challenge; targeted learning and capped retries respond to mistakes. The map is independent of learner background, while explanations and remediation adapt. Individual progress is not recorded in the common map.
+
+The three worked chapters below introduce the two-input task, calculate a complete finite device, and explain what a universal lower bound needs beyond that example. Undergraduate linear algebra and basic quantum mechanics are enough for the device calculation. Additional research tools are taught locally when the milestone map needs them.
 
 <a id="textbook"></a>
 ## One educational anchor
@@ -23,13 +27,13 @@ The book develops quantum mechanics alongside the physical meaning of informatio
 For a reader who already knows qubits, Chapters 8, 9, and 19 are the main bridge. In Chapter 19, sections 19.1 and 19.3 provide the classical and quantum entropy foundations; sections 19.5–19.6 connect them to thermodynamics and work. These chapters form the targeted reading route.
 
 <a id="route"></a>
-## The tutorial route
+## Worked chapters supporting the map
 
 1. [States, the task, and the resource boundary](01_task.md): write the two conditional targets, compare their average, and define the error and charged resources.
 2. [Calculate one complete thermal device](02_device.md): obtain the system outputs and errors, then compute heat from the bath's gap and populations.
 3. [Why precision changes the lower bound](03_precision.md): distinguish first-order polarization from second-order near-purity, interpret the crossover, and locate the universal converse.
 
-Each chapter includes short worked questions. Definitions and calculations are included locally, so the route can also be read as a compact introduction after studying the relevant textbook material.
+These are supporting chapters, not three milestones or a second curriculum. The task chapter supports the background phase; the device and precision chapters introduce the narrative phase. The remaining milestone sources lead directly to the canonical proofs, consequences, and evidence. Their worked checkpoints are explanations, not automatically graded challenge attempts. Definitions and calculations are supplied locally, and the tutor provides the bridge to research-level arguments in the session.
 
 <a id="beyond-textbook"></a>
 ## Beyond the textbook
