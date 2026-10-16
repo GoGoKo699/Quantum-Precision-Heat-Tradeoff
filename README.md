@@ -78,7 +78,9 @@ Specialists can go directly to the formal statement and its dependencies:
 - **Thermal implementation:** [collision and recovery](docs/CONSTRUCTION.md), then the [finite comparison](docs/FINITE_BENCHMARK.md).
 - **Relation to existing results:** [direct comparisons](docs/RELATED_WORK.md), [assumption register and primary sources](docs/LITERATURE.md).
 
-For a teaching route, start with the [tutorial and textbook reading map](docs/tutorial/README.md). Its single educational anchor is Benjamin Schumacher and Michael D. Westmoreland, *Quantum Processes, Systems, and Information* (Cambridge University Press, 2010). The route develops conditional states, the finite device's energy balance, and the two precision scales before explaining the additional information inequalities needed for the universal converse.
+For a teaching route, start with the [30-milestone understanding map](docs/tutorial/MILESTONES.md): 14 background milestones assemble the quantum-information and thermodynamic framework; 16 narrative milestones connect the finite device, universal converse, optimal crossover, and consequences. The map is common to all readers, including LLMs, and ends in a synthesis of the whole project.
+
+The [tutorial and textbook reading map](docs/tutorial/README.md) retains one educational anchor: Benjamin Schumacher and Michael D. Westmoreland, *Quantum Processes, Systems, and Information* (Cambridge University Press, 2010). Three worked chapters introduce the task, device, and precision scales. The [coaching protocol](docs/tutorial/COACHING.md) supplies Revise → Learn → Test challenges and targeted learning within each milestone; individual progress is separate from the common map.
 
 A [compact research index](llms.txt) maps questions about Landauer's principle, precision–heat tradeoffs, and workspace entropy accounting to the relevant derivations and code.
 
