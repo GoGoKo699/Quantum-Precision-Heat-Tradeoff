@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "source_commit": "f71a388d84387f9a1cb6d2b7376c9c02743cf1d9",
-  "scope": "Document relocation and proof decomposition. Scientific numerical code, data, source inventory, and mathematical expressions are preserved; this is not independent proof validation.",
+  "scope": "Source-preserving document relocation and proof decomposition, with explicitly recorded maintenance updates. Mathematical expressions, reference data, original scientific tests, source inventory, and milestone targets retain their recorded values. This is not independent proof validation.",
   "file_moves": {
     "docs/MODEL.md": "science/model.md",
     "docs/THEOREM.md": "science/theorem.md",
@@ -47,12 +47,12 @@
   },
   "protected_files": {
     "LICENSE": "a92600540b1ab7a18301e2632a29334b3df227ad836e88df9967d69e3c86db66",
-    "package-lock.json": "6bea865670a4854b21e5f9f26dd8deb4b06db2792844241c4db73024e0e34e56",
-    "package.json": "c0632963a4a1c100d4b453d806a38fef7d152bd7602e2030fd853fbefcf6c6b2",
+    "package-lock.json": "60abb446ef17543e6a76121bd0683184fd0c29738f70634ea79a998aadda685d",
+    "package.json": "2f5fc2368e38bb725a1986e0e49710e61cd05e8e5984390e91415b3e0c8d7a50",
     "provenance/sources.json": "86a80d2a99ec841e328fc80a3cb95f349ba4b161298807e34b60920857bf7cd6",
     "pyproject.toml": "1e973a85dcfa21cedc0ee40d0eddca19967077c062a78cc60eb7d28054e5189e",
     "qph/__init__.py": "341562a384af52391eab5257f091ba2e02d86b882d65feedc8ff95dc8f6841a1",
-    "qph/core.py": "95df91d6a596f26a2eabaea492585b160c4903e6c27087860ded0f16d33e0910",
+    "qph/core.py": "6d2fadfece4116ee8f5a44cc7f0c6df0e81a8dd0abae30cb6f7f6af505c0514a",
     "requirements-dev.txt": "c3878e9023a53ab4eb227ddf0dc8c29b931bc5a34d65dea9191f4822c5e2f683",
     "requirements.txt": "1668a3152e33680d94637b13421c15e68bd97cd8701f7f555c691f5bc5c0b9f3",
     "results/reference.json": "0d077c09e69f61b22d85af8b7fa50784b4c2222f2864927bd184caa4f7f70bee",
@@ -180,5 +180,31 @@
       "math_sha256": "b59a71c88a25fba490d54a2b3004cb82ff3185777df15bed930175d62c629ceb"
     }
   ],
-  "milestone_targets_sha256": "e7831f4295181452bba5e90e3f989153f0ad41425d12ccdc58ac1a50dab57b57"
+  "milestone_targets_sha256": "e7831f4295181452bba5e90e3f989153f0ad41425d12ccdc58ac1a50dab57b57",
+  "maintenance_updates": [
+    {
+      "baseline_commit": "139e74ec133369f63eba49df723e664c087fac5f",
+      "report": "verification/SANITY_CHECK.md",
+      "changes": [
+        {
+          "path": "qph/core.py",
+          "before_sha256": "95df91d6a596f26a2eabaea492585b160c4903e6c27087860ded0f16d33e0910",
+          "after_sha256": "6d2fadfece4116ee8f5a44cc7f0c6df0e81a8dd0abae30cb6f7f6af505c0514a",
+          "reason": "Stable evaluation of the existing binary-entropy-deficit series near zero and overflow-free evaluation of the existing crossover bias. No analytical formula or committed reference value changed."
+        },
+        {
+          "path": "package.json",
+          "before_sha256": "c0632963a4a1c100d4b453d806a38fef7d152bd7602e2030fd853fbefcf6c6b2",
+          "after_sha256": "2f5fc2368e38bb725a1986e0e49710e61cd05e8e5984390e91415b3e0c8d7a50",
+          "reason": "Same-major markdown-it update from 14.1.0 to 14.3.3 to resolve the reported denial-of-service advisories in documentation tooling."
+        },
+        {
+          "path": "package-lock.json",
+          "before_sha256": "6bea865670a4854b21e5f9f26dd8deb4b06db2792844241c4db73024e0e34e56",
+          "after_sha256": "60abb446ef17543e6a76121bd0683184fd0c29738f70634ea79a998aadda685d",
+          "reason": "Regenerated and validated lockfile for markdown-it 14.3.3, preserving exact integrity records and other direct dependency versions."
+        }
+      ]
+    }
+  ]
 }

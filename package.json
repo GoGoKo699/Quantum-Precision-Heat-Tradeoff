@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "github-slugger": "2.0.0",
-    "markdown-it": "14.1.0",
+    "markdown-it": "14.3.3",
     "mathjax-full": "3.2.2",
     "parse5": "7.2.1"
   },

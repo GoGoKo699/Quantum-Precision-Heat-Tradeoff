@@ -105,3 +105,6 @@ The shared learning map has exactly 30 project-defined targets and the retained 
 The numerical tests, reference reproduction, local math compilation, and hosted rendering are separate checks. A local preview does not certify the actual GitHub renderer. The CI preview artifacts retain local rendering evidence; any hosted inspection must identify the pages and revision actually examined.
 
 The [verification snapshot](INSPECTION.md) records source preservation, package execution, and the revision and pages examined in the actual GitHub renderer.
+
+
+The [full sanity check](SANITY_CHECK.md) records the analytical consistency check, source recheck, numerical edge repairs, dependency audit, and fresh hosted-page inspection.

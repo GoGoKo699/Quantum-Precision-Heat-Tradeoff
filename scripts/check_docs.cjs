@@ -7,6 +7,8 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const MarkdownIt = require('markdown-it');
+const MARKDOWN_VERSION = require('markdown-it/package.json').version;
+const MATHJAX_VERSION = require('mathjax-full/package.json').version;
 const parse5 = require('parse5');
 const GithubSlugger = require('github-slugger').default;
 const {mathjax} = require('mathjax-full/js/mathjax.js');
@@ -307,7 +309,7 @@ function render(documents, root, destination, report) {
         if (attr.name === 'href' && !/^[a-z]+:/i.test(attr.value)) attr.value = attr.value.replace(/\.md(?=#|$)/, '.html');
       }
     });
-    fs.writeFileSync(target, `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(doc.name)} — local QA</title><style>${CSS}</style>${themeScript}<body><div class="renderer-note">Local QA: markdown-it 14.1.0 + MathJax 3.2.2 SVG, repository CSS. This is not live GitHub rendering.</div><main>${parse5.serialize(fragment)}</main></body></html>\n`);
+    fs.writeFileSync(target, `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(doc.name)} — local QA</title><style>${CSS}</style>${themeScript}<body><div class="renderer-note">Local QA: markdown-it ${MARKDOWN_VERSION} + MathJax ${MATHJAX_VERSION} SVG, repository CSS. This is not live GitHub rendering.</div><main>${parse5.serialize(fragment)}</main></body></html>\n`);
     for (const link of doc.links) {
       if (/^[a-z]+:/i.test(link.url) || link.url.startsWith('#')) continue;
       const relative = decodeURIComponent(link.url.split('#')[0]);
@@ -329,7 +331,7 @@ function render(documents, root, destination, report) {
 function inspectRepository(root = ROOT, destination = null) {
   const documents = markdownFiles(root).map(file => inspectMarkdown(fs.readFileSync(file, 'utf8'), slash(path.relative(root, file))));
   const links = checkLinks(documents, root);
-  const report = {renderer: 'markdown-it 14.1.0 + MathJax 3.2.2 SVG; repository CSS; not live GitHub',
+  const report = {renderer: `markdown-it ${MARKDOWN_VERSION} + MathJax ${MATHJAX_VERSION} SVG; repository CSS; not live GitHub`,
     measurements: 'MathJax SVG intrinsic ex units at 8 px/ex (16 px text); not browser pixel layout',
     layout_priority: 'desktop GitHub reading', reading_column_px: WIDTH,
     primary_viewports_px: [1280, 1440],
