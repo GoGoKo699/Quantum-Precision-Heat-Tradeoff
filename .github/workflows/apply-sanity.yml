@@ -1,0 +1,57 @@
+name: Apply validated sanity repairs
+on:
+  push:
+    branches: [repository/sanity-20261020]
+    paths: [.github/workflows/apply-sanity.yml]
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Apply the exact locally validated patch
+        env:
+          REPOSITORY: ${{ github.repository }}
+          REF: ${{ github.ref }}
+        run: |
+          test "$REPOSITORY" = GoGoKo699/Quantum-Precision-Heat-Tradeoff
+          test "$REF" = refs/heads/repository/sanity-20261020
+          echo 'd6865e68f645ea61359d460da211431ba797f3715568d6112fca6466d7eb88c7  .maintenance/sanity-repairs.patch' | sha256sum --check
+          git apply --check .maintenance/sanity-repairs.patch
+          git apply .maintenance/sanity-repairs.patch
+      - name: Recheck repaired sources
+        run: |
+          mkdir -p build/sanity-final
+          python -m pip install -r requirements-dev.txt
+          npm ci --ignore-scripts
+          npm audit --json > build/sanity-final/npm-audit.json
+          python -m unittest discover -s tests -v 2>&1 | tee build/sanity-final/python-tests.txt
+          python scripts/reproduce.py | tee build/sanity-final/reproduction.txt
+          python scripts/check_repository.py | tee build/sanity-final/documentation.txt
+          python scripts/make_figures.py
+          git diff --exit-code -- science learning references provenance results/reference.json
+      - name: Remove temporary tools and commit the validated tree
+        run: |
+          git rm .maintenance/inspect_github.py .maintenance/sanity-repairs.patch .github/workflows/sanity-diagnostics.yml .github/workflows/refresh-dependency.yml .github/workflows/apply-sanity.yml
+          git add MANIFEST.in package.json package-lock.json qph/core.py scripts/check_docs.cjs scripts/check_repository.py tests/test_numerical_edges.py verification/README.md verification/SANITY_CHECK.md verification/source_map.json
+          test "$(git write-tree)" = 945a37e8272b9db7b2087147ed4ed56d78eb71ad
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Complete sanity check with stable numerical evaluation and dependency repairs'
+          git push origin HEAD:refs/heads/repository/sanity-20261020
+          git rev-parse HEAD > build/sanity-final/verified-commit.txt
+          git archive --format=tar.gz HEAD > build/sanity-final/source.tar.gz
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sanity-final-validation
+          path: build/sanity-final/
+          if-no-files-found: error
