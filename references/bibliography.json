@@ -1,0 +1,384 @@
+{
+  "schema_version": 1,
+  "description": "Structured view of the attributed source register. Labels may be aliases for the same paper. Citation text and version-specific locators remain authoritative in LITERATURE.md.",
+  "entries": [
+    {
+      "id": "R1",
+      "title": "An improved Landauer Principle with finite-size corrections",
+      "citation_and_scope": "**R1. Reeb and Wolf.** *An improved Landauer Principle with finite-size corrections*, New Journal of Physics 16, 103011 (2014). [1306.4352v3](https://arxiv.org/abs/1306.4352v3). Theorem 3, Eqs. (21)–(22): microscopic heat equality. Section 6, Proposition 8: successive-reservoir construction. [Comparison](RELATED_WORK.md#reeb-wolf).",
+      "urls": [
+        "https://arxiv.org/abs/1306.4352v3"
+      ],
+      "register": "LITERATURE.md#r1"
+    },
+    {
+      "id": "R2",
+      "title": "Heat Transfer Operators Associated with Quantum Operations",
+      "citation_and_scope": "**R2. Aksak and Turgut.** *Heat Transfer Operators Associated with Quantum Operations*, Journal of Physics A 44, 275304 (2011). [1002.0733v2](https://arxiv.org/abs/1002.0733v2). Theorem 4(b), Eqs. (38)–(39): exact-operation heat restriction. [Bath and isometry conventions](RELATED_WORK.md#aksak-turgut) differ from finite-dimensional positive-error devices.",
+      "urls": [
+        "https://arxiv.org/abs/1002.0733v2"
+      ],
+      "register": "LITERATURE.md#r2"
+    },
+    {
+      "id": "R3",
+      "title": "The thermodynamic cost of quantum operations",
+      "citation_and_scope": "**R3. Bedingham and Maroney.** *The thermodynamic cost of quantum operations*, New Journal of Physics 18, 113050 (2016). [1604.03749v1](https://arxiv.org/abs/1604.03749v1). Equations (3)–(4), (9), Appendix A and Appendix E: conditional tasks, ensemble-marginal auxiliary restoration, and an explicit excess-heat bound. [Specified-map comparison](RELATED_WORK.md#bedingham-maroney).",
+      "urls": [
+        "https://arxiv.org/abs/1604.03749v1"
+      ],
+      "register": "LITERATURE.md#r3"
+    },
+    {
+      "id": "R4",
+      "title": "On Relations Between Tight Bounds for Symmetric f-Divergences and Binary Divergences",
+      "citation_and_scope": "**R4. Nishiyama.** *On Relations Between Tight Bounds for Symmetric f-Divergences and Binary Divergences*. [2210.09571v2](https://arxiv.org/abs/2210.09571v2). Definition 3 and Theorem 1, Eq. (8), give the mirrored binary equality case. Section IV-A, Eq. (29), is the sharp Jensen–Shannon/triangular-discrimination inequality. Equation (2) uses the same factor of one half as the proof. This scalar inequality is inherited.",
+      "urls": [
+        "https://arxiv.org/abs/2210.09571v2"
+      ],
+      "register": "LITERATURE.md#r4"
+    },
+    {
+      "id": "R5",
+      "title": "Tight uniform continuity bounds for quantum entropies: conditional entropy, relative entropy distance and energy constraints",
+      "citation_and_scope": "**R5. Winter.** *Tight uniform continuity bounds for quantum entropies: conditional entropy, relative entropy distance and energy constraints*, Communications in Mathematical Physics 347, 291–313 (2016). [1507.07775v6](https://arxiv.org/abs/1507.07775v6). Section II, Lemma 2, pp. 2–3, includes the improved bound for both cq and qc states. Here its bounded-dimensional subsystem is the classical binary label; the conditional quantum environment can have arbitrary finite dimension.",
+      "urls": [
+        "https://arxiv.org/abs/1507.07775v6"
+      ],
+      "register": "LITERATURE.md#r5"
+    },
+    {
+      "id": "R6",
+      "title": "A sharp continuity estimate for the von Neumann entropy",
+      "citation_and_scope": "**R6. Audenaert.** *A sharp continuity estimate for the von Neumann entropy*, Journal of Physics A 40, 8127–8136 (2007). The inspected preprint [quant-ph/0610146v1](https://arxiv.org/abs/quant-ph/0610146v1) is titled *A Sharp Fannes-type Inequality for the von Neumann Entropy*. Theorem 1, Eq. (6), gives the dimension-dependent entropy allowance for approximate workspace return, using half the trace norm and entropy in bits.",
+      "urls": [
+        "https://arxiv.org/abs/quant-ph/0610146v1"
+      ],
+      "register": "LITERATURE.md#r6"
+    },
+    {
+      "id": "R7",
+      "title": "Computing the Complete CS Decomposition",
+      "citation_and_scope": "**R7. Sutton.** *Computing the Complete CS Decomposition*. [0707.1838v3](https://arxiv.org/abs/0707.1838v3). Equation (1.1), p. 1, gives the complete block decomposition; its angles include both endpoints. The equal-block specialization supports the arbitrary-unitary reduction, including zero and unit singular values. The decomposition is a standard tool.",
+      "urls": [
+        "https://arxiv.org/abs/0707.1838v3"
+      ],
+      "register": "LITERATURE.md#r7"
+    },
+    {
+      "id": "R8",
+      "title": "Lower Bounds for the Helmholtz Function",
+      "citation_and_scope": "**R8. Golden–Thompson inequality.** Golden, *Lower Bounds for the Helmholtz Function*, Physical Review 137, B1127 (1965), and Thompson, *Inequality with applications in statistical mechanics*, Journal of Mathematical Physics 6, 1812 (1965). The inspected proof source is Forrester and Thompson, [*The Golden-Thompson inequality — historical aspects and random matrix applications*, 1408.2008v1](https://arxiv.org/abs/1408.2008v1), Eq. (1.1) and §§2.2–2.3. It supplies the trace-exponential inequality; the integral conversion to the spectral-information comparison is written out in this repository's proof.",
+      "urls": [
+        "https://arxiv.org/abs/1408.2008v1"
+      ],
+      "register": "LITERATURE.md#r8"
+    },
+    {
+      "id": "P01",
+      "title": "An improved Landauer Principle with finite-size corrections",
+      "citation_and_scope": "**P01.** Reeb–Wolf, *An improved Landauer Principle with finite-size corrections*. NJP 16, 103011 (2014). [1306.4352](https://arxiv.org/abs/1306.4352v3).",
+      "urls": [
+        "https://arxiv.org/abs/1306.4352v3"
+      ],
+      "register": "LITERATURE.md#p01"
+    },
+    {
+      "id": "P02",
+      "title": "Nonequilibrium Quantum Landauer Principle",
+      "citation_and_scope": "**P02.** Goold–Paternostro–Modi, *Nonequilibrium Quantum Landauer Principle*. PRL 114, 060602 (2015). [1402.4499](https://arxiv.org/abs/1402.4499).",
+      "urls": [
+        "https://arxiv.org/abs/1402.4499"
+      ],
+      "register": "LITERATURE.md#p02"
+    },
+    {
+      "id": "P03",
+      "title": "Landauer's Principle at Zero Temperature",
+      "citation_and_scope": "**P03.** Timpanaro–Santos–Landi, *Landauer's Principle at Zero Temperature*. PRL 124, 240601 (2020). [1911.00910](https://arxiv.org/abs/1911.00910).",
+      "urls": [
+        "https://arxiv.org/abs/1911.00910"
+      ],
+      "register": "LITERATURE.md#p03"
+    },
+    {
+      "id": "P04",
+      "title": "Entropy production as correlation between system and reservoir",
+      "citation_and_scope": "**P04.** Esposito–Lindenberg–Van den Broeck, *Entropy production as correlation between system and reservoir*. NJP 12, 013013 (2010). [0908.1125](https://arxiv.org/abs/0908.1125).",
+      "urls": [
+        "https://arxiv.org/abs/0908.1125"
+      ],
+      "register": "LITERATURE.md#p04"
+    },
+    {
+      "id": "P05",
+      "title": "Minimising the heat dissipation of quantum information erasure",
+      "citation_and_scope": "**P05.** Mohammady–Mohseni–Omar, *Minimising the heat dissipation of quantum information erasure*. NJP 18, 015011 (2016). [1510.02062](https://arxiv.org/abs/1510.02062).",
+      "urls": [
+        "https://arxiv.org/abs/1510.02062"
+      ],
+      "register": "LITERATURE.md#p05"
+    },
+    {
+      "id": "P06",
+      "title": "The thermodynamic cost of quantum operations",
+      "citation_and_scope": "**P06.** Bedingham–Maroney, *The thermodynamic cost of quantum operations*. NJP 18, 113050 (2016). [1604.03749](https://arxiv.org/abs/1604.03749v1).",
+      "urls": [
+        "https://arxiv.org/abs/1604.03749v1"
+      ],
+      "register": "LITERATURE.md#p06"
+    },
+    {
+      "id": "P07",
+      "title": "Heat Transfer Operators Associated with Quantum Operations",
+      "citation_and_scope": "**P07.** Aksak–Turgut, *Heat Transfer Operators Associated with Quantum Operations*. J. Phys. A 44, 275304 (2011). [1002.0733](https://arxiv.org/abs/1002.0733v2).",
+      "urls": [
+        "https://arxiv.org/abs/1002.0733v2"
+      ],
+      "register": "LITERATURE.md#p07"
+    },
+    {
+      "id": "P08",
+      "title": "The thermodynamic meaning of negative entropy",
+      "citation_and_scope": "**P08.** del Rio et al., *The thermodynamic meaning of negative entropy*. Nature 474, 61–63 (2011). [1009.1630](https://arxiv.org/abs/1009.1630v2).",
+      "urls": [
+        "https://arxiv.org/abs/1009.1630v2"
+      ],
+      "register": "LITERATURE.md#p08"
+    },
+    {
+      "id": "P09",
+      "title": "The Minimal Work Cost of Information Processing",
+      "citation_and_scope": "**P09.** Faist et al., *The Minimal Work Cost of Information Processing*. Nature Communications 6, 7669 (2015). [1211.1037](https://arxiv.org/abs/1211.1037v2).",
+      "urls": [
+        "https://arxiv.org/abs/1211.1037v2"
+      ],
+      "register": "LITERATURE.md#p09"
+    },
+    {
+      "id": "P10",
+      "title": "Fundamental Work Cost of Quantum Processes",
+      "citation_and_scope": "**P10.** Faist–Renner, *Fundamental Work Cost of Quantum Processes*. PRX 8, 021011 (2018). [1709.00506](https://arxiv.org/abs/1709.00506v2).",
+      "urls": [
+        "https://arxiv.org/abs/1709.00506v2"
+      ],
+      "register": "LITERATURE.md#p10"
+    },
+    {
+      "id": "P11",
+      "title": "The nonequilibrium cost of accurate information processing",
+      "citation_and_scope": "**P11.** Chiribella et al., *The nonequilibrium cost of accurate information processing*. Nature Communications 13, 7155 (2022). [2203.09369](https://arxiv.org/abs/2203.09369v2).",
+      "urls": [
+        "https://arxiv.org/abs/2203.09369v2"
+      ],
+      "register": "LITERATURE.md#p11"
+    },
+    {
+      "id": "P12",
+      "title": "Guaranteed Energy-Efficient Bit Reset in Finite Time",
+      "citation_and_scope": "**P12.** Browne et al., *Guaranteed Energy-Efficient Bit Reset in Finite Time*. PRL 113, 100603 (2014). [1311.7612](https://arxiv.org/abs/1311.7612).",
+      "urls": [
+        "https://arxiv.org/abs/1311.7612"
+      ],
+      "register": "LITERATURE.md#p12"
+    },
+    {
+      "id": "P13",
+      "title": "Universal Bound on Energy Cost of Bit Reset in Finite Time",
+      "citation_and_scope": "**P13.** Zhen et al., *Universal Bound on Energy Cost of Bit Reset in Finite Time*. PRL 127, 190602 (2021). [2106.00580](https://arxiv.org/abs/2106.00580).",
+      "urls": [
+        "https://arxiv.org/abs/2106.00580"
+      ],
+      "register": "LITERATURE.md#p13"
+    },
+    {
+      "id": "P14",
+      "title": "Finite-Time Quantum Landauer Principle and Quantum Coherence",
+      "citation_and_scope": "**P14.** Vu–Saito, *Finite-Time Quantum Landauer Principle and Quantum Coherence*. PRL 128, 010602 (2022). [2106.05743](https://arxiv.org/abs/2106.05743).",
+      "urls": [
+        "https://arxiv.org/abs/2106.05743"
+      ],
+      "register": "LITERATURE.md#p14"
+    },
+    {
+      "id": "P15",
+      "title": "Thermodynamic cost of creating correlations",
+      "citation_and_scope": "**P15.** Huber et al., *Thermodynamic cost of creating correlations*. NJP 17, 065008 (2015). [1404.2169](https://arxiv.org/abs/1404.2169).",
+      "urls": [
+        "https://arxiv.org/abs/1404.2169"
+      ],
+      "register": "LITERATURE.md#p15"
+    },
+    {
+      "id": "P16",
+      "title": "Distance measures to compare real and ideal quantum processes",
+      "citation_and_scope": "**P16.** Gilchrist–Langford–Nielsen, *Distance measures to compare real and ideal quantum processes*. PRA 71, 062310 (2005). [quant-ph/0408063](https://arxiv.org/abs/quant-ph/0408063).",
+      "urls": [
+        "https://arxiv.org/abs/quant-ph/0408063"
+      ],
+      "register": "LITERATURE.md#p16"
+    },
+    {
+      "id": "P17",
+      "title": "Comparing Experiments to the Fault-Tolerance Threshold",
+      "citation_and_scope": "**P17.** Kueng et al., *Comparing Experiments to the Fault-Tolerance Threshold*. PRL 117, 170502 (2016). [1510.05653](https://arxiv.org/abs/1510.05653).",
+      "urls": [
+        "https://arxiv.org/abs/1510.05653"
+      ],
+      "register": "LITERATURE.md#p17"
+    },
+    {
+      "id": "P18",
+      "title": "Bounding quantum gate error rate based on reported average fidelity",
+      "citation_and_scope": "**P18.** Sanders–Wallman–Sanders, *Bounding quantum gate error rate based on reported average fidelity*. NJP 18, 012002 (2016). [1501.04932](https://arxiv.org/abs/1501.04932).",
+      "urls": [
+        "https://arxiv.org/abs/1501.04932"
+      ],
+      "register": "LITERATURE.md#p18"
+    },
+    {
+      "id": "P19",
+      "title": "The Information-Disturbance Tradeoff and the Continuity of Stinespring's Representation",
+      "citation_and_scope": "**P19.** Kretschmann–Schlingemann–Werner, *The Information-Disturbance Tradeoff and the Continuity of Stinespring's Representation*. IEEE TIT 54, 1708–1717 (2008). [quant-ph/0605009](https://arxiv.org/abs/quant-ph/0605009).",
+      "urls": [
+        "https://arxiv.org/abs/quant-ph/0605009"
+      ],
+      "register": "LITERATURE.md#p19"
+    },
+    {
+      "id": "P20",
+      "title": "Semidefinite programs for completely bounded norms",
+      "citation_and_scope": "**P20.** Watrous, *Semidefinite programs for completely bounded norms*. Theory of Computing 5, 217–238 (2009). [0901.4709](https://arxiv.org/abs/0901.4709).",
+      "urls": [
+        "https://arxiv.org/abs/0901.4709"
+      ],
+      "register": "LITERATURE.md#p20"
+    },
+    {
+      "id": "P21",
+      "title": "A general derivation and quantification of the third law of thermodynamics",
+      "citation_and_scope": "**P21.** Masanes–Oppenheim, *A general derivation and quantification of the third law of thermodynamics*. Nature Communications 8, 14538 (2017). [1412.3828](https://arxiv.org/abs/1412.3828).",
+      "urls": [
+        "https://arxiv.org/abs/1412.3828"
+      ],
+      "register": "LITERATURE.md#p21"
+    },
+    {
+      "id": "P22",
+      "title": "Quantum Horn's lemma, finite heat baths, and the third law of thermodynamics",
+      "citation_and_scope": "**P22.** Scharlau–Mueller, *Quantum Horn's lemma, finite heat baths, and the third law of thermodynamics*. Quantum 2, 54 (2018). [1605.06092](https://arxiv.org/abs/1605.06092).",
+      "urls": [
+        "https://arxiv.org/abs/1605.06092"
+      ],
+      "register": "LITERATURE.md#p22"
+    },
+    {
+      "id": "P23",
+      "title": "Ideal Projective Measurements Have Infinite Resource Costs",
+      "citation_and_scope": "**P23.** Guryanova–Friis–Huber, *Ideal Projective Measurements Have Infinite Resource Costs*. Quantum 4, 222 (2020). [1805.11899](https://arxiv.org/abs/1805.11899).",
+      "urls": [
+        "https://arxiv.org/abs/1805.11899"
+      ],
+      "register": "LITERATURE.md#p23"
+    },
+    {
+      "id": "P24",
+      "title": "Single-Atom Demonstration of the Quantum Landauer Principle",
+      "citation_and_scope": "**P24.** Yan et al., *Single-Atom Demonstration of the Quantum Landauer Principle*. PRL 120, 210601 (2018). [1803.10424](https://arxiv.org/abs/1803.10424).",
+      "urls": [
+        "https://arxiv.org/abs/1803.10424"
+      ],
+      "register": "LITERATURE.md#p24"
+    },
+    {
+      "id": "P25",
+      "title": "Minimally Dissipative Information Erasure in a Quantum Dot via Thermodynamic Length",
+      "citation_and_scope": "**P25.** Scandi et al., *Minimally Dissipative Information Erasure in a Quantum Dot via Thermodynamic Length*. PRL 129, 270601 (2022). [2209.01852](https://arxiv.org/abs/2209.01852).",
+      "urls": [
+        "https://arxiv.org/abs/2209.01852"
+      ],
+      "register": "LITERATURE.md#p25"
+    },
+    {
+      "id": "P26",
+      "title": "Optimizing Resource Efficiencies for Scalable Full-Stack Quantum Computers",
+      "citation_and_scope": "**P26.** Fellous-Asiani et al., *Optimizing Resource Efficiencies for Scalable Full-Stack Quantum Computers*. PRX Quantum 4, 040319 (2023). [2209.05469](https://arxiv.org/abs/2209.05469).",
+      "urls": [
+        "https://arxiv.org/abs/2209.05469"
+      ],
+      "register": "LITERATURE.md#p26"
+    },
+    {
+      "id": "P27",
+      "title": "Thermodynamically Optimal Protocols for Dual-Purpose Qubit Operations",
+      "citation_and_scope": "**P27.** Dunlop et al., *Thermodynamically Optimal Protocols for Dual-Purpose Qubit Operations*. [2306.09088v3](https://arxiv.org/abs/2306.09088v3).",
+      "urls": [
+        "https://arxiv.org/abs/2306.09088v3"
+      ],
+      "register": "LITERATURE.md#p27"
+    },
+    {
+      "id": "P28",
+      "title": "Stochastic Independence as a Resource in Small-Scale Thermodynamics",
+      "citation_and_scope": "**P28.** Lostaglio–Mueller–Pastena, *Stochastic Independence as a Resource in Small-Scale Thermodynamics*. PRL 115, 150402 (2015). [1409.3258](https://arxiv.org/abs/1409.3258).",
+      "urls": [
+        "https://arxiv.org/abs/1409.3258"
+      ],
+      "register": "LITERATURE.md#p28"
+    },
+    {
+      "id": "P29",
+      "title": "Thermodynamic Capacity of Quantum Processes",
+      "citation_and_scope": "**P29.** Faist–Berta–Brandão, *Thermodynamic Capacity of Quantum Processes*. PRL 122, 200601 (2019). [1807.05610v2](https://arxiv.org/abs/1807.05610v2). [Collective-work comparison](RELATED_WORK.md#faist-berta-brandao).\n\nP24 and P25 provide experimental context for quantum erasure. P26 addresses full-stack resource accounting. P27 uses a restricted primitive set; P28 illustrates the importance of correlation resources. P29 supplies the collective-process comparison.",
+      "urls": [
+        "https://arxiv.org/abs/1807.05610v2"
+      ],
+      "register": "LITERATURE.md#p29"
+    },
+    {
+      "id": "C01",
+      "title": "Von Neumann entropy from unitarity",
+      "citation_and_scope": "**C01.** Boes et al., *Von Neumann entropy from unitarity*, PRL 122, 210402 (2019). [1807.08773v1](https://arxiv.org/abs/1807.08773v1). Theorem 1, Eqs. (1)–(2): catalyst return after dephasing.",
+      "urls": [
+        "https://arxiv.org/abs/1807.08773v1"
+      ],
+      "register": "LITERATURE.md#c01"
+    },
+    {
+      "id": "C02",
+      "title": "Entropy and reversible catalysis",
+      "citation_and_scope": "**C02.** Wilming, *Entropy and reversible catalysis*, PRL 127, 260402 (2021). [2012.05573v2](https://arxiv.org/abs/2012.05573v2). Definition 1 and Theorem 2: exact catalyst marginal with approximate system conversion.",
+      "urls": [
+        "https://arxiv.org/abs/2012.05573v2"
+      ],
+      "register": "LITERATURE.md#c02"
+    },
+    {
+      "id": "C03",
+      "title": "Quantum Thermodynamics of Correlated-Catalytic State Conversion at Small Scale",
+      "citation_and_scope": "**C03.** Shiraishi–Sagawa, *Quantum Thermodynamics of Correlated-Catalytic State Conversion at Small Scale*, PRL 126, 150502 (2021). [2010.11036v3](https://arxiv.org/abs/2010.11036v3). Theorems 1–2 and Supplemental Material Theorem 3: correlated-catalytic state conversion and work investment under Gibbs-preserving maps.",
+      "urls": [
+        "https://arxiv.org/abs/2010.11036v3"
+      ],
+      "register": "LITERATURE.md#c03"
+    },
+    {
+      "id": "C04",
+      "title": "Catalytic transformations with finite-size environments: applications to cooling and thermometry",
+      "citation_and_scope": "**C04.** Henao–Uzdin, *Catalytic transformations with finite-size environments: applications to cooling and thermometry*, Quantum 5, 547 (2021). [2010.09070v3](https://arxiv.org/abs/2010.09070v3). Section 4.1, Eqs. (4)–(5): marginal-return condition for finite-environment unitaries.",
+      "urls": [
+        "https://arxiv.org/abs/2010.09070v3"
+      ],
+      "register": "LITERATURE.md#c04"
+    },
+    {
+      "id": "C05",
+      "title": "Limits to catalysis in quantum thermodynamics",
+      "citation_and_scope": "**C05.** Ng et al., *Limits to catalysis in quantum thermodynamics*, NJP 17, 085004 (2015). [1405.3039v1](https://arxiv.org/abs/1405.3039v1). Section II.1–II.2 and Supplemental Material Theorem II.3: approximate return and dimension/energy restrictions.\n\nThe [source inventory](../provenance/README.md) lists research source identifiers and versioned primary-source locators.",
+      "urls": [
+        "https://arxiv.org/abs/1405.3039v1"
+      ],
+      "register": "LITERATURE.md#c05"
+    }
+  ]
+}

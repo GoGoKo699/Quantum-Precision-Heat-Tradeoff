@@ -1,6 +1,6 @@
 # Thirty milestones for understanding the project
 
-[Tutorial home](README.md) · [Coaching protocol](COACHING.md) · [Model](../MODEL.md) · [Theorem](../THEOREM.md) · [Proof](../PROOF.md)
+[Tutorial home](README.md) · [Model](../science/model.md) · [Theorem](../science/theorem.md) · [Proof](../science/README.md)
 
 This is the common understanding map for this project, for human readers and LLMs. It contains exactly **30 milestones**, with stable IDs M01–M30. The targets and phase allocation depend on the science, not on a particular learner's background, answers, or pace. Together they convey the whole argument and its physical meaning, without claiming coverage of every technical detail.
 
@@ -10,11 +10,11 @@ This is the common understanding map for this project, for human readers and LLM
 
 **Narrative/innovation: M15–M30.** Sixteen milestones move from a concrete device and the precision scale through the universal converse, charged recovery, matching limit, and its consequences. The final milestones connect the result to finite evidence, prior work, and its scientific meaning. This is a local-to-global argument, not a second list of prerequisites.
 
-The single educational anchor remains Schumacher and Westmoreland, *Quantum Processes, Systems, and Information* (2010). Chapter references use the existing [textbook map](README.md#textbook). Primary research sources supply additional proof ingredients; they are not extra educational anchors. The [model](../MODEL.md), [theorem](../THEOREM.md), [proof](../PROOF.md), and [construction](../CONSTRUCTION.md) take precedence over this teaching map.
+The single educational anchor remains Schumacher and Westmoreland, *Quantum Processes, Systems, and Information* (2010). Chapter references use the existing [textbook map](SCHUMACHER_WESTMORELAND_BRIDGE.md#textbook). Primary research sources supply additional proof ingredients; they are not extra educational anchors. The [model](../science/model.md), [theorem](../science/theorem.md), [proof](../science/README.md), and [construction](../science/thermal_implementation.md) take precedence over this teaching map.
 
-Each milestone specifies an understanding target rather than a reading assignment. Source pointers tell a tutor where to obtain the explanation and verify it. The suggested learning block is the nominal number of targeted rounds after a failed challenge; the [protocol](COACHING.md) permits 1–3 rounds according to the misconception. It does not prescribe extra rounds for a learner who passes the initial challenge.
+Each milestone specifies an understanding target, its earlier dependencies, its role in the argument, a conceptual connection, and source pointers. The sources provide the definitions and derivations needed to understand that target.
 
-Map version: **1**. A substantive change in the scientific account can justify revising the map; learner performance cannot. Keep individual attempts and passes in session state, separate from this common map.
+Map version: **1**. The settled scientific targets and 14/16 allocation are retained. This common map contains no individual assessment or progress records.
 
 ## Phase I — Background and preliminaries
 
@@ -29,9 +29,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Establishes the object whose entire output accuracy will be constrained.
 
-**Sources:** [States](01_task.md#states); [textbook](README.md#textbook), Chapters 2–5 and 8.
+**Conceptual connection:** Connects density operators to the observable polarization constrained by the task.
 
-**Learning block:** 1 round.
+**Sources:** [States](01_task.md#states); [textbook](SCHUMACHER_WESTMORELAND_BRIDGE.md#textbook), Chapters 2–5 and 8.
+
 
 <a id="m02"></a>
 ### M02 — Joint systems, marginals, and conditional ensembles
@@ -44,9 +45,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Provides the language for following the system, workspace, and reservoir without discarding branch information.
 
-**Sources:** [Conditional task](01_task.md#conditional-task); [apparatus](../MODEL.md#apparatus); [textbook](README.md#textbook), Chapters 6 and 8.
+**Conceptual connection:** Connects conditional ensembles to the marginals used in workspace return and heat accounting.
 
-**Learning block:** 2 rounds.
+**Sources:** [Conditional task](01_task.md#conditional-task); [apparatus](../science/model.md#apparatus); [textbook](SCHUMACHER_WESTMORELAND_BRIDGE.md#textbook), Chapters 6 and 8.
+
 
 <a id="m03"></a>
 ### M03 — Unitarity and the destination of distinguishability
@@ -59,9 +61,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Introduces the information-record mechanism before its quantitative and finite-rank versions.
 
-**Sources:** [Exact-output illustration](03_precision.md#exact-illustration); [resource boundary](../MODEL.md#resource-boundary); [textbook](README.md#textbook), Chapters 5–6 and 8–9.
+**Conceptual connection:** Connects unitary information preservation to the environment required by nonorthogonal outputs.
 
-**Learning block:** 2 rounds.
+**Sources:** [Exact-output illustration](03_precision.md#exact-illustration); [resource boundary](../science/model.md#resource-boundary); [textbook](SCHUMACHER_WESTMORELAND_BRIDGE.md#textbook), Chapters 5–6 and 8–9.
+
 
 <a id="m04"></a>
 ### M04 — Operational error and trace distance
@@ -74,9 +77,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Fixes the error convention before comparing accuracy scales or costs.
 
-**Sources:** [Trace distance](01_task.md#states); [accuracy convention](../MODEL.md#task); [textbook](README.md#textbook), Chapters 2–5 and 8, with the local trace-distance derivation.
+**Conceptual connection:** Connects a norm-defined tolerance to measurement probabilities and the complete output state.
 
-**Learning block:** 2 rounds.
+**Sources:** [Trace distance](01_task.md#states); [accuracy convention](../science/model.md#task); [textbook](SCHUMACHER_WESTMORELAND_BRIDGE.md#textbook), Chapters 2–5 and 8, with the local trace-distance derivation.
+
 
 <a id="m05"></a>
 ### M05 — Target geometry and the average-state trap
@@ -89,9 +93,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Makes the conditional-versus-average distinction concrete before introducing entropy costs.
 
-**Sources:** [Targets](01_task.md#conditional-task); [average-state counterexample](01_task.md#average-state); [model](../MODEL.md#task).
+**Conceptual connection:** Connects Bloch geometry to the distinction between conditional accuracy and an average-state task.
 
-**Learning block:** 2 rounds.
+**Sources:** [Targets](01_task.md#conditional-task); [average-state counterexample](01_task.md#average-state); [model](../science/model.md#task).
+
 
 <a id="m06"></a>
 ### M06 — Entropy, correlations, and input records
@@ -104,9 +109,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Supplies the information quantities needed to connect conditional outputs to environmental change.
 
-**Sources:** [Notation](../NOTATION.md); [environment-entropy identity](../PROOF.md#environment-entropy); [textbook](README.md#textbook), Chapter 19, especially Sections 19.1 and 19.3.
+**Conceptual connection:** Connects correlations and label information to entropy without supplying an extra physical register.
 
-**Learning block:** 3 rounds.
+**Sources:** [Notation](../science/notation.md); [environment-entropy identity](../science/environment_information.md#environment-entropy); [textbook](SCHUMACHER_WESTMORELAND_BRIDGE.md#textbook), Chapter 19, especially Sections 19.1 and 19.3.
+
 
 <a id="m07"></a>
 ### M07 — Finite Gibbs reservoirs and thermal bias
@@ -119,9 +125,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Identifies the physical resource used by the construction and a load-bearing assumption of the exact-output obstruction.
 
-**Sources:** [Thermal qubit](02_device.md#thermal-qubit); [finite apparatus](../MODEL.md#apparatus); [textbook](README.md#textbook), Chapters 8–9 and 19.
+**Conceptual connection:** Connects Gibbs populations to a finite thermal resource and its rank.
 
-**Learning block:** 2 rounds.
+**Sources:** [Thermal qubit](02_device.md#thermal-qubit); [finite apparatus](../science/model.md#apparatus); [textbook](SCHUMACHER_WESTMORELAND_BRIDGE.md#textbook), Chapters 8–9 and 19.
+
 
 <a id="m08"></a>
 ### M08 — Mean heat, driving, and work
@@ -134,9 +141,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Fixes the cost currency before interpreting an entropy inequality as a heat bound.
 
-**Sources:** [Heat and work](../MODEL.md#heat-work); [direct bath-energy calculation](02_device.md#energy); [textbook](README.md#textbook), Chapter 9 and Sections 19.5–19.6.
+**Conceptual connection:** Connects reservoir energy changes to heat and the boundary conditions for work equality.
 
-**Learning block:** 2 rounds.
+**Sources:** [Heat and work](../science/model.md#heat-work); [direct bath-energy calculation](02_device.md#energy); [textbook](SCHUMACHER_WESTMORELAND_BRIDGE.md#textbook), Chapter 9 and Sections 19.5–19.6.
+
 
 <a id="m09"></a>
 ### M09 — Workspace return and consumed entropy capacity
@@ -149,9 +157,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Prevents workspace from becoming an uncharged information sink.
 
-**Sources:** [Workspace return](../MODEL.md#workspace-return); [consumed-workspace example](../MODEL.md#resource-boundary); [return precedents](../RELATED_WORK.md#returned-workspace).
+**Conceptual connection:** Connects reusable marginal state resources to the entropy capacity that must be charged.
 
-**Learning block:** 2 rounds.
+**Sources:** [Workspace return](../science/model.md#workspace-return); [consumed-workspace example](../science/model.md#resource-boundary); [return precedents](../references/RELATED_WORK.md#returned-workspace).
+
 
 <a id="m10"></a>
 ### M10 — Approximate return and growing dimension
@@ -164,9 +173,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Introduces the uniformity issue that cannot be settled by trace-distance return alone.
 
-**Sources:** [Approximate-return statement](../THEOREM.md#workspace-return); [sharp continuity source](../LITERATURE.md#r6); [workspace comparisons](../RELATED_WORK.md#returned-workspace).
+**Conceptual connection:** Connects approximate return to the dimension dependence of entropy continuity.
 
-**Learning block:** 2 rounds.
+**Sources:** [Approximate-return statement](../science/theorem.md#workspace-return); [sharp continuity source](../references/LITERATURE.md#r6); [workspace comparisons](../references/RELATED_WORK.md#returned-workspace).
+
 
 <a id="m11"></a>
 ### M11 — The complete finite apparatus and resource boundary
@@ -179,9 +189,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Combines the local resource conventions into one physical implementation class.
 
-**Sources:** [Complete apparatus](../MODEL.md#apparatus); [charged resources](../MODEL.md#resource-boundary); [tutorial boundary](01_task.md#resource-boundary).
+**Conceptual connection:** Connects the separate resources into one complete, input-independent finite apparatus.
 
-**Learning block:** 2 rounds.
+**Sources:** [Complete apparatus](../science/model.md#apparatus); [charged resources](../science/model.md#resource-boundary); [tutorial boundary](01_task.md#resource-boundary).
+
 
 <a id="m12"></a>
 ### M12 — Branch tests and reference-sensitive channel accuracy
@@ -194,9 +205,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Prepares the channel-equivalence consequence without assuming that branch accuracy already certifies it.
 
-**Sources:** [Channel definitions and scope](../THEOREM.md#channel-equivalence); [dephased-channel identity](../PROOF.md#dephased-channel-distance); [textbook](README.md#textbook), Chapter 9 for reduced dynamics. The half-diamond bridge is supplied locally, with primary attribution in the proof.
+**Conceptual connection:** Connects branch tests to channel distinguishability while retaining coherent-reference inputs.
 
-**Learning block:** 3 rounds.
+**Sources:** [Channel definitions and scope](../science/theorem.md#channel-equivalence); [dephased-channel identity](../science/channel_accuracy.md#dephased-channel-distance); [textbook](SCHUMACHER_WESTMORELAND_BRIDGE.md#textbook), Chapter 9 for reduced dynamics. The half-diamond bridge is supplied locally, with primary attribution in the proof.
+
 
 <a id="m13"></a>
 ### M13 — Infima, positive-error limits, and uniformity
@@ -209,9 +221,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Supplies the optimization language needed to combine a universal converse with increasingly accurate constructions.
 
-**Sources:** [Finite implementations and limits](../MODEL.md#limits); [precise crossover statement](../THEOREM.md#optimal-crossover); [limiting procedure](03_precision.md#crossover).
+**Conceptual connection:** Connects finite estimates and resource growth to an infimum over parameter-dependent devices.
 
-**Learning block:** 2 rounds.
+**Sources:** [Finite implementations and limits](../science/model.md#limits); [precise crossover statement](../science/theorem.md#optimal-crossover); [limiting procedure](03_precision.md#crossover).
+
 
 <a id="m14"></a>
 ### M14 — Synthesis of the conditional thermodynamic task
@@ -224,9 +237,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Integrates the background into the precise question answered by the research.
 
-**Sources:** [Model](../MODEL.md); [task and average](01_task.md); [proof dependencies](../PROOF.md#dependencies).
+**Conceptual connection:** Connects all background concepts into the conditional thermodynamic optimization.
 
-**Learning block:** 3 rounds.
+**Sources:** [Model](../science/model.md); [task and average](01_task.md); [proof dependencies](../science/README.md#dependencies).
+
 
 ## Phase II — Narrative and innovation
 
@@ -241,9 +255,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Starts the narrative with a complete physical example rather than an abstract lower-bound formula.
 
-**Sources:** [Worked device](02_device.md); [collision construction](../CONSTRUCTION.md#collision); [textbook](README.md#textbook), Chapter 18 only as needed for the circuit notation.
+**Conceptual connection:** Connects a specified unitary and Gibbs state to outputs, error, and measured reservoir energy.
 
-**Learning block:** 3 rounds.
+**Sources:** [Worked device](02_device.md); [collision construction](../science/thermal_implementation.md#collision); [textbook](SCHUMACHER_WESTMORELAND_BRIDGE.md#textbook), Chapter 18 only as needed for the circuit notation.
+
 
 <a id="m16"></a>
 ### M16 — Why squared overlap sets the precision scale
@@ -256,9 +271,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Extracts the controlling scale from the example while keeping geometric motivation distinct from a universal proof.
 
-**Sources:** [Two precision scales](03_precision.md#two-scales); [collision parameters](../CONSTRUCTION.md#collision); [crossover interpretation](03_precision.md#crossover).
+**Conceptual connection:** Connects first-order polarization and second-order population changes to the governing ratio.
 
-**Learning block:** 2 rounds.
+**Sources:** [Two precision scales](03_precision.md#two-scales); [collision parameters](../science/thermal_implementation.md#collision); [crossover interpretation](03_precision.md#crossover).
+
 
 <a id="m17"></a>
 ### M17 — Turning output accuracy into kinematic constraints
@@ -271,9 +287,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Begins the converse with consequences of the task shared by all implementations.
 
-**Sources:** [Lemma 1](../PROOF.md#output-tests); [finite parameters](../THEOREM.md#finite-bound).
+**Conceptual connection:** Connects operational accuracy to the kinematic constraints common to every implementation.
 
-**Learning block:** 2 rounds.
+**Sources:** [Lemma 1](../science/kinematics.md#output-tests); [finite parameters](../science/theorem.md#finite-bound).
+
 
 <a id="m18"></a>
 ### M18 — Covering every allowed unitary
@@ -286,9 +303,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Upgrades output constraints to an exhaustive apparatus-independent kinematic description.
 
-**Sources:** [Lemma 2](../PROOF.md#unitary-reduction); [complete CS source](../LITERATURE.md#r7). This is a research bridge beyond the textbook device calculation.
+**Conceptual connection:** Connects those constraints to a complete parametrization rather than a chosen circuit family.
 
-**Learning block:** 3 rounds.
+**Sources:** [Lemma 2](../science/kinematics.md#unitary-reduction); [complete CS source](../references/LITERATURE.md#r7). This is a research bridge beyond the textbook device calculation.
+
 
 <a id="m19"></a>
 ### M19 — Spectral separation forced by coherent outputs
@@ -301,9 +319,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Converts required coherence with small transition probability into quantitative environmental separation.
 
-**Sources:** [Lemma 3](../PROOF.md#spectral-discrimination); [bias bound](../THEOREM.md#finite-bound).
+**Conceptual connection:** Connects coherence with small transition probabilities to environmental spectral separation.
 
-**Learning block:** 3 rounds.
+**Sources:** [Lemma 3](../science/kinematics.md#spectral-discrimination); [bias bound](../science/theorem.md#finite-bound).
+
 
 <a id="m20"></a>
 ### M20 — From noncommuting comparison states to information
@@ -316,9 +335,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Turns the kinematic quantity into information while preserving the sharp limiting function.
 
-**Sources:** [Lemma 4](../PROOF.md#information-bound); [scalar inequality source](../LITERATURE.md#r4); [Golden–Thompson source](../LITERATURE.md#r8).
+**Conceptual connection:** Connects noncommuting spectral data to a sharp information bound through attributed inequalities.
 
-**Learning block:** 3 rounds.
+**Sources:** [Lemma 4](../science/environment_information.md#information-bound); [scalar inequality source](../references/LITERATURE.md#r4); [Golden–Thompson source](../references/LITERATURE.md#r8).
+
 
 <a id="m21"></a>
 ### M21 — Transfer to the actual environment without a dimension penalty
@@ -331,9 +351,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Closes the gap between an algebraic comparison and an actual environmental record uniformly over apparatus size.
 
-**Sources:** [Lemma 5](../PROOF.md#environment-transfer); [conditional-entropy continuity source](../LITERATURE.md#r5); [resource boundary](../MODEL.md#resource-boundary).
+**Conceptual connection:** Connects algebraic comparison states to physical reservoir outputs without a size-dependent error.
 
-**Learning block:** 3 rounds.
+**Sources:** [Lemma 5](../science/environment_information.md#environment-transfer); [conditional-entropy continuity source](../references/LITERATURE.md#r5); [resource boundary](../science/model.md#resource-boundary).
+
 
 <a id="m22"></a>
 ### M22 — Converting retained information into the finite heat bound
@@ -346,9 +367,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Completes the universal finite converse and its resource-sensitive interpretation.
 
-**Sources:** [Lemma 6](../PROOF.md#environment-entropy); [Lemma 7](../PROOF.md#heat-ledger); [finite theorem](../THEOREM.md#finite-bound); [approximate return](../THEOREM.md#workspace-return).
+**Conceptual connection:** Connects environmental information to actual bath heat after all workspace resources are charged.
 
-**Learning block:** 3 rounds.
+**Sources:** [Lemma 6](../science/environment_information.md#environment-entropy); [Lemma 7](../science/heat_bound.md#heat-ledger); [finite theorem](../science/theorem.md#finite-bound); [approximate return](../science/theorem.md#workspace-return).
+
 
 <a id="m23"></a>
 ### M23 — Recovering work without hiding reservoir costs
@@ -361,9 +383,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Supplies the improved achievable cost required to match the converse rather than merely exhibit a finite device.
 
-**Sources:** [Recovery and finite residual](../CONSTRUCTION.md#recovery); [complete ledger](../CONSTRUCTION.md#heat-ledger); [successive-swap source](../LITERATURE.md#r1).
+**Conceptual connection:** Connects the explicit collision to a better upper bound through fully counted thermal recovery.
 
-**Learning block:** 3 rounds.
+**Sources:** [Recovery and finite residual](../science/thermal_implementation.md#recovery); [complete ledger](../science/thermal_implementation.md#heat-ledger); [successive-swap source](../references/LITERATURE.md#r1).
+
 
 <a id="m24"></a>
 ### M24 — Matching the bounds to obtain the optimal crossover
@@ -376,9 +399,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Integrates the two directions into the main optimality statement.
 
-**Sources:** [Matching-limit proof](../PROOF.md#matching-limit); [canonical crossover](../THEOREM.md#optimal-crossover).
+**Conceptual connection:** Connects the universal converse and construction into the same optimal limiting function.
 
-**Learning block:** 3 rounds.
+**Sources:** [Matching-limit proof](../science/heat_bound.md#matching-limit); [canonical crossover](../science/theorem.md#optimal-crossover).
+
 
 <a id="m25"></a>
 ### M25 — The surviving cost and the singular endpoint
@@ -391,9 +415,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Gives the limiting law its physical interpretation and guards its endpoint and resource qualifications.
 
-**Sources:** [Cost location](03_precision.md#cost-location); [construction ledger](../CONSTRUCTION.md#heat-ledger); [limit scope](../THEOREM.md#optimal-crossover); [finite resources](../MODEL.md#limits).
+**Conceptual connection:** Connects the limit to surviving correlations, positive finite errors, and growing resources.
 
-**Learning block:** 2 rounds.
+**Sources:** [Cost location](03_precision.md#cost-location); [construction ledger](../science/thermal_implementation.md#heat-ledger); [limit scope](../science/theorem.md#optimal-crossover); [finite resources](../science/model.md#limits).
+
 
 <a id="m26"></a>
 ### M26 — Full-channel accuracy at exactly the same heat infimum
@@ -406,9 +431,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Extends the operational meaning of the crossover through a physically charged, model-preserving conversion.
 
-**Sources:** [Channel corollary](../THEOREM.md#channel-equivalence); [physical conversion and norm proof](../PROOF.md#channel-equivalence); [construction channel](../CONSTRUCTION.md#channel-error).
+**Conceptual connection:** Connects branch-feasible devices to full-channel accuracy through an allowed thermal conversion.
 
-**Learning block:** 3 rounds.
+**Sources:** [Channel corollary](../science/theorem.md#channel-equivalence); [physical conversion and norm proof](../science/channel_accuracy.md#channel-equivalence); [construction channel](../science/thermal_implementation.md#channel-error).
+
 
 <a id="m27"></a>
 ### M27 — Why exact targets cannot be produced cyclically
@@ -421,9 +447,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Closes the exact-versus-limiting distinction using the complete finite apparatus rather than a pure-environment analogy.
 
-**Sources:** [Exact-output proposition](../THEOREM.md#exact-output-obstruction); [support-and-rank proof](../PROOF.md#exact-output-obstruction); [consumed-workspace boundary](../MODEL.md#resource-boundary).
+**Conceptual connection:** Connects purity, rank, support, and marginal return to the impossibility of an exact finite device.
 
-**Learning block:** 3 rounds.
+**Sources:** [Exact-output proposition](../science/theorem.md#exact-output-obstruction); [support-and-rank proof](../science/exact_outputs.md#exact-output-obstruction); [consumed-workspace boundary](../science/model.md#resource-boundary).
+
 
 <a id="m28"></a>
 ### M28 — Finite consequences and implementation evidence
@@ -436,9 +463,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Connects the limiting story to a finite consequence and the exact evidential role of the runnable repository.
 
-**Sources:** [Finite benchmark](../FINITE_BENCHMARK.md); [claim-to-evidence map](../CLAIMS.md); [reproducibility guide](../REPRODUCIBILITY.md).
+**Conceptual connection:** Connects the analytical result to a finite comparison and the distinct role of numerical evidence.
 
-**Learning block:** 2 rounds.
+**Sources:** [Finite benchmark](../science/finite_benchmark.md); [claim-to-evidence map](../verification/CLAIMS.md); [reproducibility guide](../verification/README.md).
+
 
 <a id="m29"></a>
 ### M29 — Inherited ingredients and the project's contribution
@@ -451,9 +479,10 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Story role:** Places the integrated result in its scientific context without treating an adjacent theorem or a model precedent as its proof.
 
-**Sources:** [Direct comparisons](../RELATED_WORK.md); [assumptions and primary sources](../LITERATURE.md); [claim boundaries](../CLAIMS.md).
+**Conceptual connection:** Connects the contribution to its predecessors without equating different resource models.
 
-**Learning block:** 2 rounds.
+**Sources:** [Direct comparisons](../references/RELATED_WORK.md); [assumptions and primary sources](../references/LITERATURE.md); [claim boundaries](../verification/CLAIMS.md).
+
 
 <a id="m30"></a>
 ### M30 — Synthesis of the full result and its boundaries
@@ -464,12 +493,12 @@ Map version: **1**. A substantive change in the scientific account can justify r
 
 **Depends on:** [M14](#m14), [M24](#m24), [M25](#m25), [M26](#m26), [M27](#m27), [M28](#m28), [M29](#m29).
 
-**Story role:** Completes global project understanding. This integrative milestone is the endpoint, not preparation for an additional unannounced examination.
+**Story role:** Completes global project understanding. This integrative milestone connects the complete scientific argument and its boundaries.
 
-**Sources:** [Model](../MODEL.md); [theorem](../THEOREM.md); [proof](../PROOF.md); [construction](../CONSTRUCTION.md); [claim map](../CLAIMS.md); [comparisons](../RELATED_WORK.md).
+**Conceptual connection:** Connects the task, proof mechanism, attainable limit, consequences, and resource boundaries.
 
-**Learning block:** 3 rounds.
+**Sources:** [Model](../science/model.md); [theorem](../science/theorem.md); [proof](../science/README.md); [construction](../science/thermal_implementation.md); [claim map](../verification/CLAIMS.md); [comparisons](../references/RELATED_WORK.md).
 
-## Completion boundary
+## Coverage
 
-Passing the challenge for every milestone completes this project-understanding tutorial under the [coaching protocol](COACHING.md). It establishes the conceptual evidence collected by those challenges, not mastery of every proof detail, independent verification of the research, or guaranteed answers to every specialist question. The milestone map itself records no learner passes.
+The final synthesis connects the whole project. Technical details remain in the linked scientific arguments, and this map does not assert exhaustive mastery or independent validation.

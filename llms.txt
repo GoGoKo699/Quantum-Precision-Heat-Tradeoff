@@ -24,28 +24,37 @@ The linked statements and primary-source comparisons take precedence over this s
 ## Task, statements, and derivations
 
 - [Overview](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/README.md): Physical motivation, main result, finite comparison, and reading paths.
-- [Physical model](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/MODEL.md): Conditional task, accuracy convention, finite Gibbs reservoir, driving, workspace return, and charged resources.
-- [Theorem](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/THEOREM.md): Finite lower bound, optimal crossover, channel-accuracy equivalence, exact-output obstruction, and approximate-return allowance.
-- [Proof](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/PROOF.md): Complete argument and dependency map.
-- [Thermal construction](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/CONSTRUCTION.md): Bath-qubit collision and charged recovery attaining the limiting upper bound.
-- [Claim-to-evidence map](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/CLAIMS.md): Which claims have derivations, numerical checks, and stated limitations.
+- [Physical model](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/model.md): Conditional task, accuracy convention, finite Gibbs reservoir, driving, workspace return, and charged resources.
+- [Theorem](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/theorem.md): Finite lower bound, optimal crossover, channel-accuracy equivalence, exact-output obstruction, and approximate-return allowance.
+- [Proof](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/README.md): Connected scientific account and topic-by-topic proof dependency map.
+- [Thermal construction](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/thermal_implementation.md): Bath-qubit collision and charged recovery attaining the limiting upper bound.
+- [Claim-to-evidence map](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/verification/CLAIMS.md): Which claims have derivations, numerical checks, and stated limitations.
 
 ## Learning and relation to prior work
 
-- [Thirty-milestone map](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/tutorial/MILESTONES.md): Common understanding targets M01–M30, with 14 background and 16 narrative milestones, dependencies, source pointers, and phase-ending syntheses.
-- [Coaching protocol](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/tutorial/COACHING.md): Revise → Learn → Test; initial two-question challenges; targeted 1–3-round learning blocks; challenge-only escalation capped at six; selection-only answers and separate learner state.
-- [Tutorial entry point](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/tutorial/README.md): The single Schumacher–Westmoreland anchor and three worked chapters supporting the complete milestone map.
-- [Notation](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/NOTATION.md): Mathematical symbols and entropy conventions used in the research.
-- [Direct source comparisons](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/RELATED_WORK.md): Relation to prior thermodynamic results, with precise distinctions in task and resource accounting.
-- [Literature and assumptions](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/LITERATURE.md): Primary sources, inherited ingredients, and assumption register.
-
-For coaching, load the milestone map and protocol before teaching. Keep the common targets independent of learner background; previous study informs explanations but is not automatically a milestone pass. Learning-test feedback is immediate and its errors do not enlarge a challenge. Completion means all 30 milestone challenges are passed, without an extra final examination.
+- [Thirty-milestone map](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/learning/MILESTONES.md): Common understanding targets M01–M30, with 14 background and 16 narrative milestones, dependencies, source pointers, and phase-ending syntheses.
+- [Tutorial entry point](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/learning/README.md): The single Schumacher–Westmoreland anchor and three worked chapters supporting the complete milestone map.
+- [Notation](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/notation.md): Mathematical symbols and entropy conventions used in the research.
+- [Direct source comparisons](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/references/RELATED_WORK.md): Relation to prior thermodynamic results, with precise distinctions in task and resource accounting.
+- [Literature and assumptions](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/references/LITERATURE.md): Primary sources, inherited ingredients, and assumption register.
 
 ## Calculations and citation
 
-- [Finite benchmark](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/FINITE_BENCHMARK.md): A proved lower bound compared with the computed heat of one explicit device.
-- [Reproducibility guide](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/docs/REPRODUCIBILITY.md): Installation, reproduction commands, tested environments, and verification scope.
+- [Finite benchmark](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/finite_benchmark.md): A proved lower bound compared with the computed heat of one explicit device.
+- [Reproducibility guide](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/verification/README.md): Installation, reproduction commands, tested environments, and verification scope.
 - [Numerical implementation](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/qph/core.py): Reference formulas, matrix calculations, and recovery sums.
 - [Committed numerical reference](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/results/reference.json): Calculated benchmark, crossover, and recovery values.
 - [Citation metadata](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/CITATION.cff): Repository title, author, citation URL, license, and keywords; cite the repository and the specific statement used.
 - [Source inventory](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/provenance/README.md): Source provenance and AI-assistance disclosure.
+## Direct topic routes
+
+- [Physical interpretation](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/interpretation.md): Story of the conditional task, squared-overlap precision, environmental record, and resource boundary.
+- [Arbitrary-unitary kinematics](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/kinematics.md): Output tests, complete reduction, and spectral separation.
+- [Environmental information](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/environment_information.md): Noncommuting information inequality, actual-output continuity, and entropy increase.
+- [Heat and optimality](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/heat_bound.md): Gibbs/workspace accounting and the two limiting directions.
+- [Channel accuracy](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/channel_accuracy.md): Physical dephasing conversion and equality of infima.
+- [Exact-output obstruction](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/science/exact_outputs.md): Rank and support proof with returned workspace.
+- [Textbook bridge](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/learning/SCHUMACHER_WESTMORELAND_BRIDGE.md): Selected Schumacher–Westmoreland chapters, notation translation, and locally supplied research tools.
+- [Structured bibliography](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/references/bibliography.json): Stable source labels, citation text, and source URLs extracted from the attributed register.
+
+For self-directed study, use the common milestone map and selected-source bridge. The map has exactly 30 stable targets with the retained 14/16 allocation. This guide contains no personal assessment procedure or learner records.

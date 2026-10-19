@@ -51,7 +51,7 @@ def check_displayed_values(calculations, pages):
         'thermal gap': (calculations['relaxed_device']['gap_over_kBT'], 9),
         'auxiliary allowance': (calculations['auxiliary_entropy_allowance_bits'], 12),
     }
-    benchmark = pages['docs/FINITE_BENCHMARK.md']
+    benchmark = pages['science/finite_benchmark.md']
     for label, (value, digits) in required.items():
         token = f'{value:.{digits}f}'
         if not re.search(r'(?<![\d.])' + re.escape(token) + r'(?!\d)', benchmark):
@@ -83,6 +83,7 @@ def check_displayed_values(calculations, pages):
 
 
 def main():
+    subprocess.run([sys.executable, "scripts/check_structure.py"], cwd=ROOT, check=True)
     metadata = tomllib.loads((ROOT/'pyproject.toml').read_text())
     assert metadata['project']['name'] == 'quantum-precision-heat-tradeoff'
     citation = (ROOT/'CITATION.cff').read_text()

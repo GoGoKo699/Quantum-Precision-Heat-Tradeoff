@@ -41,7 +41,7 @@ u=\frac{s^2}{2(1+c)}+\epsilon,
 \qquad b=\frac{s}{2\sqrt{u(1-u)}}.
 ```
 
-The first term in $`u`$ equals $`(1-c)/2`$; its displayed form is numerically stable when $`s`$ is small. The chosen range gives $`0<b<1`$, as checked in the [construction](../CONSTRUCTION.md#collision).
+The first term in $`u`$ equals $`(1-c)/2`$; its displayed form is numerically stable when $`s`$ is small. The chosen range gives $`0<b<1`$, as checked in the [construction](../science/thermal_implementation.md#collision).
 
 First apply a joint rotation $`R`$, then a controlled flip:
 
@@ -56,7 +56,7 @@ The controlled flip exchanges the bath's basis states when the physical system q
 R=\cos\theta\,I+i\sin\theta\,X\otimes Y.
 ```
 
-This identity and the controlled flip give the [four basis transformations](../CONSTRUCTION.md#collision).
+This identity and the controlled flip give the [four basis transformations](../science/thermal_implementation.md#collision).
 
 <a id="branch-states"></a>
 ## Follow the conditional states
@@ -114,14 +114,14 @@ q=\frac{Q}{k_{\mathrm B}T\ln2}
 
 This calculation charges the spent bath's complete energy increase. No assumption that an entropy decrease is attainable as work was used.
 
-At $`s=0.05`$ and $`\epsilon=0.0025`$, it gives approximately $`0.311485`$ heat units. The bath gap is approximately $`0.964105\,k_{\mathrm B}T`$. The [finite benchmark](../FINITE_BENCHMARK.md#comparison) retains more digits and compares this construction with a stricter task's lower bound. Run `python scripts/reproduce.py` from the repository root to calculate the matrices and values.
+At $`s=0.05`$ and $`\epsilon=0.0025`$, it gives approximately $`0.311485`$ heat units. The bath gap is approximately $`0.964105\,k_{\mathrm B}T`$. The [finite benchmark](../science/finite_benchmark.md#comparison) retains more digits and compares this construction with a stricter task's lower bound. Run `python scripts/reproduce.py` from the repository root to calculate the matrices and values.
 
 <a id="recovery"></a>
 ## Why recovery can reduce the cost further
 
 The final bath is maximally mixed, but its Hamiltonian has unequal energies. It is out of equilibrium. Further interactions with thermal qubits can recover some supplied work while leaving the system output unchanged.
 
-Recovery is optional for the finite separation. It is necessary to reach the limiting optimum. The [complete recovery calculation](../CONSTRUCTION.md#recovery) includes every fresh reservoir component, every energy change, and restoration of the working bath qubit. The underlying successive-Gibbs-swap technique is from [Reeb–Wolf, Proposition 8](../LITERATURE.md#r1).
+Recovery is optional for the finite separation. It is necessary to reach the limiting optimum. The [complete recovery calculation](../science/thermal_implementation.md#recovery) includes every fresh reservoir component, every energy change, and restoration of the working bath qubit. The underlying successive-Gibbs-swap technique is from [Reeb–Wolf, Proposition 8](../references/LITERATURE.md#r1).
 
 ## Checkpoint
 
@@ -133,7 +133,7 @@ In natural-log units, the Gibbs identity is
 \beta Q=\Delta S_B+D(B'\Vert\gamma_b).
 ```
 
-Here $`\Delta S_B`$ is the bath entropy increase. Relative entropy $`D`$ measures departure from the reference Gibbs state and is nonnegative. It is positive here because $`B'=I/2`$ differs from $`\gamma_b`$. Recovery reduces this nonequilibrium term. See the [full heat ledger](../CONSTRUCTION.md#heat-ledger) for the role of final correlations.
+Here $`\Delta S_B`$ is the bath entropy increase. Relative entropy $`D`$ measures departure from the reference Gibbs state and is nonnegative. It is positive here because $`B'=I/2`$ differs from $`\gamma_b`$. Recovery reduces this nonequilibrium term. See the [full heat ledger](../science/thermal_implementation.md#heat-ledger) for the role of final correlations.
 
 **Does this device prove optimality?**
 

@@ -1,8 +1,8 @@
 # Relation to existing results
 
-[Home](../README.md) · [Physical model](MODEL.md) · [Main result](THEOREM.md) · [Source and assumption register](LITERATURE.md)
+[Home](../README.md) · [Physical model](../science/model.md) · [Main result](../science/theorem.md) · [Source and assumption register](LITERATURE.md)
 
-The contribution is the [positive-error precision–heat crossover](THEOREM.md#optimal-crossover) for the specified two-input task: a converse uniform in finite apparatus dimension, charged internal workspace, and a matching thermal construction. Operation-dependent cost, approximate processing, catalytic return, and work recovery have established predecessors. The comparisons below identify the particular results used and their task and resource conventions.
+The contribution is the [positive-error precision–heat crossover](../science/theorem.md#optimal-crossover) for the specified two-input task: a converse uniform in finite apparatus dimension, charged internal workspace, and a matching thermal construction. Operation-dependent cost, approximate processing, catalytic return, and work recovery have established predecessors. The comparisons below identify the particular results used and their task and resource conventions.
 
 ## Microscopic heat and recovery
 
@@ -13,7 +13,7 @@ The contribution is the [positive-error precision–heat crossover](THEOREM.md#o
 
 **Task and resources.** A specified system state interacts unitarily with an independent Gibbs reservoir. The objective is its complete mean reservoir-energy increase. The principal model is finite dimensional; it neither specifies a two-branch accuracy tolerance nor adds an arbitrary nonthermal catalyst. Proposition 8 approaches the entropy bound for a prescribed rank-nondecreasing state transition using growing reservoirs and successive swaps.
 
-**Role here.** The Gibbs heat identity and successive-reservoir idea are inherited. The [construction](CONSTRUCTION.md#recovery) specializes recovery to an explicit finite qubit ladder and counts every spent component. The [proof](PROOF.md) additionally derives a record forced by both conditional output tests. Optimizing a single average-state transition does not enforce those tests. Reeb–Wolf deliberately leave system energy unspecified; equating heat with supplied work additionally requires this repository's [boundary Hamiltonians](MODEL.md#heat-work).
+**Role here.** The Gibbs heat identity and successive-reservoir idea are inherited. The [construction](../science/thermal_implementation.md#recovery) specializes recovery to an explicit finite qubit ladder and counts every spent component. The [proof](../science/README.md) additionally derives a record forced by both conditional output tests. Optimizing a single average-state transition does not enforce those tests. Reeb–Wolf deliberately leave system energy unspecified; equating heat with supplied work additionally requires this repository's [boundary Hamiltonians](../science/model.md#heat-work).
 
 ## Operation-dependent restrictions
 
@@ -24,9 +24,9 @@ The contribution is the [positive-error precision–heat crossover](THEOREM.md#o
 
 **Task and resources.** A fixed quantum operation is implemented exactly using an input-independent canonical bath and an isometry. A heat-transfer operator specifies mean bath heat for each input state. Their finite-bath condition means a finite partition function, allowing infinitely many energy levels. No separately returned nonthermal workspace appears in this criterion.
 
-**Role here.** For the exact pure-target channel, the Kraus products are linearly independent when the target overlap is nonzero. Theorem 4(b)'s heat-transfer-matrix criterion then requires $`\beta Q>\ln 2`$ for equal priors in its exact model. This inherited restriction does not by itself supply a uniform positive-error estimate as overlap and error vanish together. The present [finite converse](THEOREM.md#finite-bound) and [limiting law](THEOREM.md#optimal-crossover) address that joint limit; they do not reinterpret the exact criterion as an attainable finite-dimensional endpoint.
+**Role here.** For the exact pure-target channel, the Kraus products are linearly independent when the target overlap is nonzero. Theorem 4(b)'s heat-transfer-matrix criterion then requires $`\beta Q>\ln 2`$ for equal priors in its exact model. This inherited restriction does not by itself supply a uniform positive-error estimate as overlap and error vanish together. The present [finite converse](../science/theorem.md#finite-bound) and [limiting law](../science/theorem.md#optimal-crossover) address that joint limit; they do not reinterpret the exact criterion as an attainable finite-dimensional endpoint.
 
-For the finite-dimensional apparatus used here, the [support-and-rank argument](PROOF.md#exact-output-obstruction) rules out exact pure outputs even with ensemble-marginally returned workspace. The [channel-equivalence corollary](THEOREM.md#channel-equivalence) instead concerns positive-error mean-heat infima and uses a physical Gibbs implementation of standard input dephasing.
+For the finite-dimensional apparatus used here, the [support-and-rank argument](../science/exact_outputs.md#exact-output-obstruction) rules out exact pure outputs even with ensemble-marginally returned workspace. The [channel-equivalence corollary](../science/theorem.md#channel-equivalence) instead concerns positive-error mean-heat infima and uses a physical Gibbs implementation of standard input dephasing.
 
 <a id="bedingham-maroney"></a>
 ### Bedingham and Maroney
@@ -35,7 +35,7 @@ For the finite-dimensional apparatus used here, the [support-and-rank argument](
 
 **Task and resources.** An ensemble of specified input/output pairs must be realized by one unitary on system, auxiliary, and independent canonical bath. Equation (4) restores the auxiliary's ensemble-average marginal. Mean bath heat is charged. The outputs are specified exactly; a noisy map can be inserted as that specification. No overlap/error joint limit is asserted there.
 
-**Explicit comparison.** Substituting this repository's [constructed noisy outputs](CONSTRUCTION.md#collision) into Eq. (9) yields, in natural-log units,
+**Explicit comparison.** Substituting this repository's [constructed noisy outputs](../science/thermal_implementation.md#collision) into Eq. (9) yields, in natural-log units,
 
 ```math
 \beta Q\ge J(s)+\frac{s^2z^2}{32}.
@@ -96,14 +96,14 @@ The closest direct heat-model precedent is [Bedingham–Maroney Eq. (4)](#beding
 - [Shiraishi–Sagawa, arXiv:2010.11036v3](https://arxiv.org/abs/2010.11036v3), Theorem 1 and Supplemental Material Theorem 3: Gibbs-preserving state conversion allows an exactly returned catalyst, arbitrarily small target trace distance and mutual information. Theorem 2 treats work investment through a separate storage system. These are state-conversion results with potentially growing catalysts, not a common device constrained on both input branches.
 - [Henao–Uzdin, arXiv:2010.09070v3](https://arxiv.org/abs/2010.09070v3), §4.1, Eqs. (4)–(5): a global unitary returns a finite catalyst marginal while permitting correlations. The objective is cooling, later thermometry; §3 does not require a thermal hot object or count its energy as the objective. This is a finite-environment precedent, not the same heat ledger or error limit.
 
-These are precedents for resource conventions, not ingredients proving the crossover. The [complete-environment argument](PROOF.md#environment-entropy) applies to the specified conditional task, including rank-deficient workspace, and then uses Gibbs structure only for the bath. Returning an ensemble marginal is weaker than returning every conditional marginal or removing all correlations. Reuse with fresh independent inputs does not imply arbitrary correlated multi-use composability.
+These are precedents for resource conventions, not ingredients proving the crossover. The [complete-environment argument](../science/environment_information.md#environment-entropy) applies to the specified conditional task, including rank-deficient workspace, and then uses Gibbs structure only for the bath. Returning an ensemble marginal is weaker than returning every conditional marginal or removing all correlations. Reuse with fresh independent inputs does not imply arbitrary correlated multi-use composability.
 
 ### Approximate return
 
 [Ng et al., arXiv:1405.3039v1](https://arxiv.org/abs/1405.3039v1), §II.1–II.2 and Supplemental Material Theorem II.3, examine approximate catalyst return under thermal operations. A small catalyst trace-distance change alone can permit otherwise forbidden state conversions when its dimension grows; dimension or energy constraints restrict this effect. Their objective is state-conversion feasibility, rather than this conditional task's mean heat.
 
-The present [approximate-return statement](THEOREM.md#workspace-return) charges the workspace's possible entropy increase. Its quantitative dimension-dependent allowance comes from [Audenaert's entropy continuity theorem](LITERATURE.md#r6).
+The present [approximate-return statement](../science/theorem.md#workspace-return) charges the workspace's possible entropy increase. Its quantitative dimension-dependent allowance comes from [Audenaert's entropy continuity theorem](LITERATURE.md#r6).
 
 ## Mathematical ingredients
 
-The [proof-source guide](LITERATURE.md#ingredients-used-in-the-proof) identifies the exact roles of Nishiyama's sharp scalar inequality, Winter's conditional-entropy continuity bound, Audenaert's entropy continuity bound, the complete CS decomposition, and Golden–Thompson. The noncommuting reduction and transfer to the actual environment are written out in the [proof](PROOF.md).
+The [proof-source guide](LITERATURE.md#ingredients-used-in-the-proof) identifies the exact roles of Nishiyama's sharp scalar inequality, Winter's conditional-entropy continuity bound, Audenaert's entropy continuity bound, the complete CS decomposition, and Golden–Thompson. The noncommuting reduction and transfer to the actual environment are written out in the [proof](../science/README.md).
