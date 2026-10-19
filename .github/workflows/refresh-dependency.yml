@@ -1,0 +1,35 @@
+name: Documentation dependency repair
+on:
+  push:
+    branches: [repository/sanity-20261020]
+    paths: [.github/workflows/refresh-dependency.yml]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: |
+          mkdir -p build/dependency-repair
+          npm ci --ignore-scripts
+          npm install --save-dev --save-exact --ignore-scripts markdown-it@14.3.3
+          npm audit --json > build/dependency-repair/npm-audit.json
+          npm run docs:test > build/dependency-repair/regressions.txt
+          node scripts/check_docs.cjs > build/dependency-repair/docs.txt
+          cp package.json package-lock.json build/dependency-repair/
+          tar -czf build/dependency-repair/documentation-tools.tar.gz node_modules
+          cat build/dependency-repair/npm-audit.json
+          cat build/dependency-repair/docs.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: validated-documentation-update
+          path: build/dependency-repair/
+          if-no-files-found: error
