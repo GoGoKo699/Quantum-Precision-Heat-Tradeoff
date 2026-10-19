@@ -5,7 +5,7 @@ include .github/workflows/checks.yml
 include results/reference.json
 recursive-include science *.md *.svg
 recursive-include learning *.md
-recursive-include references *.md *.json *.bib
+recursive-include references *.md *.json
 recursive-include verification *.md *.json
 recursive-include scripts *.py *.cjs
 recursive-include tests *.py *.cjs *.md

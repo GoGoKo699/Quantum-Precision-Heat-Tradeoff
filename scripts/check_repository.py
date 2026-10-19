@@ -7,6 +7,7 @@ geometry, not a claim about live GitHub or browser layout.
 """
 from pathlib import Path
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -31,6 +32,8 @@ def compare(expected, actual, path='calculations'):
         for index, value in enumerate(expected):
             compare(value, actual[index], f'{path}[{index}]')
     elif isinstance(expected, (int, float)):
+        if not math.isfinite(expected) or not math.isfinite(actual):
+            raise AssertionError(f'Nonfinite numerical value at {path}: {expected} vs {actual}')
         if abs(expected-actual) > 1e-10*max(1, abs(expected)):
             raise AssertionError(f'Numerical mismatch at {path}: {expected} vs {actual}')
     elif expected != actual:

@@ -37,6 +37,14 @@ def j2(b: float) -> float:
         raise ValueError("Bias must be finite and in [0, 1].")
     if b == 1.0:
         return 1.0
+    if b < 0.01:
+        # The logarithmic expression subtracts terms of order b to obtain b^2.
+        # Use the positive series proved in science/environment_information.md.
+        # At this cutoff the omitted tail is below 2e-26 relative to the sum.
+        square = b*b
+        return square * math.fsum(
+            square**k / ((2*k+2)*(2*k+1)) for k in range(6)
+        ) / LN2
     return ((1+b)*math.log1p(b) + (1-b)*math.log1p(-b)) / (2*LN2)
 
 
@@ -54,7 +62,8 @@ def crossover(r: float) -> float:
     r = float(r)
     if not math.isfinite(r) or r < 0:
         raise ValueError("Use a finite, nonnegative crossover ratio.")
-    return j2(1/math.sqrt(1+4*r))
+    # Equivalent scaling avoids overflow of 4*r at large finite ratios.
+    return j2(0.5/math.sqrt(r+0.25))
 
 
 def disturbance(d: float) -> float:
