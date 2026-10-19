@@ -28,6 +28,10 @@ def main():
         inline = re.findall(r'\$`(.*?)`\$', content, re.S)
         actual = digest(json.dumps([expressions, inline], ensure_ascii=False).encode())
         assert actual == item['math_sha256'], f'Mathematical source changed: {item["destinations"]}'
+    targets = re.findall(r'^\*\*Understanding target:\*\* (.+)$',
+                         (ROOT/'learning/MILESTONES.md').read_text(), re.M)
+    assert len(targets) == 30
+    assert digest(json.dumps(targets, ensure_ascii=False).encode()) == record['milestone_targets_sha256']
     entries = json.loads((ROOT/'references/bibliography.json').read_text())['entries']
     assert len(entries) >= 35 and len({e['id'] for e in entries}) == len(entries)
     print(f'PASS: canonical layout, {len(record["protected_files"])} protected files, '
