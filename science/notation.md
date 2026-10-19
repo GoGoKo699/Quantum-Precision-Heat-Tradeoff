@@ -1,6 +1,6 @@
 # Notation and units
 
-[Home](../README.md) · [Physical model](MODEL.md) · [Main result](THEOREM.md) · [Proof](PROOF.md)
+[Home](../README.md) · [Physical model](model.md) · [Main result](theorem.md) · [Proof](README.md)
 
 This reference fixes conventions used throughout the repository. A prime means a final state; an unconditioned final marginal is averaged over the two equally likely inputs.
 
@@ -35,11 +35,11 @@ D(\rho,\sigma)=\frac12\|\rho-\sigma\|_1.
 
 The tolerance $`\epsilon`$ bounds the maximum of the two output trace distances. The separate tolerance $`\delta`$ bounds workspace return. Neither is an infidelity.
 
-In the [channel corollary](THEOREM.md#channel-equivalence), $`\mathcal T_s`$ is the target measure-and-prepare channel, $`\mathcal N`$ is an apparatus's system channel, and $`\|\cdot\|_{\diamond}`$ is the completely bounded trace norm. The channel error is $`\|\mathcal N-\mathcal T_s\|_{\diamond}/2`$. The infima $`q_{\min}`$ and $`q_{\min}^{\diamond}`$ use branch accuracy and channel accuracy respectively, with the same mean-heat and workspace-return conventions.
+In the [channel corollary](theorem.md#channel-equivalence), $`\mathcal T_s`$ is the target measure-and-prepare channel, $`\mathcal N`$ is an apparatus's system channel, and $`\|\cdot\|_{\diamond}`$ is the completely bounded trace norm. The channel error is $`\|\mathcal N-\mathcal T_s\|_{\diamond}/2`$. The infima $`q_{\min}`$ and $`q_{\min}^{\diamond}`$ use branch accuracy and channel accuracy respectively, with the same mean-heat and workspace-return conventions.
 
 In the proof, $`\delta_x`$ is the probability that the output is in the wrong computational-basis state on input $`x`$, and $`\bar\delta=(\delta_0+\delta_1)/2`$. Its upper bound is $`d=(1-c)/2+\epsilon`$, with $`c=\sqrt{1-s^2}`$. The construction's parameter $`u`$ equals this same $`d`$.
 
-The spectral quantity $`\mathcal T`$ is the normalized triangular discrimination defined in the [spectral lemma](PROOF.md#spectral-discrimination). The symbol $`b_0`$ bounds $`\sqrt{\mathcal T}`$ from below; the different symbol $`b`$ is the explicit construction's thermal bias. Their limiting value is $`b_*(r)`$, with $`r=\lim\epsilon/s^2`$.
+The spectral quantity $`\mathcal T`$ is the normalized triangular discrimination defined in the [spectral lemma](kinematics.md#spectral-discrimination). The symbol $`b_0`$ bounds $`\sqrt{\mathcal T}`$ from below; the different symbol $`b`$ is the explicit construction's thermal bias. Their limiting value is $`b_*(r)`$, with $`r=\lim\epsilon/s^2`$.
 
 <a id="entropies"></a>
 ## Entropies and information
@@ -94,4 +94,4 @@ The construction and source comparisons also use $`J(b)=(\ln2)J_2(b)`$ in nats. 
 | $`\Delta H_E`$ | Complete-environment entropy **increase**, in bits. |
 | $`\Delta S_S`$ in the construction ledger | System entropy **decrease**, initial minus final, in nats. |
 
-The sign difference in the last row follows the traditional Landauer heat identity. The [model](MODEL.md#heat-work) specifies when $`W=Q`$ and when the auxiliary boundary-energy change must also be charged.
+The sign difference in the last row follows the traditional Landauer heat identity. The [model](model.md#heat-work) specifies when $`W=Q`$ and when the auxiliary boundary-energy change must also be charged.

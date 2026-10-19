@@ -1,21 +1,36 @@
 # Repository working rules
 
-This repository presents a fixed precision–heat research result. The canonical scientific statement is `docs/THEOREM.md`, its resource model is `docs/MODEL.md`, and its complete argument is `docs/PROOF.md` plus `docs/CONSTRUCTION.md`.
-
 This repository serves as a record of the work and a guide for the author’s self-directed learning. For discussion or potential collaboration, please contact Ruge Lin at [gogoko699@gmail.com](mailto:gogoko699@gmail.com).
 
-Do not start manuscript drafting, a new research campaign, release tagging, or external correspondence without the owner's instruction.
+## Scientific sources
 
-Preserve the distinction between proofs, finite tests, source comparisons, and experimental evidence. Do not infer universal correctness from sampled matrices or claim external validation that has not occurred. Public collaboration wording belongs in README; do not replace it with a request for validation. Direct collaboration, questions, corrections, suggestions, and other project inquiries to Ruge Lin at gogoko699@gmail.com. Do not instruct readers to open issues or pull requests. Keep maintainer instructions and literal math-markup examples out of the public contact section.
+This repository presents the established precision–heat result. Read the current scientific account before editing. The resource model is `science/model.md`; statements are in `science/theorem.md`; `science/README.md` maps the proof across kinematics, environmental information, heat accounting, channel accuracy, and exact-output obstruction. The attaining device is `science/thermal_implementation.md`.
 
-Use GitHub-native Markdown, plain-text headings, and `math` fenced blocks for display equations. Keep each equation outside tables and block quotes. Typeset mathematical notation in prose, lists, and tables with GitHub's protected inline math form, outside bold or italic wrappers. Reserve code formatting for executable code, commands, paths, and program identifiers. Do not introduce custom macros, a documentation website, or a separate site deployment stack.
+Preserve exact hypotheses, quantifiers, equations, accuracy measures, signs, units, entropy conventions, source attribution, and resource qualifications. Do not replace conditional tests by an average-state task, charge a mathematical purification as a physical resource, or silently interchange heat, work, and battery cost. A suspected scientific issue is separate from presentation cleanup.
 
-Optimize layout for normal desktop GitHub reading. Keep related short definitions together and break derivations at mathematical steps rather than individual terms. Preserve readable font sizes and protected inline math; do not split every display to fit a phone-width column.
+Give each result one authoritative home under `science/`. Keep related work and the structured bibliography under `references/`, shared learning material under `learning/`, and reproducibility guidance under `verification/`. Repair incoming links when reorganizing. Preserve the complete connected argument, not just its headline.
 
-Keep one textbook as the teaching anchor while retaining primary-research attribution. Do not redistribute textbook chapters, scans, or third-party papers. Every current local link and reproduction command must work without earlier conversations or archives.
+## Learning and presentation
 
-For teaching, load [the common 30-milestone map](docs/tutorial/MILESTONES.md) and [the coaching protocol](docs/tutorial/COACHING.md) before starting. Preserve its learner-independent targets and 14/16 phase allocation. Every round uses Revise → Learn → Test. Initial challenges have two four-option questions; after each failed challenge use 1–3 one-question learning rounds, then increase the next challenge by one question up to six. Learning feedback is immediate and learning errors do not increase challenge size. Follow the protocol for full-set challenge feedback, genuine clickable selection where supported, resumption, and explicit completion after all 30 passes. Keep learner state separate; do not convert historical answers into milestone passes or append an extra final examination.
+Retain the single Schumacher–Westmoreland anchor, the source-to-project bridge, and `learning/MILESTONES.md`. The common map has exactly M01–M30 with 14 background/preliminaries and 16 narrative/innovation targets, ordered locally to globally in each phase. Keep its settled understanding targets and dependencies independent of a learner's performance.
 
-Run `python -m unittest discover -s tests -v`, `python scripts/reproduce.py`, and `python scripts/check_repository.py`. Update expected numerical data only when the corresponding derivation or an identified numerical correction justifies it. Preserve the MIT license and source inventory.
+Personal coaching contracts, session instructions, retry rules, answers, and learner records stay outside the scientific repository. Do not recreate a public coaching guide or make shared scientific reading depend on private material. Repository furnishing does not start lessons or establish a reader's mastery.
 
-For scientific or implementation changes, identify the precise claim, affected assumptions, calculations, and any additional physical resources. Preserve stable source identifiers, explicit error conventions, and complete energy accounting. Do not replace the conditional two-input task by an average-state task, treat a formal purification as a physical resource, or switch between mean heat and a battery-resource cost.
+Use GitHub-native Markdown, plain headings, fenced display mathematics, and protected inline mathematics. Keep math outside emphasis wrappers, and display equations outside tables and block quotes. Preserve readable desktop layout. Break long derivations at mathematical steps, not individual terms. Local MathJax compilation is not a hosted-rendering certificate: inspect the actual hosted README, learning entrance, and representative mathematical pages before declaring display verified.
+
+Keep public prose about the scientific question, results, evidence, and consequential scope. Preserve the exact purpose/contact wording. Direct inquiries to Ruge Lin by email; do not replace the collaboration invitation with a public request for validation. Keep publication planning private. Do not start manuscript drafting, a new research campaign, release tagging, metadata changes, or external correspondence without the owner's instruction.
+
+## Preservation and verification
+
+Preserve the MIT license, numerical implementation, committed reference values, and source inventory. `verification/source_map.json` records the source-preserving reorganization; `scripts/check_structure.py` checks its retained code and equation records. Changes to those records require the corresponding scientific or documented maintenance reason.
+
+Run:
+
+```bash
+python -m unittest discover -s tests -v
+python scripts/reproduce.py
+python scripts/check_repository.py
+python scripts/make_figures.py
+```
+
+Documentation checks require `npm ci --ignore-scripts`. Keep the source-distribution and outside-checkout installation checks working. Distinguish analytic proof, finite numerical checks, local rendering, and actual hosted inspection; never infer an executed check from a command's presence. Report concrete access or verification limits without claiming unperformed validation.

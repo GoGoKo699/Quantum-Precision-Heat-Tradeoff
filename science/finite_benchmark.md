@@ -1,6 +1,6 @@
 # A finite precision–heat separation
 
-[Home](../README.md) · [Model](MODEL.md) · [Theorem](THEOREM.md#finite-bound) · [Reproduce](REPRODUCIBILITY.md)
+[Home](../README.md) · [Model](model.md) · [Theorem](theorem.md#finite-bound) · [Reproduce](../verification/README.md)
 
 <a id="comparison"></a>
 ## Compare two accuracy specifications
@@ -24,7 +24,7 @@ Its initial bath populations are approximately $`0.723943`$ and $`0.276057`$. Bo
 \frac{\Delta}{k_{\mathrm B}T}\simeq0.964105468.
 ```
 
-The [collision unitary](CONSTRUCTION.md#collision) preserves the intended common transverse polarization exactly. No recovery ladder is used in this comparison. The bath is spent, and its entire mean energy increase is charged.
+The [collision unitary](thermal_implementation.md#collision) preserves the intended common transverse polarization exactly. No recovery ladder is used in this comparison. The bath is spent, and its entire mean energy increase is charged.
 
 The final average excited population is $`1/2`$. Multiplying its increase by the calibrated gap gives the displayed heat:
 
@@ -32,13 +32,13 @@ The final average excited population is $`1/2`$. Multiplying its increase by the
 Q=\Delta\left(\frac12-p_1\right).
 ```
 
-The [tutorial calculation](tutorial/02_device.md#energy) derives the bath populations, system errors, and energy together.
+The [tutorial calculation](../learning/02_device.md#energy) derives the bath populations, system errors, and energy together.
 
 ## Workspace return
 
 For the strict device, consider a 16-level auxiliary whose **ensemble-average marginal** returns within trace distance $`0.0001`$ of its initial state. Its entropy-capacity allowance is approximately $`0.001863722588`$ bits. Subtracting this allowance from the strict lower bound gives the third row.
 
-The allowance applies to the whole auxiliary marginal, not separately to each small subsystem. Any auxiliary boundary-energy change must also be included before interpreting heat as work. See the [return correction](THEOREM.md#workspace-return) and [boundary energy convention](MODEL.md#heat-work).
+The allowance applies to the whole auxiliary marginal, not separately to each small subsystem. Any auxiliary boundary-energy change must also be included before interpreting heat as work. See the [return correction](theorem.md#workspace-return) and [boundary energy convention](model.md#heat-work).
 
 ## What is finite here
 
@@ -54,4 +54,4 @@ From the repository root, run
 python scripts/reproduce.py
 ```
 
-The script also evaluates selected crossover points and a finite recovery ladder. Its output is written separately from the committed [reference data](../results/reference.json). The checks compare against independently retained values from the source calculations. The [claim map](CLAIMS.md) connects these computed examples to the proof and named tests.
+The script also evaluates selected crossover points and a finite recovery ladder. Its output is written separately from the committed [reference data](../results/reference.json). The checks compare against independently retained values from the source calculations. The [claim map](../verification/CLAIMS.md) connects these computed examples to the proof and named tests.

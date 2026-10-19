@@ -1,8 +1,8 @@
 # A complete two-qubit implementation
 
-[Home](../README.md) · [Tutorial calculation](tutorial/02_device.md) · [Theorem](THEOREM.md#optimal-crossover) · [Notation](NOTATION.md)
+[Home](../README.md) · [Tutorial calculation](../learning/02_device.md) · [Theorem](theorem.md#optimal-crossover) · [Notation](notation.md)
 
-One system qubit and one thermal qubit give a finite upper bound. Optional recovery with more thermal qubits approaches the limiting optimum. Every reservoir component, including the spent ones, remains inside the energy accounting in the [physical model](MODEL.md#apparatus).
+One system qubit and one thermal qubit give a finite upper bound. Optional recovery with more thermal qubits approaches the limiting optimum. Every reservoir component, including the spent ones, remains inside the energy accounting in the [physical model](model.md#apparatus).
 
 [Collision](#collision) · [Channel error](#channel-error) · [Recovery](#recovery) · [Heat ledger](#heat-ledger)
 
@@ -73,9 +73,9 @@ The bare operation is a valid finite upper bound. The bath can be spent after th
 
 For either initial bath basis state, the basis action sends the two system inputs to orthogonal bath basis states. Tracing the bath therefore eliminates the input off-diagonal operator. This channel first dephases in the input basis and then prepares the corresponding $`\sigma_x`$.
 
-The [dephased-channel distance identity](PROOF.md#dephased-channel-distance) therefore gives half-diamond distance exactly $`\epsilon`$ from $`\mathcal T_s`$. Recovery acts only on the reservoir and preserves this system channel. The construction already satisfies the full-channel condition, so it needs no extra dephasing qubit.
+The [dephased-channel distance identity](channel_accuracy.md#dephased-channel-distance) therefore gives half-diamond distance exactly $`\epsilon`$ from $`\mathcal T_s`$. Recovery acts only on the reservoir and preserves this system channel. The construction already satisfies the full-channel condition, so it needs no extra dephasing qubit.
 
-The [optimization corollary](THEOREM.md#channel-equivalence) applies more generally: every branch-feasible device can be converted to a diamond-feasible one at the same mean heat. Its proof physically adds a degenerate Gibbs component and leaves the equal-prior heat and workspace return unchanged. This equality of infima does not certify the channel of an unmodified apparatus from two observed outputs.
+The [optimization corollary](theorem.md#channel-equivalence) applies more generally: every branch-feasible device can be converted to a diamond-feasible one at the same mean heat. Its proof physically adds a degenerate Gibbs component and leaves the equal-prior heat and workspace return unchanged. This equality of infima does not certify the channel of an unmodified apparatus from two observed outputs.
 
 <a id="recovery"></a>
 ## Recover the available work
@@ -90,7 +90,7 @@ J(b)&=\ln2\,J_2(b),
 \end{aligned}
 ```
 
-Here $`J_2`$ is the [binary entropy deficit](THEOREM.md#optimal-crossover), and $`D`$ uses natural logarithms. Recovery exchanges states with a ladder of Gibbs qubits. It uses the successive-swap construction of [Reeb–Wolf, Proposition 8 and its proof](LITERATURE.md#r1).
+Here $`J_2`$ is the [binary entropy deficit](theorem.md#optimal-crossover), and $`D`$ uses natural logarithms. Recovery exchanges states with a ladder of Gibbs qubits. It uses the successive-swap construction of [Reeb–Wolf, Proposition 8 and its proof](../references/LITERATURE.md#r1).
 
 Choose a finite positive integer $`M`$. Bring $`M`$ independent fresh Gibbs qubits, indexed by $`j=1,\ldots,M`$, with
 
@@ -125,18 +125,18 @@ J(b)=\int_0^b\mathrm{atanh}(t)\,dt,
 \qquad 0\le\beta Q_M-J(b)\le\frac{b\,\mathrm{atanh}(b)}M.
 ```
 
-Thus the recovered infimum is approached with full-rank finite Gibbs states at every stage. At fixed positive error, each chosen $`M`$ is finite. Along the high-precision limit, bath gaps and recovery resources need not remain bounded. The [matching-limit proof](PROOF.md#matching-limit) states how this construction meets the universal lower bound.
+Thus the recovered infimum is approached with full-rank finite Gibbs states at every stage. At fixed positive error, each chosen $`M`$ is finite. Along the high-precision limit, bath gaps and recovery resources need not remain bounded. The [matching-limit proof](heat_bound.md#matching-limit) states how this construction meets the universal lower bound.
 
 <a id="heat-ledger"></a>
 ## The complete ledger
 
-For the bath-only construction, the microscopic identity of [Reeb–Wolf, Theorem 3, Eqs. (21)–(22)](LITERATURE.md#r1) reads
+For the bath-only construction, the microscopic identity of [Reeb–Wolf, Theorem 3, Eqs. (21)–(22)](../references/LITERATURE.md#r1) reads
 
 ```math
 \beta Q=\Delta S_S+I(S:B)'+D(B'\Vert\gamma_B).
 ```
 
-Entropies in this identity use natural logarithms. Here $`\Delta S_S`$ means the system entropy **decrease**, initial minus final. The [notation reference](NOTATION.md) distinguishes this from the auxiliary entropy increase used in the theorem. Initially the system and complete reservoir are independent.
+Entropies in this identity use natural logarithms. Here $`\Delta S_S`$ means the system entropy **decrease**, initial minus final. The [notation reference](notation.md) distinguishes this from the auxiliary entropy increase used in the theorem. Initially the system and complete reservoir are independent.
 
 The averaged system output is $`(I-sX)/2`$, so
 
@@ -150,7 +150,7 @@ The post-collision average bath is maximally mixed. Unitary invariance of the jo
 I(S:B)'=J(b)-J(s).
 ```
 
-Adding independent thermal components and applying unitaries on the complete reservoir preserves its mutual information with the system. Recovery reduces the disequilibrium term toward zero; the correlation term remains. In the presence of internal workspace, use the full $`A+B`$ [heat ledger](PROOF.md#heat-ledger): the bath alone need not hold the input record.
+Adding independent thermal components and applying unitaries on the complete reservoir preserves its mutual information with the system. Recovery reduces the disequilibrium term toward zero; the correlation term remains. In the presence of internal workspace, use the full $`A+B`$ [heat ledger](heat_bound.md#heat-ledger): the bath alone need not hold the input record.
 
 ## Numerical boundaries
 

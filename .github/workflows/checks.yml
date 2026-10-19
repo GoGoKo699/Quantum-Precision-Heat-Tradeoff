@@ -25,7 +25,7 @@ jobs:
       - run: python scripts/reproduce.py
       - run: python scripts/check_repository.py
       - run: python scripts/make_figures.py
-      - run: git diff --exit-code -- docs/figures
+      - run: git diff --exit-code -- science/figures
       - name: Verify source distribution
         run: |
           python -c 'from setuptools.build_meta import build_sdist; build_sdist("dist")'

@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "source_commit": "f71a388d84387f9a1cb6d2b7376c9c02743cf1d9",
+  "scope": "Document relocation and proof decomposition. Scientific numerical code, data, source inventory, and mathematical expressions are preserved; this is not independent proof validation.",
+  "file_moves": {
+    "docs/MODEL.md": "science/model.md",
+    "docs/THEOREM.md": "science/theorem.md",
+    "docs/PROOF.md": "science/README.md",
+    "docs/CONSTRUCTION.md": "science/thermal_implementation.md",
+    "docs/FINITE_BENCHMARK.md": "science/finite_benchmark.md",
+    "docs/NOTATION.md": "science/notation.md",
+    "docs/CLAIMS.md": "verification/CLAIMS.md",
+    "docs/REPRODUCIBILITY.md": "verification/README.md",
+    "docs/LITERATURE.md": "references/LITERATURE.md",
+    "docs/RELATED_WORK.md": "references/RELATED_WORK.md",
+    "docs/tutorial/README.md": "learning/README.md",
+    "docs/tutorial/MILESTONES.md": "learning/MILESTONES.md",
+    "docs/tutorial/01_task.md": "learning/01_task.md",
+    "docs/tutorial/02_device.md": "learning/02_device.md",
+    "docs/tutorial/03_precision.md": "learning/03_precision.md",
+    "docs/figures/limiting-crossover.svg": "science/figures/limiting-crossover.svg",
+    "docs/figures/resource-boundary.svg": "science/figures/resource-boundary.svg"
+  },
+  "proof_sections": {
+    "science/kinematics.md": [
+      "output-tests",
+      "unitary-reduction",
+      "spectral-discrimination"
+    ],
+    "science/environment_information.md": [
+      "information-bound",
+      "environment-transfer",
+      "environment-entropy"
+    ],
+    "science/heat_bound.md": [
+      "heat-ledger",
+      "matching-limit"
+    ],
+    "science/channel_accuracy.md": [
+      "channel-equivalence",
+      "dephased-channel-distance"
+    ],
+    "science/exact_outputs.md": [
+      "exact-output-obstruction",
+      "computational-support"
+    ]
+  },
+  "protected_files": {
+    "LICENSE": "a92600540b1ab7a18301e2632a29334b3df227ad836e88df9967d69e3c86db66",
+    "package-lock.json": "6bea865670a4854b21e5f9f26dd8deb4b06db2792844241c4db73024e0e34e56",
+    "package.json": "c0632963a4a1c100d4b453d806a38fef7d152bd7602e2030fd853fbefcf6c6b2",
+    "provenance/sources.json": "86a80d2a99ec841e328fc80a3cb95f349ba4b161298807e34b60920857bf7cd6",
+    "pyproject.toml": "1e973a85dcfa21cedc0ee40d0eddca19967077c062a78cc60eb7d28054e5189e",
+    "qph/__init__.py": "341562a384af52391eab5257f091ba2e02d86b882d65feedc8ff95dc8f6841a1",
+    "qph/core.py": "95df91d6a596f26a2eabaea492585b160c4903e6c27087860ded0f16d33e0910",
+    "requirements-dev.txt": "c3878e9023a53ab4eb227ddf0dc8c29b931bc5a34d65dea9191f4822c5e2f683",
+    "requirements.txt": "1668a3152e33680d94637b13421c15e68bd97cd8701f7f555c691f5bc5c0b9f3",
+    "results/reference.json": "0d077c09e69f61b22d85af8b7fa50784b4c2222f2864927bd184caa4f7f70bee",
+    "tests/test_channel_conversion.py": "9f612f80209354a0f452de81a1cdb90900ddedc62b0b45ad0bd58a424c65c003",
+    "tests/test_core.py": "d5e77cff8abce92cf6a8ca7eafcf079b1913591a748ea32f922ff587bf6a6c91"
+  },
+  "preserved_equations": [
+    {
+      "source": "docs/MODEL.md",
+      "destinations": [
+        "science/model.md"
+      ],
+      "math_sha256": "338e0ae4d3a990ddfb9515b63cd5799c1aaf7e5cae0476270973a40a4fd41431"
+    },
+    {
+      "source": "docs/THEOREM.md",
+      "destinations": [
+        "science/theorem.md"
+      ],
+      "math_sha256": "87c99212087fd0d26b99853095cd68d469602ede9bdd6f18bee49da9ede6c144"
+    },
+    {
+      "source": "docs/CONSTRUCTION.md",
+      "destinations": [
+        "science/thermal_implementation.md"
+      ],
+      "math_sha256": "d69f57cd53cb13e29d0672bd1e2edc6adad475180e86ee0f0cb9c34e32a0a68d"
+    },
+    {
+      "source": "docs/FINITE_BENCHMARK.md",
+      "destinations": [
+        "science/finite_benchmark.md"
+      ],
+      "math_sha256": "7f73b5429b0c2485660e1f0ac6b3f4737a54a76623aab5618235f9f1017f35b5"
+    },
+    {
+      "source": "docs/NOTATION.md",
+      "destinations": [
+        "science/notation.md"
+      ],
+      "math_sha256": "848ec01433f63609780a8dc3227b17dfedf33f05f56cf662bb6355b47742b64f"
+    },
+    {
+      "source": "docs/CLAIMS.md",
+      "destinations": [
+        "verification/CLAIMS.md"
+      ],
+      "math_sha256": "a683096011db3975a1e401e33b0047d1f2677a11efe85ef12806f016ae039795"
+    },
+    {
+      "source": "docs/REPRODUCIBILITY.md",
+      "destinations": [
+        "verification/README.md"
+      ],
+      "math_sha256": "5b3af9fb2213a228465ca6c65b6b7848bbe7fef8ce67700f7192d4a572dfbbe8"
+    },
+    {
+      "source": "docs/LITERATURE.md",
+      "destinations": [
+        "references/LITERATURE.md"
+      ],
+      "math_sha256": "a683096011db3975a1e401e33b0047d1f2677a11efe85ef12806f016ae039795"
+    },
+    {
+      "source": "docs/RELATED_WORK.md",
+      "destinations": [
+        "references/RELATED_WORK.md"
+      ],
+      "math_sha256": "85c452636a36170e8df0e30a05ec93e091eb9b2b00b41b8723fb3ab47c015cc3"
+    },
+    {
+      "source": "docs/tutorial/01_task.md",
+      "destinations": [
+        "learning/01_task.md"
+      ],
+      "math_sha256": "7ce210ec9eacb9d68988b2ff576b41e5d1461995c5aa80cdda5535406c988813"
+    },
+    {
+      "source": "docs/tutorial/02_device.md",
+      "destinations": [
+        "learning/02_device.md"
+      ],
+      "math_sha256": "1921aa546323d5b28c0b23c57612da355fcc29650470c047054da04e16728c7e"
+    },
+    {
+      "source": "docs/tutorial/03_precision.md",
+      "destinations": [
+        "learning/03_precision.md"
+      ],
+      "math_sha256": "f14919cd1a979a70cf9f9e67d6ab65f97b403b88beadee2dc3337c9b950ac30c"
+    },
+    {
+      "source": "docs/PROOF.md",
+      "destinations": [
+        "science/kinematics.md"
+      ],
+      "math_sha256": "972c6205d8cde855a6fc2fd4803313c75c1c8417ca3fc519dcae0bb9da111464"
+    },
+    {
+      "source": "docs/PROOF.md",
+      "destinations": [
+        "science/environment_information.md"
+      ],
+      "math_sha256": "27e8c4277a8f678f9722e6c01e37e9af4a59ea1f6ab5d9de874bdcb1e878fbd9"
+    },
+    {
+      "source": "docs/PROOF.md",
+      "destinations": [
+        "science/heat_bound.md"
+      ],
+      "math_sha256": "2420ab5ebb8ee3b677f7715439c4a36ec214d77137d96b466f733bd9cb3086b3"
+    },
+    {
+      "source": "docs/PROOF.md",
+      "destinations": [
+        "science/channel_accuracy.md"
+      ],
+      "math_sha256": "cad1e104a9f13b5bebfade0c379cff8f8b0da0f6851ab9c2fd783078ee7ab49a"
+    },
+    {
+      "source": "docs/PROOF.md",
+      "destinations": [
+        "science/exact_outputs.md"
+      ],
+      "math_sha256": "b59a71c88a25fba490d54a2b3004cb82ff3185777df15bed930175d62c629ceb"
+    }
+  ],
+  "milestone_targets_sha256": "e7831f4295181452bba5e90e3f989153f0ad41425d12ccdc58ac1a50dab57b57"
+}

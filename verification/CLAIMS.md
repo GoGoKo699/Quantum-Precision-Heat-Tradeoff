@@ -1,42 +1,42 @@
 # Claim-to-evidence map
 
-[Home](../README.md) · [Theorem](THEOREM.md) · [Proof](PROOF.md#dependencies) · [Reproduce](REPRODUCIBILITY.md)
+[Home](../README.md) · [Theorem](../science/theorem.md) · [Proof](../science/README.md#dependencies) · [Reproduce](README.md)
 
 The proof establishes implications of the physical model. The tests check finite matrices and implemented formulas; the committed result record contains computed examples. Source comparisons establish attribution and model distinctions.
 
 <a id="finite-lower-bound"></a>
 ## Dimension-uniform finite lower bound
 
-**Claim:** every allowed implementation satisfies the [finite lower bound](THEOREM.md#finite-bound), with its explicit workspace correction.
+**Claim:** every allowed implementation satisfies the [finite lower bound](../science/theorem.md#finite-bound), with its explicit workspace correction.
 
-**Mathematical evidence:** [Lemmas 1–4](PROOF.md#output-tests) derive the information bound; [Lemma 5](PROOF.md#environment-transfer) transfers it to actual outputs; [Lemmas 6–7](PROOF.md#environment-entropy) establish environment entropy and heat accounting.
+**Mathematical evidence:** [Lemmas 1–4](../science/kinematics.md#output-tests) derive the information bound; [Lemma 5](../science/environment_information.md#environment-transfer) transfers it to actual outputs; [Lemmas 6–7](../science/environment_information.md#environment-entropy) establish environment entropy and heat accounting.
 
 **Executable support:** [test_kinematic_steps](../tests/test_core.py#L104), [test_spectral_bridge](../tests/test_core.py#L90), and [test_complete_auxiliary_ledger](../tests/test_core.py#L134). These check finite unitary instances, including selected singular blocks and rank-deficient states, spectral inequalities, and the exact energy ledger. Finite samples do not establish arbitrary-dimensional validity.
 
 <a id="optimal-limit"></a>
 ## Matching optimal limiting curve
 
-**Claim:** the [positive-error joint limit](THEOREM.md#optimal-crossover) equals the established crossover function.
+**Claim:** the [positive-error joint limit](../science/theorem.md#optimal-crossover) equals the established crossover function.
 
-**Mathematical evidence:** the [limiting match](PROOF.md#matching-limit) combines the uniform lower bound with the [charged recovery construction](CONSTRUCTION.md#recovery).
+**Mathematical evidence:** the [limiting match](../science/heat_bound.md#matching-limit) combines the uniform lower bound with the [charged recovery construction](../science/thermal_implementation.md#recovery).
 
 **Executable support:** [test_entropy_and_limits](../tests/test_core.py#L25), [test_recovery_sum](../tests/test_core.py#L78), and the formula implementations in [qph/core.py](../qph/core.py). These check endpoint conventions and finite recovery sums and inequalities. They do not identify an exact finite-parameter optimum.
 
 <a id="channel-equivalence"></a>
 ## Channel accuracy at the same optimal heat
 
-**Claim:** throughout the positive-error domain, the [half-diamond and branch-test heat infima coincide](THEOREM.md#channel-equivalence), so their optimal crossover is the same.
+**Claim:** throughout the positive-error domain, the [half-diamond and branch-test heat infima coincide](../science/theorem.md#channel-equivalence), so their optimal crossover is the same.
 
-**Mathematical evidence:** the [Gibbs dephasing conversion and channel-distance identity](PROOF.md#channel-equivalence) preserve each basis-input joint output and its heat, and bound the channel difference with every reference system.
+**Mathematical evidence:** the [Gibbs dephasing conversion and channel-distance identity](../science/channel_accuracy.md#channel-equivalence) preserve each basis-input joint output and its heat, and bound the channel difference with every reference system.
 
 **Executable support:** [channel conversion tests](../tests/test_channel_conversion.py) check the controlled phase, basis-branch invariance, complete heat and workspace return, and the error expression on an entangled input for a coherent channel. These are finite consistency checks; the equality of infima follows from the analytic conversion.
 
 <a id="exact-output-obstruction"></a>
 ## Exact-output obstruction with returned workspace
 
-**Claim:** [exact nonorthogonal pure targets are impossible](THEOREM.md#exact-output-obstruction) for a finite full-rank Gibbs reservoir and exactly returned ensemble-average workspace, including rank-deficient workspace states.
+**Claim:** [exact nonorthogonal pure targets are impossible](../science/theorem.md#exact-output-obstruction) for a finite full-rank Gibbs reservoir and exactly returned ensemble-average workspace, including rank-deficient workspace states.
 
-**Mathematical evidence:** the [support-and-rank proof](PROOF.md#exact-output-obstruction) combines purity, positivity of the returned average, full bath rank, and preservation of orthogonal branch supports. It does not assume conditional workspace return.
+**Mathematical evidence:** the [support-and-rank proof](../science/exact_outputs.md#exact-output-obstruction) combines purity, positivity of the returned average, full bath rank, and preservation of orthogonal branch supports. It does not assume conditional workspace return.
 
 **Boundary example:** [test_consumed_purity_control](../tests/test_core.py#L156) illustrates the different consumed-workspace model. The arbitrary-apparatus obstruction is proved by the support argument.
 
@@ -45,7 +45,7 @@ The proof establishes implications of the physical model. The tests check finite
 
 **Claim:** one fixed finite thermal device produces the prescribed conditional outputs with trace error exactly equal to the requested tolerance.
 
-**Mathematical evidence:** the [collision calculation](CONSTRUCTION.md#collision), its [channel-error property](CONSTRUCTION.md#channel-error), and the [complete heat ledger](CONSTRUCTION.md#heat-ledger).
+**Mathematical evidence:** the [collision calculation](../science/thermal_implementation.md#collision), its [channel-error property](../science/thermal_implementation.md#channel-error), and the [complete heat ledger](../science/thermal_implementation.md#heat-ledger).
 
 **Executable support:** [test_targets_and_overlap](../tests/test_core.py#L47) and [test_explicit_device](../tests/test_core.py#L64) directly evaluate states, unitarity, positive initial thermal populations, branch errors, polarization, and reservoir energy. The computed examples are in [results/reference.json](../results/reference.json).
 
@@ -54,7 +54,7 @@ The proof establishes implications of the physical model. The tests check finite
 
 **Claim:** the established strict-error lower bound exceeds the heat of the displayed relaxed-error device at the stated overlap.
 
-**Mathematical evidence:** the [finite benchmark](FINITE_BENCHMARK.md#comparison) compares the universal lower bound with the [bare relaxed device](FINITE_BENCHMARK.md#relaxed-device).
+**Mathematical evidence:** the [finite benchmark](../science/finite_benchmark.md#comparison) compares the universal lower bound with the [bare relaxed device](../science/finite_benchmark.md#relaxed-device).
 
 **Executable support:** [test_finite_regressions](../tests/test_core.py#L53), [scripts/reproduce.py](../scripts/reproduce.py), and [results/reference.json](../results/reference.json). The comparison uses a lower bound and one achievable upper bound; neither is described as the finite optimum.
 
@@ -63,13 +63,13 @@ The proof establishes implications of the physical model. The tests check finite
 
 **Claim:** approximate return has a dimension-dependent entropy allowance, and a consumed pure workspace must be charged.
 
-**Mathematical evidence:** the [return statement](THEOREM.md#workspace-return), [resource boundary examples](MODEL.md#resource-boundary), and [Gibbs/workspace ledger](PROOF.md#heat-ledger). The [finite workspace comparison](FINITE_BENCHMARK.md#workspace-return) uses the stated allowance.
+**Mathematical evidence:** the [return statement](../science/theorem.md#workspace-return), [resource boundary examples](../science/model.md#resource-boundary), and [Gibbs/workspace ledger](../science/heat_bound.md#heat-ledger). The [finite workspace comparison](../science/finite_benchmark.md#workspace-return) uses the stated allowance.
 
 **Executable support:** [test_finite_regressions](../tests/test_core.py#L53), [test_consumed_purity_control](../tests/test_core.py#L156), and [test_record_relocation](../tests/test_core.py#L170). The controls illustrate entropy consumption and record relocation into workspace correlations; the bath alone need not retain the input record.
 
 <a id="source-roles"></a>
 ## Inherited ingredients and comparisons
 
-The [proof source register](LITERATURE.md#r1), [assumption register](LITERATURE.md#assumption-register), and [direct comparisons](RELATED_WORK.md) identify inherited identities, inequalities, constructions, and model conventions. Each cited theorem has a defined role.
+The [proof source register](../references/LITERATURE.md#r1), [assumption register](../references/LITERATURE.md#assumption-register), and [direct comparisons](../references/RELATED_WORK.md) identify inherited identities, inequalities, constructions, and model conventions. Each cited theorem has a defined role.
 
-The [tutorial](tutorial/README.md) explains the task and finite device before introducing what a universal converse requires. It is an educational route, not a replacement for the canonical proof.
+The [tutorial](../learning/README.md) explains the task and finite device before introducing what a universal converse requires. It is an educational route, not a replacement for the canonical proof.

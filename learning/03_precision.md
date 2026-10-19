@@ -1,6 +1,6 @@
 # 3. Why precision changes the physical bound
 
-[Previous: the device](02_device.md) · [Tutorial home](README.md) · [Full proof](../PROOF.md)
+[Previous: the device](02_device.md) · [Tutorial home](README.md) · [Full proof](../science/README.md)
 
 <a id="two-scales"></a>
 ## Two different small quantities
@@ -29,16 +29,16 @@ Consider a pure-environment illustration. Orthogonal complete input states remai
 
 Here $`|\phi_x\rangle`$ represents the pure target; the density operator is $`\phi_x=|\phi_x\rangle\langle\phi_x|`$. If the system overlap is nonzero, the environment vectors must be orthogonal. They hold a perfectly distinguishable input record.
 
-With a finite full-rank Gibbs reservoir and exactly returned ensemble-average workspace, a [support-and-rank argument](../PROOF.md#exact-output-obstruction) rules out exact nonorthogonal pure targets. Exact-operation restrictions have direct precedent in [Aksak–Turgut, Theorem 4(b)](../LITERATURE.md#r2). Finite error changes the argument: slightly mixed system outputs no longer force those complete product states. The quantitative question is how much distinguishability must remain in the actual environment.
+With a finite full-rank Gibbs reservoir and exactly returned ensemble-average workspace, a [support-and-rank argument](../science/exact_outputs.md#exact-output-obstruction) rules out exact nonorthogonal pure targets. Exact-operation restrictions have direct precedent in [Aksak–Turgut, Theorem 4(b)](../references/LITERATURE.md#r2). Finite error changes the argument: slightly mixed system outputs no longer force those complete product states. The quantitative question is how much distinguishability must remain in the actual environment.
 
 <a id="converse-boundary"></a>
 ## What the universal lower bound must establish
 
-A calculation for one circuit cannot answer that question for every allowed apparatus. The [proof](../PROOF.md) supplies three additional arguments:
+A calculation for one circuit cannot answer that question for every allowed apparatus. The [proof](../science/README.md) supplies three additional arguments:
 
-1. **All allowed interactions.** [Output tests](../PROOF.md#output-tests) and the [arbitrary-unitary reduction](../PROOF.md#unitary-reduction) relate the required coherence and wrong-basis population to a difference between environmental comparison states.
-2. **Comparison states to real records.** The [information inequality](../PROOF.md#information-bound) bounds the information in those comparison states. The [environment transfer](../PROOF.md#environment-transfer) then passes to actual environmental outputs. Its continuity correction depends on the binary label dimension, not the reservoir dimension.
-3. **Records to heat.** The [environment entropy step](../PROOF.md#environment-entropy) and [Gibbs ledger](../PROOF.md#heat-ledger) convert that record into a heat bound, charging any entropy capacity consumed in workspace. Gibbs structure is applied to the thermal bath; the workspace need not itself be thermal.
+1. **All allowed interactions.** [Output tests](../science/kinematics.md#output-tests) and the [arbitrary-unitary reduction](../science/kinematics.md#unitary-reduction) relate the required coherence and wrong-basis population to a difference between environmental comparison states.
+2. **Comparison states to real records.** The [information inequality](../science/environment_information.md#information-bound) bounds the information in those comparison states. The [environment transfer](../science/environment_information.md#environment-transfer) then passes to actual environmental outputs. Its continuity correction depends on the binary label dimension, not the reservoir dimension.
+3. **Records to heat.** The [environment entropy step](../science/environment_information.md#environment-entropy) and [Gibbs ledger](../science/heat_bound.md#heat-ledger) convert that record into a heat bound, charging any entropy capacity consumed in workspace. Gibbs structure is applied to the thermal bath; the workspace need not itself be thermal.
 
 These are the extra tools beyond the undergraduate two-qubit calculation. They are stated with their source roles and assumptions in the proof.
 
@@ -52,7 +52,7 @@ b_*(r)=\frac{1}{\sqrt{1+4r}},
 \qquad F(r)=1-h_2\!\left(\frac{1+b_*(r)}2\right).
 ```
 
-The [canonical theorem](../THEOREM.md#optimal-crossover) states that the infimum heat $`q_{\min}(s,\epsilon)`$ approaches $`F(r)`$ when
+The [canonical theorem](../science/theorem.md#optimal-crossover) states that the infimum heat $`q_{\min}(s,\epsilon)`$ approaches $`F(r)`$ when
 
 ```math
 s\to0,
@@ -69,14 +69,14 @@ As $`r\to0`$, $`F(r)`$ approaches one bit-erasure unit. At $`r=1`$ it is approxi
 
 The full-state error is already much smaller than the leading polarization, yet the limiting heat depends on $`r`$. In the explicit device, the leading polarization is exact at every stage. Lower heat comes from relaxing the more demanding full-state specification.
 
-The converse gives a lower bound for every allowed finite device. The [collision plus recovery](../CONSTRUCTION.md#recovery) supplies the matching upper bound along the limit. This pairing establishes the limiting optimum; it does not identify the exact optimum at fixed $`s`$ and $`\epsilon`$.
+The converse gives a lower bound for every allowed finite device. The [collision plus recovery](../science/thermal_implementation.md#recovery) supplies the matching upper bound along the limit. This pairing establishes the limiting optimum; it does not identify the exact optimum at fixed $`s`$ and $`\epsilon`$.
 
 <a id="cost-location"></a>
 ## Where the cost goes
 
-The [microscopic heat identity](../CONSTRUCTION.md#heat-ledger) separates average system-entropy decrease, output–reservoir correlations, and final reservoir disequilibrium. In the bath-only construction, the average entropy decrease becomes small and recovery reduces the avoidable disequilibrium toward zero. The correlation contribution remains.
+The [microscopic heat identity](../science/thermal_implementation.md#heat-ledger) separates average system-entropy decrease, output–reservoir correlations, and final reservoir disequilibrium. In the bath-only construction, the average entropy decrease becomes small and recovery reduces the avoidable disequilibrium toward zero. The correlation contribution remains.
 
-With workspace, information can reside in the complete environment $`A+B`$. Restoring the workspace marginal permits final correlations. The [model](../MODEL.md#workspace-return) and [return theorem](../THEOREM.md#workspace-return) specify what is restored and what entropy capacity must be charged.
+With workspace, information can reside in the complete environment $`A+B`$. Restoring the workspace marginal permits final correlations. The [model](../science/model.md#workspace-return) and [return theorem](../science/theorem.md#workspace-return) specify what is restored and what entropy capacity must be charged.
 
 ## Checkpoint
 
@@ -95,4 +95,4 @@ That is much larger than an allowed error of order $`s^2`$. A fidelity-based sco
 
 It supplies an optimal limiting statement for this single-use physical task, together with finite lower bounds and explicit devices.
 
-Continue directly to the [theorem](../THEOREM.md#optimal-crossover), [proof](../PROOF.md), or [finite benchmark](../FINITE_BENCHMARK.md#comparison).
+Continue directly to the [theorem](../science/theorem.md#optimal-crossover), [proof](../science/README.md), or [finite benchmark](../science/finite_benchmark.md#comparison).

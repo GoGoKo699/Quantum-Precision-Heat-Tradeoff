@@ -1,8 +1,8 @@
 # Literature, attribution, and assumption provenance
 
-[Home](../README.md) · [Direct comparisons](RELATED_WORK.md) · [Model](MODEL.md) · [Proof](PROOF.md)
+[Home](../README.md) · [Direct comparisons](RELATED_WORK.md) · [Model](../science/model.md) · [Proof](../science/README.md)
 
-The [direct comparisons](RELATED_WORK.md) explain the closest predecessors by task, allowed resources, cost, error, and limiting regime. This page identifies the proof ingredients and the sources supporting each modeling assumption. The [single-textbook tutorial](tutorial/README.md) provides a teaching route.
+The [direct comparisons](RELATED_WORK.md) explain the closest predecessors by task, allowed resources, cost, error, and limiting regime. This page identifies the proof ingredients and the sources supporting each modeling assumption. The [single-textbook tutorial](../learning/README.md) provides a teaching route.
 
 ## Ingredients used in the proof
 
