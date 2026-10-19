@@ -38,15 +38,7 @@ jobs:
       - name: Integrate the topic-based account
         if: hashFiles('.maintenance/refurnish.py') != ''
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('.maintenance/refurnish.py')
-          s = p.read_text()
-          # Preserve TeX backslashes in newly authored documentation literals.
-          s = s.replace(", '''", ", r'''").replace("+ '''", "+ r'''")
-          p.write_text(s)
-          PY
-          python -m py_compile .maintenance/refurnish.py
+          python .maintenance/patch_migration.py
           python .maintenance/refurnish.py
       - name: Validate the furnished tree
         run: |
@@ -70,7 +62,7 @@ jobs:
         run: |
           git fetch origin maintenance/refurnish-20261019
           test "$(git rev-parse FETCH_HEAD)" = "$GITHUB_SHA"
-          rm -f .maintenance/refurnish.py
+          rm -f .maintenance/refurnish.py .maintenance/patch_migration.py
           git add -A
           if ! git diff --cached --quiet; then
             git config user.name 'github-actions[bot]'
@@ -79,13 +71,22 @@ jobs:
             git push origin HEAD:maintenance/refurnish-20261019
           fi
           echo "revision=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-      - name: Retain local validation evidence
+      - name: Package the checked sources and local tools for inspection
+        if: always()
+        run: |
+          mkdir -p build/evidence
+          tar --exclude=.git --exclude=node_modules --exclude=build --exclude=__pycache__ -czf build/evidence/source.tar.gz .
+          tar -czf build/evidence/documentation-tools.tar.gz node_modules
+          npm run docs:render || true
+      - name: Retain validation evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: refurnishing-local-evidence
-          path: build/docs-preview/
-          if-no-files-found: warn
+          path: |
+            build/evidence/
+            build/docs-preview/
+          if-no-files-found: error
   hosted:
     needs: prepare
     runs-on: ubuntu-latest
