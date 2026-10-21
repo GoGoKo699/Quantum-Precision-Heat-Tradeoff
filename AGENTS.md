@@ -1,6 +1,6 @@
 # Repository working rules
 
-The project is currently under collaboration, and the manuscript is being written. For questions, please contact me at [gogoko699@gmail.com](mailto:gogoko699@gmail.com).
+The project is currently under collaboration, and the manuscript is being written. For questions, please contact Ruge Lin at [gogoko699@gmail.com](mailto:gogoko699@gmail.com).
 
 ## Scientific sources
 

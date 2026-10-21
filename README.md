@@ -111,6 +111,6 @@ On Windows PowerShell, activate with `.venv\Scripts\Activate.ps1`. The calculati
 
 ## Purpose and contact
 
-The project is currently under collaboration, and the manuscript is being written. For questions, please contact me at [gogoko699@gmail.com](mailto:gogoko699@gmail.com).
+The project is currently under collaboration, and the manuscript is being written. For questions, please contact Ruge Lin at [gogoko699@gmail.com](mailto:gogoko699@gmail.com).
 
 Original code and documentation use the [MIT License](LICENSE), copyright 2026 Ruge Lin. Retain applicable third-party notices; scientific citations are scholarly attribution, not an added license condition. See [citation metadata](CITATION.cff) and the [source inventory and AI-assistance disclosure](provenance/README.md).
