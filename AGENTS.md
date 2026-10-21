@@ -18,7 +18,11 @@ Personal coaching contracts, session instructions, retry rules, answers, and lea
 
 Use GitHub-native Markdown, plain headings, fenced display mathematics, and protected inline mathematics. Keep math outside emphasis wrappers, and display equations outside tables and block quotes. Preserve readable desktop layout. Break long derivations at mathematical steps, not individual terms. Local MathJax compilation is not a hosted-rendering certificate: inspect the actual hosted README, learning entrance, and representative mathematical pages before declaring display verified.
 
-Keep public prose about the scientific question, results, evidence, and consequential scope. Preserve the exact purpose/contact wording. Direct inquiries to Ruge Lin by email; do not replace the collaboration invitation with a public request for validation. Keep publication planning private. Do not start manuscript drafting, a new research campaign, release tagging, metadata changes, or external correspondence without the owner's instruction.
+Keep public prose about the scientific question, results, evidence, and consequential scope. Preserve the exact purpose/contact wording. Direct inquiries to Ruge Lin by email; do not replace the collaboration-status notice with a public request for validation. Keep publication planning private. Do not start manuscript drafting, a new research campaign, release tagging, metadata changes, or external correspondence without the owner's instruction.
+
+## Public document boundary
+
+Keep the explanatory report PDF under `learning/report/` and its source under `learning/source/`. The README report entry links only the PDF; it does not advertise the source or compilation. Preserve the report without author names or affiliations. Keep the independent Python plot generator and dependencies under `verification/Graph/`. Manuscript PDFs, manuscript TeX, Overleaf archives, calibration records, and workflow handovers remain outside the public repository before an explicit publication instruction. Do not restore them as part of cleanup or verification.
 
 ## Preservation and verification
 

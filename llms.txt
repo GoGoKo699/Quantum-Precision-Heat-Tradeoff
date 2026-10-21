@@ -58,3 +58,7 @@ The linked statements and primary-source comparisons take precedence over this s
 - [Structured bibliography](https://raw.githubusercontent.com/GoGoKo699/Quantum-Precision-Heat-Tradeoff/main/references/bibliography.json): Stable source labels, citation text, and source URLs extracted from the attributed register.
 
 For self-directed study, use the common milestone map and selected-source bridge. The map has exactly 30 stable targets with the retained 14/16 allocation. This guide contains no personal assessment procedure or learner records.
+
+## Explanatory report and retained plot source
+
+For a continuous explanation, read `learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf`. Its editable source is maintained separately under `learning/source/`. The independent quantitative plot generator and pinned dependencies are under `verification/Graph/`; `verification/DOCUMENTS.md` describes their roles. The public tree contains the scientific account and explanatory report, not the unpublished manuscript or private calibration.

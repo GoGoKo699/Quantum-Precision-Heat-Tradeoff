@@ -20,7 +20,7 @@ class PlotSourceTests(unittest.TestCase):
         self.assertEqual(REQUIREMENTS.read_text().strip(), "matplotlib==3.10.8")
 
     def test_matches_scientific_function(self):
-        for ratio in (0.0, 1e-12, .001, .01, .1, 1.0, 10.0, 100.0, 1e8):
+        for ratio in (0.0, 1e-12, .001, .01, .1, 1.0, 10.0, 100.0, 1e8, 1e100, 1e300, *plot.sample_curve()[0]):
             with self.subTest(ratio=ratio):
                 self.assertAlmostEqual(plot.crossover(ratio), canonical_crossover(ratio), delta=1e-14)
         r,values=plot.sample_curve()
