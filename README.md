@@ -6,9 +6,7 @@ A device receives either of two orthogonal qubit states and must produce the cor
 
 ## Explanatory report
 
-Read the [complete explanatory report (PDF)](learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf), or use its [self-contained LaTeX source](learning/report/Quantum_Precision_Heat_Tradeoff_Report.tex). The report provides a continuous, reference-free explanation of the physical problem, the universal bound, the construction, and its consequences. The report carries no author names or affiliations.
-
-To compile it yourself with pdfLaTeX (TeX Live 2025), see the [report reproduction instructions](verification/DOCUMENTS.md).
+Read the [complete explanatory report (PDF)](learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf) for a self-contained, reference-free explanation of the physical problem, the universal bound, the construction, and its consequences.
 
 ## Physical task
 

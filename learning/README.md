@@ -6,7 +6,7 @@ The [30-milestone map](MILESTONES.md) is a common understanding route for human 
 
 The single educational anchor is **Benjamin Schumacher and Michael D. Westmoreland, Quantum Processes, Systems, and Information (2010)**. The [textbook bridge](SCHUMACHER_WESTMORELAND_BRIDGE.md#textbook) identifies relevant chapters and sections, translates notation and resource assumptions, and supplies routes to the additional research-level steps.
 
-For a continuous, self-contained account, read the [explanatory report (PDF)](report/Quantum_Precision_Heat_Tradeoff_Report.pdf). Its [LaTeX source](report/Quantum_Precision_Heat_Tradeoff_Report.tex) and [build instructions](../verification/DOCUMENTS.md) are included.
+For a continuous, self-contained account, read the [explanatory report (PDF)](report/Quantum_Precision_Heat_Tradeoff_Report.pdf).
 
 <a id="route"></a>
 ## Worked explanations
