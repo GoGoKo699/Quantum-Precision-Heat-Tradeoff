@@ -43,15 +43,29 @@ jobs:
           work_in_root_file_dir: true
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
           post_compile: |
+            set -eux
+            cd "$GITHUB_WORKSPACE"
             mkdir -p build/audit-tex
-            tlroot="$(kpsewhich -var-value=TEXMFROOT)"
+            tlroot="$(dirname "$(dirname "$(dirname "$(readlink -f "$(command -v pdftex)")")")")"
+            test -d "$tlroot/texmf-dist"
             echo "$tlroot" > build/audit-tex/texlive-root.txt
             pdflatex --version > build/audit-tex/version.txt
-            { sed -n 's/^INPUT //p' build/audit-smoke.fls learning/source/Quantum_Precision_Heat_Tradeoff_Report.fls; kpsewhich -all texmf.cnf; kpsewhich -format=fmt pdflatex.fmt; command -v pdftex; command -v kpsewhich; } | while IFS= read -r path; do
+            {
+              sed -n 's/^INPUT //p' build/audit-smoke.fls learning/source/Quantum_Precision_Heat_Tradeoff_Report.fls
+              kpsewhich -all texmf.cnf || true
+              kpsewhich -progname=pdflatex -format=fmt pdflatex.fmt || true
+              command -v pdftex
+              command -v kpsewhich
+              find "$tlroot/texmf-var/web2c" -name pdflatex.fmt
+              find "$tlroot/texmf-dist/fonts/tfm/public/amsfonts" "$tlroot/texmf-dist/fonts/type1/public/amsfonts" "$tlroot/texmf-dist/tex/latex/base" -type f
+            } > build/audit-tex/candidate-files.txt
+            while IFS= read -r path; do
               [ -f "$path" ] || continue
               resolved="$(readlink -f "$path")"
               case "$resolved" in "$tlroot"/*) echo "${resolved#"$tlroot"/}" ;; esac
-            done | sort -u > build/audit-tex/runtime-files.txt
+              true
+            done < build/audit-tex/candidate-files.txt | sort -u > build/audit-tex/runtime-files.txt
+            test -s build/audit-tex/runtime-files.txt
             tar -C "$tlroot" -czf build/audit-tex/texlive2025-runtime.tar.gz -T build/audit-tex/runtime-files.txt
             cp learning/source/Quantum_Precision_Heat_Tradeoff_Report.pdf build/audit-tex/
             cp learning/source/Quantum_Precision_Heat_Tradeoff_Report.log build/audit-tex/
