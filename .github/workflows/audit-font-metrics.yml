@@ -1,0 +1,34 @@
+name: Audit compiler metrics
+on:
+  push:
+    branches: [repository/pre-arxiv-final-audit]
+    paths: [.github/workflows/audit-font-metrics.yml]
+permissions:
+  contents: read
+jobs:
+  environment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare a generic minimal test
+        run: |
+          mkdir -p build
+          printf '\\documentclass{article}\n\\begin{document}Metrics test.\\end{document}\n' > build/test.tex
+      - uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcecc6c1b
+        with:
+          os: debian
+          texlive_version: '2025'
+          root_file: build/test.tex
+          work_in_root_file_dir: true
+          post_compile: |
+            cd "$GITHUB_WORKSPACE"
+            tlroot="$(dirname "$(dirname "$(dirname "$(readlink -f "$(command -v pdftex)")")")")"
+            mkdir -p build/audit-metrics
+            find "$tlroot/texmf-dist/fonts/tfm/public/cm" "$tlroot/texmf-dist/fonts/tfm/jknappen/ec" -type f | sed "s|$tlroot/||" > build/audit-metrics/files.txt
+            tar -C "$tlroot" -czf build/audit-metrics/metrics.tar.gz -T build/audit-metrics/files.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qph-audit-metrics
+          path: build/audit-metrics/
+          retention-days: 1
+          if-no-files-found: error
