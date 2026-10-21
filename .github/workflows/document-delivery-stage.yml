@@ -1,0 +1,20 @@
+name: Document delivery staging
+on:
+  push:
+    branches: [repository/final-overleaf-report]
+    paths: [.github/workflows/document-delivery-stage.yml, .delivery/source_bundle.txt]
+permissions:
+  contents: read
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Archive exact tracked source for local verification
+        run: git archive --format=tar.gz --output="$RUNNER_TEMP/qph-source.tar.gz" HEAD
+      - uses: actions/upload-artifact@v4
+        with:
+          name: qph-exact-source
+          path: ${{ runner.temp }}/qph-source.tar.gz
+          if-no-files-found: error
+          retention-days: 2
