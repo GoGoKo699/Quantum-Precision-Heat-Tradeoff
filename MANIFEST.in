@@ -6,7 +6,7 @@ include results/reference.json
 recursive-include science *.md *.svg
 recursive-include learning *.md *.tex *.pdf
 recursive-include references *.md *.json
-recursive-include verification *.md *.json
+recursive-include verification *.md *.json *.py *.txt
 recursive-include scripts *.py *.cjs
 recursive-include tests *.py *.cjs *.md
 recursive-include provenance *.md *.json

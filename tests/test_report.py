@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "learning/report/Quantum_Precision_Heat_Tradeoff_Report.tex"
+SRC = ROOT / "learning/source/Quantum_Precision_Heat_Tradeoff_Report.tex"
 PDF = ROOT / "learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf"
 
 class ReportTests(unittest.TestCase):
@@ -16,6 +16,11 @@ class ReportTests(unittest.TestCase):
         self.assertNotRegex(text,r"\\(?:author|affiliation|email|orcidlink)\b")
         self.assertIn("pdfauthor={}",text)
         self.assertTrue(PDF.read_bytes().startswith(b"%PDF-"))
+        self.assertFalse((ROOT/"learning/report/Quantum_Precision_Heat_Tradeoff_Report.tex").exists())
+        root_report_section = (ROOT/"README.md").read_text().split("## Explanatory report", 1)[1].split("## Physical task", 1)[0]
+        self.assertIn("learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf", root_report_section)
+        self.assertNotIn(".tex", root_report_section)
+        self.assertNotIn("compil", root_report_section.lower())
 
     def test_no_paper_or_manuscript_material_in_current_tree(self):
         self.assertFalse((ROOT/"paper").exists())

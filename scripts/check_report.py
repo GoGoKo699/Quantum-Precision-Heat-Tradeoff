@@ -4,9 +4,10 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-STEM = ROOT / "learning/report/Quantum_Precision_Heat_Tradeoff_Report"
-TEX = STEM.with_suffix(".tex")
-PDF = STEM.with_suffix(".pdf")
+SOURCE_STEM = ROOT / "learning/source/Quantum_Precision_Heat_Tradeoff_Report"
+PDF_STEM = ROOT / "learning/report/Quantum_Precision_Heat_Tradeoff_Report"
+TEX = SOURCE_STEM.with_suffix(".tex")
+PDF = PDF_STEM.with_suffix(".pdf")
 
 def check() -> None:
     source = TEX.read_text(encoding="utf-8")
@@ -18,7 +19,7 @@ def check() -> None:
         assert forbidden not in source, forbidden
     assert "pdfauthor={}" in source
     assert PDF.read_bytes().startswith(b"%PDF-")
-    log = STEM.with_suffix(".log")
+    log = SOURCE_STEM.with_suffix(".log")
     if log.exists():
         report = log.read_text(errors="replace")
         assert not any(msg in report for msg in ("Missing character:", "Overfull ", "multiply defined", "undefined references", "Rerun to get cross-references right"))

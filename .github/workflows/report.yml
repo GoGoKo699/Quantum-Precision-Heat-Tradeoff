@@ -2,9 +2,9 @@ name: Explanatory report
 on:
   push:
     branches: [main, "repository/**"]
-    paths: ["learning/report/**", "verification/DOCUMENTS.md", "tests/test_report.py", ".github/workflows/report.yml"]
+    paths: ["learning/report/**", "learning/source/**", "verification/Graph/**", "verification/DOCUMENTS.md", "tests/test_report.py", "tests/test_plot_source.py", "scripts/check_report.py", ".github/workflows/report.yml"]
   pull_request:
-    paths: ["learning/report/**", "verification/DOCUMENTS.md", "tests/test_report.py", ".github/workflows/report.yml"]
+    paths: ["learning/report/**", "learning/source/**", "verification/Graph/**", "verification/DOCUMENTS.md", "tests/test_report.py", "tests/test_plot_source.py", "scripts/check_report.py", ".github/workflows/report.yml"]
   workflow_dispatch:
 permissions:
   contents: read
@@ -22,7 +22,7 @@ jobs:
         uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b
         with:
           texlive_version: "2025"
-          root_file: learning/report/Quantum_Precision_Heat_Tradeoff_Report.tex
+          root_file: learning/source/Quantum_Precision_Heat_Tradeoff_Report.tex
           work_in_root_file_dir: true
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
       - name: Check report source and compiled PDF
@@ -31,5 +31,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: explanatory-report
-          path: learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf
+          path: learning/source/Quantum_Precision_Heat_Tradeoff_Report.pdf
           if-no-files-found: error
