@@ -13,8 +13,11 @@ jobs:
       - name: Prepare a generic minimal test
         run: |
           mkdir -p build
-          printf '\\documentclass{article}\n\\begin{document}Metrics test.\\end{document}\n' > build/test.tex
-      - uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcecc6c1b
+          cat > build/test.tex <<'TEX'
+          \documentclass{article}
+          \begin{document}Metrics test.\end{document}
+          TEX
+      - uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b
         with:
           os: debian
           texlive_version: '2025'
