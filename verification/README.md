@@ -109,6 +109,6 @@ The [verification snapshot](INSPECTION.md) records source preservation, package 
 
 The [full sanity check](SANITY_CHECK.md) records the analytical consistency check, source recheck, numerical edge repairs, dependency audit, and fresh hosted-page inspection.
 
-## Manuscript and explanatory report
+## Explanatory report
 
-The [document reproduction guide](DOCUMENTS.md) covers the single-file Overleaf package, Python-generated quantitative plot, inline TikZ diagrams, self-contained report, and clean pdfLaTeX builds. These checks supplement the scientific and repository checks above.
+The [report reproduction guide](DOCUMENTS.md) covers its single self-contained TeX source, pdfLaTeX compilation with TeX Live 2025, and visual inspection of the rendered PDF. No manuscript or publication-specific build workflow is retained.

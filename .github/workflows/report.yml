@@ -1,0 +1,34 @@
+name: Explanatory report
+on:
+  push:
+    branches: [main, "repository/**"]
+    paths: ["learning/report/**", "verification/DOCUMENTS.md", "tests/test_report.py", ".github/workflows/report.yml"]
+  pull_request:
+    paths: ["learning/report/**", "verification/DOCUMENTS.md", "tests/test_report.py", ".github/workflows/report.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m unittest discover -s tests -v
+      - name: Compile report with TeX Live 2025
+        uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b
+        with:
+          texlive_version: "2025"
+          root_file: learning/report/Quantum_Precision_Heat_Tradeoff_Report.tex
+          work_in_root_file_dir: true
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+      - name: Check report source and compiled PDF
+        run: python scripts/check_report.py
+      - name: Retain compiled report
+        uses: actions/upload-artifact@v4
+        with:
+          name: explanatory-report
+          path: learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf
+          if-no-files-found: error

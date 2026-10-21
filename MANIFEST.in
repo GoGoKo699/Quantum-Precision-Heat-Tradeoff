@@ -10,5 +10,4 @@ recursive-include verification *.md *.json
 recursive-include scripts *.py *.cjs
 recursive-include tests *.py *.cjs *.md
 recursive-include provenance *.md *.json
-recursive-include paper *.md *.tex *.pdf *.py *.txt
-include .github/workflows/documents.yml
+include .github/workflows/report.yml
