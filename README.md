@@ -4,6 +4,12 @@
 
 A device receives either of two orthogonal qubit states and must produce the corresponding prescribed output. The outputs are almost orthogonal, so their average entropy changes very little. Yet requiring sufficiently accurate outputs on **each input** forces a finite environmental information record. When internal workspace is returned, this also forces a finite mean heat cost. This repository gives the physical model, a universal lower bound, a matching limiting construction, and runnable finite examples.
 
+## Read the complete documents
+
+- [Explanatory report (PDF)](learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf) and [report source](learning/report/Quantum_Precision_Heat_Tradeoff_Report.tex): a self-contained account with the necessary preliminaries introduced where they are used.
+- [Complete manuscript (PDF)](paper/Quantum_Precision_Heat_Tradeoff_arXiv.pdf) and [single-file LaTeX source](paper/Quantum_Precision_Heat_Tradeoff_arXiv.tex): article, End Matter, derivations, and bibliography together.
+- [Reproduce the documents and plots](verification/DOCUMENTS.md): build with pdfLaTeX, regenerate the quantitative figure directly from Python, and export a minimal Overleaf package.
+
 ## Physical task
 
 The inputs are $`|0\rangle`$ and $`|1\rangle`$, each supplied with probability one half. The same apparatus must work for either input; the control receives no separate label. The desired pure output density operators are

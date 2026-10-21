@@ -4,9 +4,11 @@ include package.json package-lock.json
 include .github/workflows/checks.yml
 include results/reference.json
 recursive-include science *.md *.svg
-recursive-include learning *.md
+recursive-include learning *.md *.tex *.pdf
 recursive-include references *.md *.json
 recursive-include verification *.md *.json
 recursive-include scripts *.py *.cjs
 recursive-include tests *.py *.cjs *.md
 recursive-include provenance *.md *.json
+recursive-include paper *.md *.tex *.pdf *.py *.txt
+include .github/workflows/documents.yml
