@@ -15,3 +15,8 @@ results/generated*.json
 *.fls
 *.fdb_latexmk
 *Notes.bib
+
+# Generated review outputs stay separate from the committed reader PDF.
+learning/source/*.pdf
+verification/Graph/*.pdf
+*.synctex.gz

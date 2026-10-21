@@ -2,9 +2,9 @@ name: Explanatory report
 on:
   push:
     branches: [main, "repository/**"]
-    paths: ["learning/report/**", "learning/source/**", "verification/Graph/**", "verification/DOCUMENTS.md", "tests/test_report.py", "tests/test_plot_source.py", "scripts/check_report.py", ".github/workflows/report.yml"]
+    paths: ["learning/report/**", "learning/source/**", "verification/Graph/**", "verification/DOCUMENTS.md", "tests/test_report.py", "tests/test_plot_source.py", "scripts/check_report.py", "tests/test_delivery_checks.py", "requirements-dev.txt", "requirements.txt", ".github/workflows/report.yml"]
   pull_request:
-    paths: ["learning/report/**", "learning/source/**", "verification/Graph/**", "verification/DOCUMENTS.md", "tests/test_report.py", "tests/test_plot_source.py", "scripts/check_report.py", ".github/workflows/report.yml"]
+    paths: ["learning/report/**", "learning/source/**", "verification/Graph/**", "verification/DOCUMENTS.md", "tests/test_report.py", "tests/test_plot_source.py", "scripts/check_report.py", "tests/test_delivery_checks.py", "requirements-dev.txt", "requirements.txt", ".github/workflows/report.yml"]
   workflow_dispatch:
 permissions:
   contents: read
@@ -26,10 +26,13 @@ jobs:
           work_in_root_file_dir: true
           args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
       - name: Check report source and compiled PDF
-        run: python scripts/check_report.py
+        run: python scripts/check_report.py --compiled --output build/report/check.json
       - name: Retain compiled report
         uses: actions/upload-artifact@v4
         with:
           name: explanatory-report
-          path: learning/source/Quantum_Precision_Heat_Tradeoff_Report.pdf
+          path: |
+            learning/source/Quantum_Precision_Heat_Tradeoff_Report.pdf
+            learning/source/Quantum_Precision_Heat_Tradeoff_Report.log
+            build/report/check.json
           if-no-files-found: error
