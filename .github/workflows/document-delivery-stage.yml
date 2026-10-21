@@ -2,19 +2,91 @@ name: Document delivery staging
 on:
   push:
     branches: [repository/final-overleaf-report]
-    paths: [.github/workflows/document-delivery-stage.yml, .delivery/source_bundle.txt]
+    paths: [.github/workflows/document-delivery-stage.yml, '.delivery/**']
 permissions:
-  contents: read
+  contents: write
 jobs:
-  snapshot:
+  build-and-stage:
+    if: github.repository == 'GoGoKo699/Quantum-Precision-Heat-Tradeoff'
     runs-on: ubuntu-latest
+    env:
+      SOURCE_DATE_EPOCH: '1792540800'
     steps:
       - uses: actions/checkout@v4
-      - name: Archive exact tracked source for local verification
-        run: git archive --format=tar.gz --output="$RUNNER_TEMP/qph-source.tar.gz" HEAD
-      - uses: actions/upload-artifact@v4
+      - name: Recover verified document sources
+        shell: bash
+        run: |
+          cat .delivery/part-* > "$RUNNER_TEMP/source.tar.xz"
+          echo "bba476a26c920e5d7ba42dcefa4a02213fefea3f7f0d05fd7d1d1f29b7844858  $RUNNER_TEMP/source.tar.xz" | sha256sum --check
+          python - <<'PY'
+          import os, tarfile
+          from pathlib import Path
+          allowed = {'.github/workflows/documents.yml', '.gitignore', 'MANIFEST.in', 'README.md', 'learning/README.md', 'verification/README.md', 'verification/DOCUMENTS.md', 'paper/README.md', 'paper/Quantum_Precision_Heat_Tradeoff_arXiv.tex', 'paper/Graph/generate_plots.py', 'paper/Graph/requirements.txt', 'learning/report/Quantum_Precision_Heat_Tradeoff_Report.tex', 'scripts/build_documents.py', 'scripts/check_compiled_documents.py', 'scripts/verify_manuscript.py', 'tests/test_publication.py'}
+          with tarfile.open(Path(os.environ['RUNNER_TEMP'])/'source.tar.xz') as archive:
+              members = archive.getmembers()
+              assert {m.name for m in members} == allowed
+              assert all(m.isfile() and m.name in allowed for m in members)
+              archive.extractall('.', members=members, filter='data')
+          PY
+      - uses: actions/setup-python@v5
         with:
-          name: qph-exact-source
-          path: ${{ runner.temp }}/qph-source.tar.gz
+          python-version: '3.13'
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python paper/Graph/generate_plots.py
+      - name: Build with released TeX Live 2025
+        uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b
+        with:
+          texlive_version: '2025'
+          root_file: |
+            paper/Quantum_Precision_Heat_Tradeoff_arXiv.tex
+            learning/report/Quantum_Precision_Heat_Tradeoff_Report.tex
+          work_in_root_file_dir: true
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+      - run: python scripts/build_documents.py --package-only
+      - name: Compile the exported package alone
+        uses: xu-cheng/latex-action@6549dc21effb2730855a1281407ecfcececc6c1b
+        with:
+          texlive_version: '2025'
+          root_file: build/documents/zip-extract/Quantum_Precision_Heat_Tradeoff_arXiv.tex
+          work_in_root_file_dir: true
+          args: -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+      - run: python scripts/check_compiled_documents.py
+      - run: python -m unittest discover -s tests -v
+      - run: python scripts/verify_manuscript.py
+      - run: npm ci --ignore-scripts
+      - run: python scripts/reproduce.py
+      - run: python scripts/check_repository.py
+      - run: python scripts/make_figures.py
+      - run: git diff --exit-code -- science/figures
+      - name: Commit only the reviewed publication sources and generated documents
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add .gitignore MANIFEST.in README.md learning/README.md verification/README.md verification/DOCUMENTS.md paper/README.md paper/Quantum_Precision_Heat_Tradeoff_arXiv.tex paper/Quantum_Precision_Heat_Tradeoff_arXiv.pdf paper/Graph/generate_plots.py paper/Graph/requirements.txt paper/Graph/crossover.pdf learning/report/Quantum_Precision_Heat_Tradeoff_Report.tex learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf scripts/build_documents.py scripts/check_compiled_documents.py scripts/verify_manuscript.py tests/test_publication.py
+          git rm -r .delivery
+          git commit -m 'Integrate single-file manuscript, reproducible plot, and explanatory report'
+          git push origin HEAD:repository/final-overleaf-report
+          git archive --format=tar.gz --output="$RUNNER_TEMP/qph-integrated-source.tar.gz" HEAD
+      - name: Preserve exact PDFs, package, and verification records
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: qph-document-delivery
+          path: |
+            paper/Quantum_Precision_Heat_Tradeoff_arXiv.pdf
+            paper/Graph/crossover.pdf
+            learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf
+            build/documents/Quantum_Precision_Heat_Tradeoff_Overleaf.zip
+            build/documents/ci_build_check.json
+            build/documents/manuscript_numerics.json
+            paper/Quantum_Precision_Heat_Tradeoff_arXiv.log
+            learning/report/Quantum_Precision_Heat_Tradeoff_Report.log
+            ${{ runner.temp }}/qph-integrated-source.tar.gz
           if-no-files-found: error
-          retention-days: 2
+          retention-days: 7
