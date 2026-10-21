@@ -4,11 +4,11 @@
 
 A device receives either of two orthogonal qubit states and must produce the corresponding prescribed output. The outputs are almost orthogonal, so their average entropy changes very little. Yet requiring sufficiently accurate outputs on **each input** forces a finite environmental information record. When internal workspace is returned, this also forces a finite mean heat cost. This repository gives the physical model, a universal lower bound, a matching limiting construction, and runnable finite examples.
 
-## Read the complete documents
+## Explanatory report
 
-- [Explanatory report (PDF)](learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf) and [report source](learning/report/Quantum_Precision_Heat_Tradeoff_Report.tex): a self-contained account with the necessary preliminaries introduced where they are used.
-- [Complete manuscript (PDF)](paper/Quantum_Precision_Heat_Tradeoff_arXiv.pdf) and [single-file LaTeX source](paper/Quantum_Precision_Heat_Tradeoff_arXiv.tex): article, End Matter, derivations, and bibliography together.
-- [Reproduce the documents and plots](verification/DOCUMENTS.md): build with pdfLaTeX, regenerate the quantitative figure directly from Python, and export a minimal Overleaf package.
+Read the [complete explanatory report (PDF)](learning/report/Quantum_Precision_Heat_Tradeoff_Report.pdf), or use its [self-contained LaTeX source](learning/report/Quantum_Precision_Heat_Tradeoff_Report.tex). The report provides a continuous, reference-free explanation of the physical problem, the universal bound, the construction, and its consequences. The report carries no author names or affiliations.
+
+To compile it yourself with pdfLaTeX (TeX Live 2025), see the [report reproduction instructions](verification/DOCUMENTS.md).
 
 ## Physical task
 
